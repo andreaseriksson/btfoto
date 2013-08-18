@@ -13,6 +13,9 @@ group :doc do
   gem 'sdoc', require: false
 end
 
+gem 'unicorn'
+gem 'capistrano'
+
 gem 'bcrypt-ruby', '~> 3.1.0'
 gem "bootstrap-sass", "~> 2.3.2.0"
 gem "font-awesome-rails"
