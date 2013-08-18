@@ -28,8 +28,8 @@ gem 'acts_as_list'
 gem 'ranked-model'
 
 gem 'monban'
-#gem "friendly_id", "~> 4.0.9"
-gem 'friendly_id', github: 'FriendlyId/friendly_id', branch: 'rails4'
+gem "friendly_id", "~> 4.0.10"
+#gem 'friendly_id', github: 'FriendlyId/friendly_id', branch: 'rails4'
 gem 'carrierwave'
 gem 'jquery-fileupload-rails'
 
