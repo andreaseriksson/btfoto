@@ -1,0 +1,45 @@
+<!-- Grid row -->
+<div class="row">
+  <!-- Data block -->
+  <article class="span10 data-block">
+    <header>
+      <h2><i class="icon-inbox"></i> Orders</h2>
+    </header>
+    <section>
+      <h3>Visa orders</h3>
+      <table class="table table-bordered table-striped table-highlight">
+      <thead>
+      <tr>
+        <th>Nr</th>
+        <th>Namn</th>
+        <th>Summa</th>
+        <th>Bekräftad</th>
+        <th>Skapad</th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+      </thead>
+    <% @orders.each do |order| %>
+      <tr>
+        <td><%= order.id %></td>
+        <td><%= order.first_name %> <%= order.family_name %></td>
+        <td></td>
+        <td><%= order.confirmed %></td>
+        <td><%= order.created_at.strftime("%Y-%m-%d") %></td>
+        <td><%= link_to raw('<i class="icon-file-alt"></i>'), [:admin, order] %></td>
+        <td><%= link_to raw('<i class="icon-envelope-alt"></i>'), [:admin, order] %></td>
+        <td><%= link_to raw('<i class="icon-print"></i>'), admin_order_path(order, format: :pdf) %></td>
+        <td><%= link_to raw('<i class="icon-trash"></i>'), [:admin, order], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+    </table>
+    
+    <%= will_paginate @orders %>
+    
+    </section>
+    
+  </article>
+  <!-- /Data block -->
+</div>

@@ -1,0 +1,35 @@
+<!-- Grid row -->
+<div class="row">
+  <!-- Data block -->
+  <article class="span12 data-block">
+    <header>
+      <h2><i class="icon-file-text-alt"></i> <%= t 'admin.pages.Title' %></h2>
+    </header>
+    <section>
+      <%= link_to t('admin.pages.new.New_page'), new_admin_page_path, :class => 'btn btn-alt btn-primary pull-right' %>
+      <h3><%= t '.Show_pages' %></h3>
+      <table class="table table-bordered table-striped table-highlight">
+        <thead>
+        <tr>
+          <th><%= t '.Page' %></th>
+          <th><%= t '.Url' %></th>
+          <th></th>
+        </tr>
+        </thead>
+        <% Page.roots.each do |page| %>
+          <tr>
+            <td><%= page.title %></td>
+            <td>/<%= page.slug %></td>
+            <td>
+              <%= link_to raw('<i class="icon-chevron-up"></i>'), admin_page_move_higher_path(page.slug) %>
+              <%= link_to raw('<i class="icon-chevron-down"></i>'), admin_page_move_lower_path(page.slug) %>
+              <%= link_to raw('<i class="icon-edit"></i>'), edit_admin_page_path(page) %> <%= link_to raw('<i class="icon-trash"></i>'), [:admin, page], method: :delete, data: { confirm: t('delete?') } %></td>
+          </tr>
+          <%= render 'submenu_pages', pages: page.children %>
+        <% end %>
+      </table>
+    </section>
+  </article>
+  <!-- /Data block -->
+</div>
+

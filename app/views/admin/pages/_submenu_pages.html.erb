@@ -1,0 +1,13 @@
+<% pages.each do |page, children| %>
+  <tr>
+    <td><% page.ancestors.each do |page| %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<% end %>|== <%= page.title %></td>
+    <td><%= page.slug %></td>          
+    <td>
+      <%= link_to raw('<i class="icon-chevron-up"></i>'), admin_page_move_higher_path(page.slug) %>
+      <%= link_to raw('<i class="icon-chevron-down"></i>'), admin_page_move_lower_path(page.slug) %>
+      <%= link_to raw('<i class="icon-edit"></i>'), edit_admin_page_path(page) %> <%= link_to raw('<i class="icon-trash"></i>'), [:admin, page], method: :delete, data: { confirm: t('delete?') } %>
+    </td>
+
+</tr>
+<%= render 'submenu_pages', pages: children if children.present? %>
+<% end %>

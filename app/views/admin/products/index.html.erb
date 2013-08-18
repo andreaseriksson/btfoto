@@ -1,0 +1,34 @@
+<!-- Grid row -->
+<div class="row">
+  <!-- Data block -->
+  <article class="span8 data-block">
+    <header>
+      <h2><i class="icon-table"></i> <%= t 'admin.products.Title' %></h2>
+    </header>
+    <section>
+      <%= link_to t('admin.products.new.New_product'), new_admin_product_path, :class => 'btn btn-alt btn-primary pull-right' %>
+      <h3><%= t '.Show_products' %></h3>
+      <table class="table table-bordered table-striped table-highlight">
+      <thead>
+      <tr>
+        <th><%= t '.Product' %></th>
+        <th><%= t '.Image' %></th>
+        <th><%= t '.Price' %></th>
+        <th><%= t '.Free_shipping' %></th>
+        <th></th>
+      </tr>
+      </thead>
+    <% @products.each do |product| %>
+      <tr>
+        <td><%= product.name %></td>
+        <td><%= link_to product.image.file.filename, "#{product.image}" %></td>
+        <td><%= product.price %></td>
+        <td><%= product.freight == true ? t('Yes'):t('No') %></td>
+        <td><%= link_to raw('<i class="icon-edit"></i>'), edit_admin_product_path(product) %> <%= link_to raw('<i class="icon-trash"></i>'), [:admin, product], method: :delete, data: { confirm: t('delete?') } %></td>
+      </tr>
+    <% end %>
+    </table>
+    </section>
+  </article>
+  <!-- /Data block -->
+</div>

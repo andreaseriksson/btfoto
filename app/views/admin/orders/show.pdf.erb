@@ -1,0 +1,68 @@
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <%= wicked_pdf_stylesheet_link_tag "application" %>
+  </head>
+  <body>
+    <table border="0" width="100%">
+      <tr>
+        <td valign="top" width="50%">
+          <table width="100%">
+            <tr>
+              <td align="right" width="30%">Beställd: </td>
+              <td width="70%"> <%= @order.created_at.strftime("%Y-%m-%d") %></td>
+            </tr>
+            <tr>
+              <td align="right">Leveranssätt: </td>
+              <td></td>
+            </tr>
+          </table>
+        </td>
+        <td valign="top">
+          <table width="100%">
+            <tr>
+              <td valign="top" align="right" width="20%">
+                <h1>&nbsp;</h1>
+                Kund:
+              </td>
+              <td valign="top" width="80%">
+                <h1>Packsedel</h1>
+                <%= @order.first_name %> <%= @order.family_name %><br>
+                <%= @order.address1 %> <%= @order.address2 %><br>
+                <%= @order.zip %> <%= @order.city %><br><br>
+                <%= @order.email %><br>
+                <%= @order.phone %> 
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+    <br><br>
+    <table class="table table-condensed table-bordered table-striped">
+      <tr>
+        <td width="10%" align="right">Antal</td>
+        <td width="90%">Beskrivning</td>
+      </tr>
+      <% @order.order_items.each do |order_item| %>
+      <tr>
+        <td align="right">1</td>
+        <td>
+          <%= order_item.product.name %> 
+          <%= order_item.image_nr %>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+    
+    <div class="row">
+    <% @pictures.each do |picture| %>
+      <div class="span2">
+      <%= pdf_image_tag picture.image, class: 'thumbnail'  %>
+      </div>
+    <% end %>
+    </div>
+    
+  </body>
+</html>
+

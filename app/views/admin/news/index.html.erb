@@ -1,0 +1,28 @@
+<!-- Grid row -->
+<div class="row">
+  <!-- Data block -->
+  <article class="span8 data-block">
+    <header>
+      <h2><i class="icon-reorder"></i> Nyheter</h2>
+    </header>
+    <section>
+      <%= link_to "Ny nyhet", new_admin_news_path, :class => 'btn btn-alt btn-primary pull-right' %>
+      <h3>Visa nyheter</h3>
+      <table class="table table-bordered table-striped table-highlight">
+      <thead>
+      <tr>
+        <th>Nyhet</th>
+        <th></th>
+      </tr>
+      </thead>
+    <% @news.each do |news_item| %>
+      <tr>
+        <td><%= news_item.title %></td>
+        <td><%= link_to raw('<i class="icon-edit"></i>'), edit_admin_news_path(news_item) %> <%= link_to raw('<i class="icon-trash"></i>'), [:admin, news_item], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+    </table>
+    </section>
+  </article>
+  <!-- /Data block -->
+</div>

@@ -1,0 +1,13 @@
+<%= simple_form_for([:admin, @news_item], :html => {:class => 'form-horizontal' }) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :title, input_html: {class: 'input-xxlarge'} %>
+    <%= f.input :preamble, input_html: {class: 'input-xxlarge'} %>
+    <%= f.input :content, input_html: {class: 'input-xxlarge'} %>
+  </div>
+  <div class="form-actions">
+    <%= f.button :submit, class: 'btn btn-alt btn-primary' %>
+    <%= link_to 'Cancel', '/admin/news', class: 'btn btn-alt' %>
+  </div>
+<% end %>

@@ -1,0 +1,82 @@
+!!!
+/[if IE 7 ] <html class="ie7 no-js" lang="en">
+/[if IE 8 ] <html class="ie8 no-js" lang="en">
+/[if IE 9 ] <html class="ie9 no-js" lang="en">
+/ [if (gte IE 9)|!(IE)]><!
+%html.no-js{:lang => "en"}
+  / <![endif]
+  %head
+    %meta{:content => "text/html; charset=utf-8", "http-equiv" => "Content-Type"}/
+    %meta{:charset => "utf-8"}/
+    %title Fotograf i Ystad Björn Tufvesson Välkommen till reklam, bröllop och porträtt fotografen!
+    %meta{:content => "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0", :name => "viewport"}/
+    %meta{:content => "", :name => "description"}/
+    %meta{:content => "", :name => "author"}/
+    %link{rel: "shortcut icon", href: "/assets/favicon.ico", type: "image/x-icon"}
+    
+    = stylesheet_link_tag    "application","frontend","jquery.sidr.dark", :media => "all"
+    = stylesheet_link_tag    "http://fonts.googleapis.com/css?family=Quando", :media => "all"
+    = stylesheet_link_tag    "http://fonts.googleapis.com/css?family=Ubuntu:400,700,400italic,700italic", :media => "all"    
+      
+    = javascript_include_tag "application","jquery.sidr.min","frontend"
+    = csrf_meta_tags
+    / HTML5 shim, for IE6-8 support of HTML5 elements
+    /[if lt IE 9]
+      <script src=".http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    
+  %body
+    / header and menu
+    %header#top.navbar.navbar-fixed-top
+      .navbar-inner
+        .container
+          %a{"id" => "responsive-menu-button", "href" => "#sidr-menu", "class" => "pull-right btn hidden-desktop hidden-tablet"}
+            %i.icon-reorder
+          %a.brand{:href => "/", :title => "Startsida"}
+            %img{:alt => "btfoto", :src => "/assets/btfoto-logo.png"}/
+          .snav-collapse
+            / social media icons
+            .smedia.hidden-phone
+              %h5
+                %span
+                  %em Välkommen till fotografen som arbetar med glädje - det syns på bilderna.
+              "Mitt arbete slutar först när du är riktigt nöjd!" 
+            / main nav
+            #sidr-menu.hidden-phone
+              %ul.nav
+                -@pages.each do |page|
+                  %li{:class => is_active?(page.slug)}
+                    = link_to page.title, "/#{page.slug}" 
+                %li{:class => is_active?('store')}
+                  = link_to 'Beställ bilder', "/store"
+            / end main nav
+          / end main menu
+    =display_tagline yield(:tagline)
+    =display_gallery yield(:gallery)
+    
+    / main content
+    / FLASH
+    - flash.each do |name, msg|
+      = flash_message(name,msg)
+    =yield
+    
+    / footer
+    %footer
+      / footer lower
+      %section.footerLower
+        .container
+          .row-fluid
+            .span3.copyright
+              %p © 2013 BT-foto
+            .span7.footNav
+              -@pages.each do |page|
+                = link_to page.title, "/#{page.slug}"
+                %span |
+              = link_to 'Beställ bilder', "/store"
+            .span2
+              %a{:href => "https://www.payson.se", :style => "width: 68px;\r\nheight: 23px; background: url('https://www.payson.se/sites/all/files/images/external/payson68x23.png');\r\nfloat: left; text-indent: -6789px", :title => "Payson internetbetalningar"} Payson internetbetalningar
+      :javascript
+        $('#responsive-menu-button').sidr({
+          name: 'sidr-main',
+          source: '#sidr-menu',
+          side: 'right'
+        });

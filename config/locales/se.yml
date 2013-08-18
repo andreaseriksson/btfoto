@@ -1,0 +1,101 @@
+se:
+  first_name: 'Förnamn'
+  family_name: 'Efternamn'
+  phone: 'Telefon'
+  email: 'Email'
+  address1: 'Adress 1'
+  address2: 'Adress 2'
+  zip: 'Postnummer'
+  city: 'Ort'
+  
+  delete?: 'Vill du verkligen radera?'
+  Yes: 'Ja'
+  No: 'Nej'
+  
+  admin:
+    pages:
+      Title: 'Sidhantering'
+      index: 
+        Show_pages: 'Visa sidor'
+        Page: 'Sida'
+        Url: 'URL'
+      new:
+        New_page: 'Ny sida'
+      edit:
+        Edit_page: 'Redigera sida'
+    
+    products:
+      Title: 'Produkter'
+      index:
+        Show_products: 'Visa produkter'
+        Product: 'Produkt'
+        Image: 'Bild'
+        Price: 'Pris'
+        Free_shipping: 'Fri frakt'
+      new:
+        New_product: 'Ny produkt'
+      edit:
+        Edit_product: 'Redigera produkt'
+    
+    product_categories:
+      Title: 'Produktkategorier'
+      index:
+        Show_product_categories: 'Visa produktkategorier'
+      new:
+        New_product_category: 'Ny produktkategori'
+      edit:
+        Edit_product_category: 'Redigera produktkategori'
+    pictures:
+      Title: 'Bilduppladdning'
+      index:
+        
+        
+  
+  
+  
+  simple_form:
+    labels:
+      page:
+        title: 'Titel'
+        content: 'Innehåll'
+        active: 'Aktiv'
+        parent_id: 'Tillhör'
+      product:
+        name: 'Namn'
+        description: 'Beskrivning'
+        price: 'Pris'
+        vat: 'Moms'
+        discount: 'Extrapris'
+        allow_discount: 'Kan ha rabatt'
+        freight: 'Frakt'
+        image: 'Bild'
+      product_category:
+        name: 'Produktkategori'
+      picture:
+        product_category_id: 'Produktkategori'
+        image: 'Bild'
+        
+        
+  helpers:
+    submit:
+      page:
+        create: "Skapa"
+        update: "Updatera"
+      product:
+        create: "Skapa"
+        update: "Updatera"
+      product_category:
+        create: "Skapa"
+        update: "Updatera"
+      picture:
+        create: "Ladda upp"
+        
+
+
+
+
+
+
+
+
+        

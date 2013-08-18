@@ -1,0 +1,12 @@
+<%= simple_form_for([:admin, @product_category], :html => {:class => 'form-horizontal'}) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :name, input_html: {class: 'input-xxlarge'} %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, class: 'btn btn-alt btn-primary' %>
+    <%= link_to 'Back', admin_product_categories_path, class: 'btn btn-alt' %>
+  </div>
+<% end %>

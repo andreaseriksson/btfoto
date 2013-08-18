@@ -1,0 +1,94 @@
+<% content_for(:tagline) do %> 
+  <h1>Beställ bilder</h1>
+<% end %>
+
+<section class="mainContentWrap">
+  <div class="container mainContent">
+    <div class="row-fluid">
+      <div class="span9">
+        <div class="row-fluid">
+          <div class="innerSpacer">
+                
+            <!-- flash message -->
+	                    
+            <!--post content-->
+            <div class="contentWrap">
+              
+              <div class="row-fluid">
+                <div class="span12"> 
+                  <h3>Namn- och adressuppgifter</h3>
+                  <%= simple_form_for @order, html: {class: 'form-horizontal'} do |f| %>
+                    <%= f.input :first_name, label: t('first_name') %>
+                    <%= f.input :family_name, label: t('family_name') %>
+                    <%= f.input :phone, label: t('phone') %>
+                    <%= f.input :email, label: t('email') %>
+                    <%= f.input :address1, label: t('address1') %>
+                    <%= f.input :address2, label: t('address2') %>
+                    <%= f.input :city, label: t('city') %>
+                    <%= f.input :zip, label: t('postnummer') %>
+                    
+                    
+                    <br><br>
+      							<h3>Betalningssätt</h3>	
+      							<p class="radio-buttons">
+      							  <%= f.collection_radio_buttons :payment_type, [['card', 'Betalkort (Visa/Mastercard)'] ,['cash', 'Förskottsbetalning (+19kr) Du får ett inbetalningskort hemskickat med posten.']], :first, :last, checked: 'card' %>
+      							</p>
+      
+      						  <h3>Skolkatalog?</h3>
+      							<p>En leverans med porträttbilderna + klassfoto och en separat leverans av skolkatalogen eller en gemensam leverans med allt då skolkatalogen är klar.</p>
+      							<p class="radio-buttons">
+      							  <%= f.collection_radio_buttons :extra_shipment, [[false, 'Samma leverens'] ,[true, 'Separat leverans (+33kr)']], :first, :last, checked: false %>
+      							</p>
+      							<p><small>Om du väljer en leverans blir det endast en expeditionsavgift men du får vänta längre på att få hem dina foton.</small></p>
+      								
+      							<div align="right">
+      								<br><br>
+      								<%= f.button :submit, class: 'btn btn-success btn-large' %>
+      							</div>
+                    
+                    
+                  <% end %>
+                </div> 
+              </div>
+        		  <hr>
+        		  <div class="row-fluid">
+                <div class="span6">
+        			  	<h3>Betalningsinformation</h3>
+                  <p>Betalning sker enkelt och säkert med Payson. Även om du inte har ett Paysonkonto sedan tidigare kan du snabbt göra transaktionen via Payson. Payson samarbetar med VISA, MasterCard samt alla svenska banker som erbjuder direktbetalningar, Swedbank, Handelsbanken, SEB och Nordea.</p>
+        
+                  <p>Payson håller höga säkerhetskrav och är PCI-certifierade av Trustwave som är en internationell organisation för säker e-handel. All trafik krypteras genom SSL 128 bitar och alla kortöverföringar bygger på bankernas så kallade 3D-secure teknik.</p>
+        				
+                  <p>Payson startade 2004 i Sverige och över en miljon personer har använt Payson som är en välkänd betallösning på internet.</p>
+        				
+                  <p>Läs mer om Payson här: <a href="http://www.payson.se" target="_blank">www.payson.se</a></p>
+                </div>
+                <div class="span6"> 
+                  <a href="https://www.payson.se" title="Payson internetbetalningar" style="width: 210px;
+            height: 80px; background: url('https://www.payson.se/sites/all/files/images/external/payson210x80.png');
+            float: left; text-indent: -6789px">Payson internetbetalningar</a>
+                </div> 
+              </div>
+	  
+            </div>
+            <!--end post content-->
+              
+          </div>
+        </div>
+      </div>
+        
+      <aside class="span3 sidebar">
+        <% if @cart.days_left >= 0 %>
+        <div class="widget alert">
+          <h4><%= @cart.days_left %> dagar kvar</h4>
+          <span>För att få 10% rabatt på din order (Exkl. skolkatalog).</span>
+        </div>
+        <% end %>
+        
+        <%= render "/store/customer_image" %>
+        
+        <%= render "/store/payment_info" %>
+        
+      </aside> <!--end sidebar-->
+    </div>
+  </div>
+</section>

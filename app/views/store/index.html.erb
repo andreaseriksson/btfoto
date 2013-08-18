@@ -1,0 +1,52 @@
+<% content_for(:tagline) do %> 
+  <h1>Beställ bilder</h1>
+<% end %>
+
+<!--main content-->
+<section class="mainContentWrap">
+  <div class="container mainContent">
+    <div class="row-fluid">
+      
+      <div class="span9">
+        <div class="row-fluid">
+          <div class="innerSpacer">
+            
+            <!--post content-->
+            <div class="contentWrap">
+              
+              <div class="row-fluid">
+                <div class="span12">
+                  <!-- flash message -->						  							  	
+    							<% @i = 0 %>
+    							<% @products.each do |product| %>
+    							  <%= raw('<div class="row-fluid">') if @i == 0 || @i % 3 == 0 %>
+    							  <% @i += 1 %>
+                    <%= render 'product', product: product %>
+                    <%= raw("</div><!-- end row-fluid -->") if @i == @products.count || @i % 3 == 0 %>
+                  <% end %>                                         
+                </div> 
+              </div>
+	  
+            </div>
+            <!--end post content-->
+            
+          </div>
+        </div>
+      </div>
+        
+      <aside class="span3 sidebar">
+        <%= render "cart" %>
+        
+        <% if @cart.days_left >= 0 %>
+        <div class="widget alert">
+          <h4><%= @cart.days_left %> dagar kvar</h4>
+          <span>För att få 10% rabatt på din order (Exkl. skolkatalog).</span>
+        </div>
+        <% end %>
+        
+        <%= render "customer_image" %>
+        <%= render "payment_info" %>
+      </aside> <!--end sidebar-->
+    </div>
+  </div>
+</section>

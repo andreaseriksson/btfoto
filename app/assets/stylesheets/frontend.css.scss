@@ -1,0 +1,287 @@
+body {
+  background-color: #fcfcfc;
+  font-family: 'Ubuntu',sans-serif;
+  color: #999999;
+  font-size: 12px;
+}
+
+.container {
+  max-width: 940px;
+}
+
+a {
+  transition-property: opacity;
+  transition-duration: 0.2s;
+  transition-timing-function: linear;
+  transition-delay: 0s;
+}
+a:focus, a:active, input:focus, input:active, input[type="submit"]:active, input[type="radio"]:active
+{
+  outline-width: 0px;
+  outline-style: none;
+}
+
+.navbar-fixed-top {
+  padding: 0;
+  margin: 0;
+  position: relative;
+}
+
+.navbar {
+  .navbar-inner {
+    box-shadow: none;
+    border: none;
+    margin: 0;
+    padding: 0;
+    
+    .brand {
+      padding: 0px;
+      margin-left: 0px;
+      bottom: 0px;
+      border-bottom: 2px solid #9aae4c;
+      border-bottom: 2px solid #5bb75b;
+    }
+    
+    .snav-collapse {
+      height: auto;
+      position: relative;
+      
+      .nav {
+        float: right;
+        margin-top: 83px;
+        margin-right: 0px;
+        
+        li {
+          margin-right: 15px;
+        }
+        
+        li > a {
+          padding: 8px 10px;
+          font-weight: normal;
+          color: #4d4d4d;
+          font-size: 14px;
+          text-shadow: none;
+          border-bottom: 2px solid #f9f9f9;
+        }
+        
+        li > a:hover {
+          background-color: transparent;
+          color: #333333;
+          border-bottom: 2px solid #9aae4c;
+          border-bottom: 2px solid #5bb75b;
+        }
+
+        .active > a, .active > a:hover {
+          border-top-left-radius: 3px;
+          border-top-right-radius: 3px;
+          background-color: #5bb75b;
+          color: #ffffff;
+          border-bottom: 2px solid #5bb75b;
+          box-shadow: none;
+        }
+        
+      }
+      
+    }
+    
+    .smedia {
+      position: absolute;
+      margin-left: 5px;
+      top: 25px;
+      right: 0px;
+      
+      span {
+        float: left;
+        margin-top: 5px;
+        margin-right: 10px;
+        color: #aaaaaa;
+        font-size: 12px;
+      }
+      
+      h5 {
+        margin: 0;
+      }
+      
+    }
+    
+  }
+  
+}
+
+.sliderWrap {
+  padding-top: 40px;
+  
+  .span12 {
+    box-shadow: #888;
+    border: 1px solid #aaa;
+    margin-bottom: 20px;
+    
+    .carousel-control {
+      top: 50%;
+    }
+       
+    .carousel {
+      margin: 0;
+    }
+    
+  }
+  
+}
+
+.taglineWrap {
+  background-color: #eeeeee;
+  border-bottom: 1px solid #dddddd;
+}
+
+.taglineWrap, footer .testimonial {
+  background-color: #222222;
+}
+
+
+h2 {
+  font-size: 22px;
+  color: #5f5f5f;
+  line-height: 28px;
+  font-family: Georgia,Constantia,Lucida,serif;
+  font-weight: normal;
+}
+.tagline h2 {
+  color: #aaaaaa;
+  margin-bottom: 0px;
+}
+
+h3 {
+  color: #2f2f2f;
+  font-size: 18px;
+  margin-bottom: 20px;
+  line-height: 24px;
+}
+
+.featuredContent > div {
+  margin-bottom: 40px;
+}
+
+.mainContent {
+  padding-top: 60px;
+  border-top: 2px solid #fff;
+}
+
+p {
+  margin-bottom: 20px;
+  color: #919191;
+  font-size: 12px;
+}
+
+footer .footerLower {
+  padding-top: 30px;
+  padding-bottom: 30px;
+  border-top: 1px solid #efefef;
+}
+
+.footerLower .copyright {
+  margin-top: 4px;
+}
+
+.footerLower .footNav a {
+  float: left;
+  padding: 4px 6px;
+  margin: 0 4px;
+  color: #999999;
+}
+
+.footerLower .footNav a:hover {
+  color: #ffffff;
+  background-color: #9aae4c;
+  background-color: #49afcd;
+  border-radius: 3px;
+}
+
+.footerLower .footNav span {
+  float: left;
+  margin: 4px 2px 0 2px;
+  color: #dddddd;
+}
+
+.divider span {
+  border: 1px solid #eeeeee;
+}
+
+.divider.dotted span {
+  border: 1px dotted #eeeeee;
+}
+
+aside.sidebar {
+  display: block;
+  
+  .widget {
+    margin-bottom: 20px;
+  }
+  
+  a.display {
+    display: block
+  }
+  
+}
+
+h1 {
+  font-size: 22px;
+  line-height: 24px;
+}
+
+h2 {
+  font-size: 18px;
+  line-height: 20px;
+}
+
+
+h1, h2, h3 {
+  margin-bottom: 20px;
+}
+
+
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: normal;
+  font-family: 'Quando',serif;
+  color: #555555;
+}
+
+.welcome_inner h1 {
+  color: #aaaaaa;
+  margin: 20px 0;
+}
+
+.form-inline {
+  display: inline;
+}
+
+input[type=submit].btn-mini {
+  padding: 4px 6px 3px 6px;
+}
+
+form.button_to, form.button_to div {
+  display: inline;
+}
+
+p.radio-buttons span {
+  display: block;
+}
+
+.collection_radio_buttons {
+  display: inline-block;
+  padding-left: 3px;
+  font-size: 12px;
+}
+
+@media (max-width: 767px) { 
+  body {
+    padding: 0;
+  }
+  
+  .container {
+    padding: 0 10px;
+  }
+  
+}
+
+

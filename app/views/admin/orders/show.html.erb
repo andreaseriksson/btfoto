@@ -1,0 +1,60 @@
+<!-- Grid row -->
+<div class="row">
+  <!-- Data block -->
+  <article class="span10 data-block">
+    <header>
+      <h2><i class="icon-reorder"></i> Orders</h2>
+    </header>
+    <section>
+      <h3>Kundinformation</h3>
+      <div class="row-fluid">
+        <div class="span6">
+          <p>
+            Namn: <%= @order.first_name %> <%= @order.family_name %><br>
+            Adress: <%= @order.address1 %> <%= @order.address2 %><br>
+            Postnummer & ort: <%= @order.zip %> <%= @order.city %><br>
+            Email: <%= @order.email %><br>
+            Telefon: <%= @order.phone %>
+          </p>    
+        </div>
+        <div class="span6">
+          <p>
+            Betalning: <%= @order.payment_type %><br>
+            Försändelser: <%= @order.extra_shipment %><br>
+            Bekräftad: <%= @order.confirmed %><br>
+            Token: <%= @order.token %>
+          </p>
+        </div>
+      </div>
+      
+      
+      <h4>Artiklar</h4>
+      <table class="table">
+        <tr>
+          <th>Nr</th>
+          <th>Artikel</th>
+          <th>Antal</th>
+          <th>Summa</th>
+        </tr>
+        <% @order.order_items.each do |order_item| %>
+        <tr>
+          <td><%= order_item.image_nr %></td>
+          <td><%= order_item.product.name %></td>
+          <td><%= order_item.quantity %></td>
+          <td></td>
+        </tr>
+        <% end %>
+      </table>
+      
+      <div class="row">
+      <% @pictures.each do |picture| %>
+        <div class="span2">
+          <%= link_to image_tag(picture.image, class: 'thumbnail'), picture.image.url %>
+        </div>
+      <% end %>
+      </div>
+      
+    </section>
+  </article>
+  <!-- /Data block -->
+</div>

@@ -1,0 +1,38 @@
+<!-- Grid row -->
+<div class="row">
+  <!-- Data block -->
+  <article class="span8 data-block">
+    <header>
+      <h2><i class="icon-reorder"></i> Tidsbokning</h2>
+    </header>
+    <section>
+      <%= link_to "Ny tid", new_admin_appointment_path, :class => 'btn btn-alt btn-primary pull-right' %>
+      <h3>Visa tider</h3>
+      <table class="table table-bordered table-striped table-highlight">
+      <thead>
+      <tr>
+        <th>Namn</th>
+        <th>Tid</th>
+        <th>Bokad</th>
+        <th>Namn</th>
+        <th>Email</th>
+        <th>Telefon</th>
+        <th></th>
+      </tr>
+      </thead>
+    <% @appointments.each do |appointment| %>
+      <tr>
+        <td><%= appointment.label %></td>
+        <td><%= appointment.start_time.strftime("%Y-%m-%d %H:%M") %></td>
+        <td><%= appointment.booked == true ? 'Ja':'Nej' %></td>
+        <td><%= appointment.name %></td>
+        <td><%= appointment.email %></td>
+        <td><%= appointment.phone %></td>
+        <td><%= link_to raw('<i class="icon-edit"></i>'), edit_admin_appointment_path(appointment) %> <%= link_to raw('<i class="icon-trash"></i>'), [:admin, appointment], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+    </table>
+    </section>
+  </article>
+  <!-- /Data block -->
+</div>

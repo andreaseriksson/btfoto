@@ -1,0 +1,21 @@
+<%= simple_form_for([:admin, @product], :html => {:class => 'form-horizontal', :multipart => true}) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :name, input_html: {class: 'input-xxlarge'} %>
+    <%= f.input :description, input_html: {class: 'input-xxlarge'} %>
+    <%= f.input :price, input_html: {class: 'input-small'} %>
+    <%= f.input :vat, input_html: {class: 'input-small'} %>
+    <%= f.input :discount, input_html: {class: 'input-small'} %>
+    <%= f.input :allow_discount %>
+    <%= f.input :freight %>
+    
+    
+    <%= f.input :image, as: :file %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, class: 'btn btn-alt btn-primary' %>
+    <%= link_to 'Back', admin_products_path, class: 'btn btn-alt' %>
+  </div>
+<% end %>

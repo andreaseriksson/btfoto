@@ -1,0 +1,64 @@
+<!-- Grid row -->
+<div class="row">
+  <!-- Data block -->
+  <article class="span8 data-block">
+    <header>
+      <h2><i class="icon-picture"></i> <%= t 'admin.pictures.Title' %></h2>
+    </header>
+    <section>
+      <h3>Ny bilduppladdning</h3>
+      
+      <%= simple_form_for([:admin, Picture.new], :html => {:class => 'form-horizontal', :multipart => true}) do |f| %>
+        <%= f.error_notification %>
+        <div class="form-inputs">
+           <%= f.association :product_category, include_blank: false %>
+           <%= f.input :image do %>
+               <%= f.file_field :image, multiple: true, name: "picture[image]" %>
+           <%end %>
+        </div>
+        <div class="form-actions">
+          <%= f.button :submit, class: 'btn btn-alt btn-primary' %>
+          <%= link_to 'Back', admin_products_path, class: 'btn btn-alt' %>
+        </div>
+      <% end %>
+      
+    </section>  
+    <section>
+      <h3>Visa bilduppladdningar</h3>
+      <%= form_tag(admin_pictures_path, class: 'form-horizontal', method: 'get') do %>
+      <div class="control-group">
+        <%= label_tag :folder, nil, class: 'control-label' %>
+        <div class="controls">
+          <%= select_tag(:folder, options_for_select(@imports), prompt: 'Välj') %>
+        </div>
+        <div class="form-actions">
+          <%= submit_tag "Search", class: 'btn btn-alt btn-primary' %>
+        </div>
+      </div> 
+      <% end %>
+    </section>
+    <% if @pictures %>
+    <section>
+      <h3>Visa bilduppladdningar för <%= params[:folder] %></h3>
+      <div class="row">
+      <% @pictures.each do |picture| %>
+        <div class="span1">
+        <%= link_to image_tag(picture.image, class: 'thumbnail'), picture.image.url %>
+        </div>
+      <% end %>
+      </div>
+    </section>
+    <% end %>
+  </article>
+  <!-- /Data block -->
+</div>
+
+
+<script id="template-upload" type="text/x-tmpl">
+<div class="upload">
+  {%=o.name%}  
+  <div class="progress progress-striped active">
+    <div class="bar" style="width: 0%;"></div>
+  </div>
+</div>
+</script>

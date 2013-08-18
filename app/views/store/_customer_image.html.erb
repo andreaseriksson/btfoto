@@ -1,0 +1,19 @@
+<h3>Provbild</h3>
+<div class="row">
+  <div class="span7 offset1">
+    <div class="thumbnail">
+      <%= thumbnail(@picture, @picture.image.url) %>
+    </div>
+    <div align="center">
+      <div style="padding-top:6px;padding-bottom:3px"><small><em>Lägga till syskon?</em></small></div>
+      <%= link_to "Byt bildnr.", store_edit_image_path, class: 'btn btn-success btn-small' %>
+    </div>
+  </div>
+  <div class="span4">
+    <% @picture.syblings.each do |picture| %>
+    <div class="thumbnail">
+      <%= thumbnail(picture, store_switch_image_path(image_nr: picture.image_nr) ) %>
+    </div>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,30 @@
+<!-- Grid row -->
+<div class="row">
+  <!-- Data block -->
+  <article class="span8 data-block">
+    <header>
+      <h2><i class="icon-sitemap"></i> <%= t 'admin.product_categories.Title' %></h2>
+    </header>
+    <section>
+      <%= link_to t('admin.product_categories.new.New_product_category'), new_admin_product_category_path, :class => 'btn btn-alt btn-primary pull-right' %>
+      <h3><%= t '.Show_product_categories' %></h3>
+      <table class="table table-bordered table-striped table-highlight">
+        <thead>
+        <tr>
+          <th>Namn</th>
+          <th>Skapad</th>
+          <th></th>
+        </tr>
+        </thead>
+      <% @product_categories.each do |product_category| %>
+        <tr>
+          <td><%= product_category.name %></td>
+          <td></td>
+          <td><%= link_to raw('<i class="icon-edit"></i>'), edit_admin_product_category_path(product_category) %> <%= link_to raw('<i class="icon-trash"></i>'), [:admin, product_category], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+      </table>
+    </section>
+  </article>
+  <!-- /Data block -->
+</div>

@@ -1,0 +1,34 @@
+<% if @cart.summary[:quantity] and @cart.summary[:quantity] > 0 %>
+<!-- Varukorg -->
+<div class="widget widget_text well alert alert-info">
+	<h3>Varukorg</h3>
+    <hr>
+    <div id="cart-content-container">
+	    <div id="cart-content">
+	    	<%= @cart.summary[:quantity] %> 
+	    	<%= @cart.summary[:quantity] == 1 ? 'artikel':'artiklar' %> i kundvagnen<br>
+	    	<span class="ordinary-price">Totalt: <%= to_curr @cart.summary[:sum_without_delivery] %>Kr</span>
+	    	
+	    	<% if @cart.days_left >= 0 %>
+	    	  <div><strong>Ditt pris: <%= to_curr @cart.summary[:sum_after_discount] %>Kr</strong></div>
+	    	  <style>span.ordinary-price {text-decoration: line-through;}</style>
+	    	<% end %>
+	    	
+	    </div>
+    </div>
+    <hr>
+	<div align="right">
+		<a href="/store/checkout" class="btn btn-success"><i class="icon-shopping-cart icon-white"></i> Gå till kassan</a>
+  </div>
+	<hr>
+	  <%  if @cart.days_left >= 0
+	        sum = @cart.summary[:sum_after_discount]
+	      else
+	        sum = @cart.summary[:sum_without_delivery]
+	      end
+	      
+	      diff = 650 - sum
+	  %>
+	  <%= sum < 650 ? raw("Beställningen har <strong>#{to_curr(diff)}Kr</strong> kvar till att skickas fraktfritt") : "Beställningen skickas fraktfritt" %>
+</div>
+<% end %>
