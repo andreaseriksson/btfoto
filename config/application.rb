@@ -37,7 +37,7 @@ module Btfoto
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
     
-    config.assets.precompile << %w( frontend.css admin/theme.css admin/backend.css btfoto-logo.png )
+    config.assets.precompile << %w( frontend.css admin/theme.css admin/backend.css btfoto-logo.png favicon.ico )
     #backend.js frontend.js frontend.css.scss
   end
 end
