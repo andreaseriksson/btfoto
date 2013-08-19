@@ -12,7 +12,7 @@
     %meta{:content => "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0", :name => "viewport"}/
     %meta{:content => "", :name => "description"}/
     %meta{:content => "", :name => "author"}/
-    %link{rel: "shortcut icon", href: "/assets/favicon.ico", type: "image/x-icon"}
+    =favicon_link_tag '/favicon.ico'
     
     = stylesheet_link_tag    "application","frontend","jquery.sidr.dark", :media => "all"
     = stylesheet_link_tag    "http://fonts.googleapis.com/css?family=Quando", :media => "all"
@@ -32,7 +32,7 @@
           %a{"id" => "responsive-menu-button", "href" => "#sidr-menu", "class" => "pull-right btn hidden-desktop hidden-tablet"}
             %i.icon-reorder
           %a.brand{:href => "/", :title => "Startsida"}
-            %img{:alt => "btfoto", :src => "/assets/btfoto-logo.png"}/
+            =image_tag('btfoto-logo.png')
           .snav-collapse
             / social media icons
             .smedia.hidden-phone
