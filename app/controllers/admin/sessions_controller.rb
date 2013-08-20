@@ -9,6 +9,7 @@ module Admin
     end
   
     def create
+      
       user = authenticate_session(session_params)
       
       sign_in(user) or set_flash_message
