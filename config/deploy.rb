@@ -56,7 +56,7 @@ namespace :deploy do
     task :symlink, roles: :app do
       run "ln -nfs #{shared_path}/uploads/ #{release_path}/public/uploads"
     end
-    after "deploy:finalize_update", "carrierwave:symlink"
+    after "deploy:finalize_update", "deploy:carrierwave:symlink"
   end
   
   desc "Make sure local git is in sync with remote."
