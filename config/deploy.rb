@@ -51,7 +51,14 @@ namespace :deploy do
     run "ln -nfs #{shared_path}/config/application.yml #{release_path}/config/application.yml"
   end
   after "deploy:finalize_update", "deploy:symlink_config"
-
+  
+  namespace :carrierwave do
+    task :symlink, roles: :app do
+      run "ln -nfs #{shared_path}/uploads/ #{release_path}/public/uploads"
+    end
+    after "deploy:finalize_update", "carrierwave:symlink"
+  end
+  
   desc "Make sure local git is in sync with remote."
   task :check_revision, roles: :web do
     unless `git rev-parse HEAD` == `git rev-parse origin/master`
