@@ -1,5 +1,5 @@
 class Page < ActiveRecord::Base
-  has_ancestry
+  #has_ancestry
   
   include RankedModel
   ranks :position, with_same: :ancestry
