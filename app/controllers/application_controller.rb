@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
   
   private
   
-  def authenticate
+  def authenticate_user
     redirect_to admin_login_path unless signed_in?
   end
   
