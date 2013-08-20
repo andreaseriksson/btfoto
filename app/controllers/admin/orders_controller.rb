@@ -1,7 +1,7 @@
 module Admin
   class OrdersController < ApplicationController
     
-    before_action :authenticate, only: [:index, :destroy]
+    before_action :authenticate_user, only: [:index, :destroy]
     
     def index
       @orders = Order.paginate(:page => params[:page], :per_page => 10)

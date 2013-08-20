@@ -1,7 +1,7 @@
 module Admin
   class PagesController < ApplicationController
     
-    before_action :authenticate
+    before_action :authenticate_user
     respond_to :html
     
     def index

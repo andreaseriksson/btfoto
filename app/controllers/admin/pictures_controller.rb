@@ -1,7 +1,7 @@
 module Admin
   class PicturesController < ApplicationController
     
-    before_action :authenticate
+    before_action :authenticate_user
     
     def index
       @imports = Picture.group(:folder).pluck(:folder)

@@ -1,6 +1,6 @@
 module Admin
   class ProductCategoriesController < ApplicationController
-    before_action :authenticate
+    before_action :authenticate_user
     
     def index
       @product_categories = ProductCategory.all
