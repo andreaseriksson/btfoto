@@ -1,8 +1,11 @@
 module Admin
   class SessionsController < ApplicationController
+    
     respond_to :html
-  
+    layout 'login'
+    
     def new
+      redirect_to admin_root_path if current_user
     end
   
     def create
@@ -14,7 +17,7 @@ module Admin
   
     def destroy
       sign_out
-      redirect_to admin_root_path
+      redirect_to admin_login_path
     end
   
     private

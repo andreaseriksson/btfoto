@@ -1,13 +1,16 @@
 <%= form_for :session, url: admin_session_path do |form| %>
-  <div>
-    <%= form.label :email %>
-    <%= form.email_field :email %>
+<% flash.each do |name, msg| %>
+  <%= flash_message(name,msg) %>
+<% end %>
+<div class="control-group">
+  <div class="controls">
+    <%= form.text_field :email, class: 'input-block-level', placeholder: 'Email' %>
   </div>
-  <div>
-    <%= form.label :password %>
-    <%= form.password_field :password %>
+</div>
+<div class="control-group">
+  <div class="controls">
+    <%= form.password_field :password, class: 'input-block-level', placeholder: 'Password' %>
   </div>
-  <div>
-    <%= form.submit "Sign in" %>
-  </div>
+</div>
+<%= form.submit "Sign in", class: 'btn btn-alt btn-primary btn-large btn-block' %>   
 <% end %>
