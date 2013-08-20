@@ -1,9 +1,9 @@
 class Page < ActiveRecord::Base
-  #has_ancestry
+  has_ancestry
   
-  include RankedModel
-  ranks :position, with_same: :ancestry
-  include Sortable
+  #include RankedModel
+  #ranks :position, with_same: :ancestry
+  #include Sortable
   
   extend FriendlyId
   friendly_id :title, use: :slugged
