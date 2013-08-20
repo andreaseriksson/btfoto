@@ -1,6 +1,8 @@
 module Admin
   class NewsController < ApplicationController
     
+    before_action :authenticate
+    
     def index
       @news = News.all
     end

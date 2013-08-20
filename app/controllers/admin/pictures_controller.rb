@@ -1,6 +1,8 @@
 module Admin
   class PicturesController < ApplicationController
     
+    before_action :authenticate
+    
     def index
       @imports = Picture.group(:folder).pluck(:folder)
       @pictures = Picture.where(folder: params[:folder]) if params[:folder]      

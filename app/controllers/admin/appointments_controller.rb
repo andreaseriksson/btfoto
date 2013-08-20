@@ -1,6 +1,8 @@
 module Admin
   class AppointmentsController < ApplicationController
     
+    before_action :authenticate
+    
     def index
       @appointments = Appointment.all
     end
