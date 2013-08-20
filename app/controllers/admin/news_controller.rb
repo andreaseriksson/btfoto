@@ -21,6 +21,27 @@ module Admin
       end
     end
     
+    def edit
+      @news_item = News.find_by(slug: params[:id])
+    end
+    
+    def update
+      @news_item = News.find_by(slug: params[:id])
+  
+      if @news_item.update_attributes(news_params)
+        redirect_to admin_news_path, notice: 'News was successfully updated.'
+      else
+        render action: "edit"
+      end
+    end
+    
+    def destroy
+      @news_item = News.find_by(slug: params[:id])
+      @news_item.destroy
+      
+      redirect_to admin_news_path, :notice => 'News was successfully deleted.'
+    end
+    
     private
       
     def news_params
