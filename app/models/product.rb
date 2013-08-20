@@ -7,5 +7,6 @@ class Product < ActiveRecord::Base
   has_many :cart_items
   
   validates :name, presence: true
+  validates_presence_of :image
   
 end

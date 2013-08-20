@@ -6,6 +6,8 @@ class Gallery < ActiveRecord::Base
   ranks :position
   include Sortable
   
+  validates_presence_of :image
+  
   default_scope -> { order("position ASC") }
   
 end
