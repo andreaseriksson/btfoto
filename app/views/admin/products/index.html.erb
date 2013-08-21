@@ -21,7 +21,7 @@
     <% @products.each do |product| %>
       <tr>
         <td><%= product.name %></td>
-        <td><%#= link_to(product.image.file.filename, "#{product.image}") if product.image %></td>
+        <td><%= link_to(product.image.file.filename, "#{product.image}") if product.image %></td>
         <td><%= product.price %></td>
         <td><%= product.freight == true ? t('Yes'):t('No') %></td>
         <td><%= link_to raw('<i class="icon-edit"></i>'), edit_admin_product_path(product) %> <%= link_to raw('<i class="icon-trash"></i>'), [:admin, product], method: :delete, data: { confirm: t('delete?') } %></td>
