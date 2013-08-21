@@ -3,7 +3,7 @@ class CartItemsController < ApplicationController
 
   # POST /cart_items
   def create
-    @product = Product.find(params[:product_id])
+    @product = Product.find_by(id: params[:product_id])
     
     @cart_item = CartItem.where(cart_id: cookies[:cart_id], product_id: @product.id, image_nr: cookies[:image_nr]).first_or_create
     @cart_item.quantity = @cart_item.quantity.to_i + 1
