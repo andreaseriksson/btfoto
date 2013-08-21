@@ -29,7 +29,7 @@ module Admin
       @product = Product.find_by(slug: params[:id])
   
       if @product.update_attributes(product_params)
-        redirect_to admin_product_path, notice: 'Product category was successfully updated.'
+        redirect_to admin_products_path, notice: 'Product category was successfully updated.'
       else
         render action: "edit"
       end
@@ -39,7 +39,7 @@ module Admin
       @product = Product.find_by(slug: params[:id])
       @product.destroy
       
-      redirect_to admin_product_path, :notice => 'Product category was successfully deleted.'
+      redirect_to admin_products_path, :notice => 'Product category was successfully deleted.'
     end
     
     private
