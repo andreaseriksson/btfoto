@@ -137,6 +137,7 @@ GEM
     net-ssh (2.6.8)
     net-ssh-gateway (1.2.0)
       net-ssh (>= 2.6.5)
+    newrelic_rpm (3.6.6.147)
     nokogiri (1.6.0)
       mini_portile (~> 0.5.0)
     pg (0.16.0)
@@ -263,6 +264,7 @@ DEPENDENCIES
   jquery-fileupload-rails
   jquery-rails
   monban
+  newrelic_rpm
   pg
   poltergeist
   rails (= 4.0.0)
