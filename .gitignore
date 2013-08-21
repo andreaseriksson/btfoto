@@ -20,5 +20,6 @@
 
 config/database.yml
 config/application.yml
+config/newrelic.yml
 public/assets/*
 public/uploads/*
