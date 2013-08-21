@@ -12,6 +12,8 @@ class Product < ActiveRecord::Base
   validates :name, presence: true
   validates_presence_of :image
   
+  scope :in_category, ->(product_category_id) { includes(:categorizations).where("categorizations.product_category_id" => product_category_id) }
+  
   def price_with_vat
     product = self
     product.price * (1+product.vat)

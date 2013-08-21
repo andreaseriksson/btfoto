@@ -8,7 +8,7 @@ class StoreController < ApplicationController
   before_action :load_picture, except: [:login, :auth]
   
   def index
-    @products = Product.all
+    @products = Product.in_category @picture.product_category_id
   end
   
   def show
