@@ -14,6 +14,7 @@
         <th><%= t '.Product' %></th>
         <th><%= t '.Image' %></th>
         <th><%= t '.Price' %></th>
+        <th><%= t '.Price_vat' %></th>
         <th><%= t '.Free_shipping' %></th>
         <th></th>
       </tr>
@@ -22,7 +23,8 @@
       <tr>
         <td><%= product.name %></td>
         <td><%= link_to(product.image.file.filename, "#{product.image}") if product.image %></td>
-        <td><%= product.price %></td>
+        <td><%= to_curr product.price %></td>
+        <td><%= to_curr product.price_with_vat %></td>
         <td><%= product.freight == true ? t('Yes'):t('No') %></td>
         <td><%= link_to raw('<i class="icon-edit"></i>'), edit_admin_product_path(product) %> <%= link_to raw('<i class="icon-trash"></i>'), [:admin, product], method: :delete, data: { confirm: t('delete?') } %></td>
       </tr>

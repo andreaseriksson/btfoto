@@ -12,4 +12,9 @@ class Product < ActiveRecord::Base
   validates :name, presence: true
   validates_presence_of :image
   
+  def price_with_vat
+    product = self
+    product.price * (1+product.vat)
+  end
+  
 end
