@@ -51,7 +51,7 @@ class Cart < ActiveRecord::Base
   
   def days_left(cart=self)
     
-    picture = Picture.where(name: cart.image_nr).first
+    picture = Picture.current_image(cart.image_nr)
     
     if picture
       start_date = picture.created_at.to_datetime.end_of_day
