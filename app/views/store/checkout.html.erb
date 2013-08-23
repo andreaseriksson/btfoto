@@ -14,15 +14,10 @@
     <tbody>			            	    	
     	<% @cart.summary[:products].each do |product| %>
     	<tr>
-    		<td class="cart_item_row">
-    		  <%= check_box_tag "cart_item_ids[]", product[:cart_item_id] %>
-    		</td>
+    		<td class="cart_item_row"><%= check_box_tag "cart_item_ids[]", product[:cart_item_id] %></td>
     		<td><%= product[:name] %></td>
     		<td><%= product[:image_nr] %></td>
-    		<td>
-    		  
-    		  <%= text_field_tag "cart_items[#{product[:cart_item_id]}]", product[:quantity], class: "update-count input-mini" %>
-    		  </td>
+    		<td><%= text_field_tag "cart_items[#{product[:cart_item_id]}]", product[:quantity], class: "update-count input-mini" %></td>
     		<td><%= to_curr(product[:price]) %></td>
     		<td><%= to_curr(product[:total_price]) %> Kr</td>
     	</tr>
@@ -30,37 +25,29 @@
     	<tr>
     	  <td></td>
     		<td>Varav moms</td>
-    		<td></td>
-    		<td></td>
-    		<td></td>
+    		<td colspan="3"></td>
     		<td>(<%= to_curr(@cart.summary[:vat]) %> Kr)</td>
     	</tr>
     	<tr>
     		<td></td>
     		<td>Expeditionsavgift</td>
-    		<td><%= submit_tag "Uppdatera", class: 'btn btn-mini btn-success' %></td>
-    		<td></td>
-    		<td></td>
+    		<td><%= submit_tag "Uppdatera", class: 'btn btn-mini btn-success', id: 'update-cart-button' %></td>
+    		<td colspan="2"></td>
     		<td><%= to_curr(@cart.summary[:delivery]) %> Kr</td>
     	</tr>
     </tbody>
     <% end %>
     <tfoot>
     	<tr>
-    		<td colspan="3" id="actions">
-	    		
+    		<td colspan="4" id="actions">
 	    		<%= form_tag delete_multiple_cart_items_path, method: :delete, class: "form-inline" do %>
             <%= hidden_field_tag "cart_items", nil, id: "delete_cart_items" %>
             <%= submit_tag "Radera markerade", class: 'btn btn-mini btn-danger' %>
           <% end %>
-	    		
-	    		<%= button_to "Tom varukorg", destroy_multiple_cart_items_path, method: :delete, class: 'btn btn-mini btn-danger'   %>
+	    		<%= button_to "Tom varukorg", destroy_multiple_cart_items_path, method: :delete, class: 'btn btn-mini btn-danger' %>
 	    	</td>
-    		<td></td>
     		<td>Total:</td>
-    		<td>
-    			<%= to_curr(@cart.summary[:sum]) %> Kr
-    		</td>
+    		<td><%= to_curr(@cart.summary[:sum]) %> Kr</td>
     	</tr>
     </tfoot>
 	</table>
