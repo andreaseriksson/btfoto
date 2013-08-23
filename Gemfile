@@ -22,6 +22,7 @@ gem "font-awesome-rails"
 gem "haml"
 gem "simple_form", '3.0.0.rc'
 gem "bourbon"
+gem 'elusive-icons-sass-rails'
 
 gem 'ancestry'
 gem 'acts_as_list'
