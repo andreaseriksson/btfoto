@@ -8,26 +8,24 @@ class Cart < ActiveRecord::Base
     cart = self
     
     products = []
-    @total_price = 0
-    @total_quantity = 0
-    @total_vat = 0
-    @total_discount = 0
-    @total_discount_vat = 0
+    total_price = 0
+    total_quantity = 0
+    total_vat = 0
+    total_discount = 0
+    total_discount_vat = 0
         
     cart.cart_items.each do |cart_item|
       price = cart_item.product.price.to_f * (1+(cart_item.product.vat)) || 0
 	    quantity = cart_item.quantity.to_i || 0
 	    vat = price - cart_item.product.price.to_f || 0
 	    
-	    @total_price = @total_price.to_f + (price * quantity) || 0
-	    @total_quantity = @total_quantity.to_i + quantity || 0
-	    @total_vat = @total_vat.to_f + (quantity * vat) || 0
-	    
-	     
+	    total_price = total_price.to_f + (price * quantity) || 0
+	    total_quantity = total_quantity.to_i + quantity || 0
+	    total_vat = total_vat.to_f + (quantity * vat) || 0
 	    
 	    if days_left(cart) >= 0 && cart_item.product.allow_discount
-	      @total_discount = @total_discount.to_f + (price * quantity * 0.1) || 0
-	      @total_discount_vat = @total_discount_vat.to_f + (vat * quantity * 0.1) || 0
+	      total_discount = total_discount.to_f + (price * quantity * 0.1) || 0
+	      total_discount_vat = total_discount_vat.to_f + (vat * quantity * 0.1) || 0
 	    end
 	    
 	    products << {id: cart_item.product_id, cart_item_id: cart_item.id, image_nr: cart_item.image_nr, name: cart_item.product.name, price: price, total_price: (price * quantity), quantity: quantity, vat: vat, total_vat: (vat * quantity),discount: nil}
@@ -36,13 +34,13 @@ class Cart < ActiveRecord::Base
     
     cart_summary = {}
     cart_summary[:delivery] = 20
-    cart_summary[:quantity] = @total_quantity || 0
-    cart_summary[:sum_without_delivery] = @total_price || 0
-    cart_summary[:sum] = @total_price + cart_summary[:delivery] || 0
-    cart_summary[:vat] = @total_vat || 0
+    cart_summary[:quantity] = total_quantity || 0
+    cart_summary[:sum_without_delivery] = total_price || 0
+    cart_summary[:sum] = total_price + cart_summary[:delivery] || 0
+    cart_summary[:vat] = total_vat || 0
     
-    cart_summary[:sum_after_discount] = @total_price - @total_discount || 0;
-    cart_summary[:vat_after_discount] = @total_vat - @total_discount_vat || 0;
+    cart_summary[:sum_after_discount] = total_price - total_discount || 0;
+    cart_summary[:vat_after_discount] = total_vat - total_discount_vat || 0;
     
     cart_summary[:products] = products;    
     cart_summary
