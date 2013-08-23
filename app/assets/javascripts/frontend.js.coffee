@@ -12,10 +12,10 @@ getChecked = ->
 $ ->
   $(".cart_item_row input[type=checkbox]").on 'click', getChecked
 
-#$ ->
-#  $("#responsive-menu-button").sidr
-#    name: "sidr-main"
-#    source: "#sidr-menu"
+$ ->
+  $("#checkout-table td#actions").append( $("#update-cart-button") )
+  $("#update-cart-button").on 'click', ->
+    $("#update-cart-form").submit()
 
 $ ->
   $("a[data-toggle=tooltip]").tooltip()

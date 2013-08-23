@@ -10,7 +10,7 @@
     		<th></th><th>Produkt</th><th>Bildnr.</th><th>Ant.</th><th>Summa</th><th>Total</th><th></th>
     	</tr>
     </thead>
-    <%= form_tag update_multiple_cart_items_path, method: :put, class: "" do %>
+    <%= form_tag update_multiple_cart_items_path, method: :put, id: 'update-cart-form' do %>
     <tbody>			            	    	
     	<% @cart.summary[:products].each do |product| %>
     	<tr>
