@@ -2,41 +2,16 @@
   <h1>Beställ bilder</h1>
 <% end %>
 
-<section class="mainContentWrap">
-  <div class="container mainContent">
-    <div class="row-fluid">
-      <div class="span9">
-        <div class="row-fluid">
-          <div class="innerSpacer">
-            
-            <!--post content-->
-            <div class="contentWrap">
-              
-              <div class="row-fluid">
-                <div class="span12"> 
-  					  	<h2>Logga in</h2>
-  					  	<p>Logga in med ditt bildnummer som står under din provbild.</p>
-	        	    <%= form_tag store_auth_path do %>
-	        	    <%= label_tag :image_nr, 'Bildnummer' %>
-	        	    <%= text_field_tag :image_nr, nil, :class => 'input-xlarge', :placeholder => "Ex: 12Test-F1-5544-22" %>
-	        	    <div align="right">
-	        	      <%= submit_tag "Logga in", :class => 'button btn btn-large btn-success' %>
-	        	    </div>
-	        	    <% end %>
+<%= render partial: 'content_top' %>
+
+<h2>Logga in</h2>
+<p>Logga in med ditt bildnummer som står under din provbild.</p>
+<%= form_tag store_auth_path do %>
+<%= label_tag :image_nr, 'Bildnummer' %>
+<%= text_field_tag :image_nr, nil, :class => 'input-xlarge', :placeholder => "Ex: 12Test-F1-5544-22" %>
+<div align="right">
+  <%= submit_tag "Logga in", :class => 'button btn btn-large btn-success' %>
+</div>
+<% end %>
         	    
-                </div> 
-              </div>
-		  
-            </div>
-            <!--end post content-->
-            
-          </div>
-        </div>
-      </div>
-        
-      <aside class="span3 sidebar">
-        <%= render "payment_info" %>
-      </aside> <!--end sidebar-->
-    </div>
-  </div>
-</section>
+<%= render partial: 'content_bottom', locals: {partials: %w[payment_info]} %>

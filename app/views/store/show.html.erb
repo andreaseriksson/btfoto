@@ -2,54 +2,23 @@
   <h1>Beställ bilder</h1>
 <% end %>
 
-<!--main content-->
-<section class="mainContentWrap">
-  <div class="container mainContent">
-    <div class="row-fluid">
-      
-      <div class="span9">
-        <div class="row-fluid">
-          <div class="innerSpacer">
-            
-            <!--post content-->
-            <div class="contentWrap">
+<%= render partial: 'content_top' %> 
               
-              <h2>
-                <%= @product.name %> 
-                <span class="pull-right"><%= to_curr(@product.price * (1+@product.vat)) %>Kr</span>
-              </h2>
-              <div class="row-fluid">
-                <div class="span6 thumbnail">
-                  <%= image_tag @product.image %>
-                </div>
-                <div class="span6">
-                  <%= raw @product.description %>
-                  <hr>
-                  <%= link_to 'Tillbaka', store_path, class: 'btn' %>
-                  <%= button_to "Lägg till", add_to_cart_path(product_id: @product.id), class: 'btn btn-success' %>
-                </div> 
-              </div>
-	  
-            </div>
-            <!--end post content-->       
-          </div>
-        </div>
-      </div>
-        
-      <aside class="span3 sidebar">
-        
-        <%= render "cart" %>
-        
-        <% if @cart.days_left >= 0 %>
-        <div class="widget alert">
-          <h4><%= @cart.days_left %> dagar kvar</h4>
-          <span>För att få 10% rabatt på din order (Exkl. skolkatalog).</span>
-        </div>
-        <% end %>
-                
-        <%= render "customer_image" %>
-        <%= render "payment_info" %>
-      </aside> <!--end sidebar-->
+  <h2>
+    <%= @product.name %> 
+    <span class="pull-right"><%= to_curr(@product.price * (1+@product.vat)) %>Kr</span>
+  </h2>
+  <div class="row-fluid">
+    <div class="span6 thumbnail">
+      <%= image_tag @product.image %>
     </div>
+    <div class="span6">
+      <%= raw @product.description %>
+      <hr>
+      <%= link_to 'Tillbaka', store_path, class: 'btn' %>
+      <%= button_to "Lägg till", add_to_cart_path(product_id: @product.id), class: 'btn btn-success' %>
+    </div> 
   </div>
-</section>
+
+<%= render partial: 'content_bottom', locals: {partials: %w[cart days_left customer_image payment_info]} %>
+	  

@@ -2,46 +2,14 @@
   <h1>Beställ bilder</h1>
 <% end %>
 
-<!--main content-->
-<section class="mainContentWrap">
-  <div class="container mainContent">
-    <div class="row-fluid">
-      
-      <div class="span9">
-        <div class="row-fluid">
-          <div class="innerSpacer">
-            
-            <!--post content-->
-            <div class="contentWrap">
-              
-              <div class="row-fluid">
-                <div class="span12">
-                  <!-- flash message -->						  							  	
-    							<% @i = 0 %>
-    							<% @products.each do |product| %>
-    							  <%= raw('<div class="row-fluid">') if @i == 0 || @i % 3 == 0 %>
-    							  <% @i += 1 %>
-                    <%= render 'product', product: product %>
-                    <%= raw("</div><!-- end row-fluid -->") if @i == @products.count || @i % 3 == 0 %>
-                  <% end %>                                         
-                </div> 
-              </div>
-	  
-            </div>
-            <!--end post content-->
-            
-          </div>
-        </div>
-      </div>
-        
-      <aside class="span3 sidebar">
-        <%= render "cart" %>
-        
-        <%= render 'days_left' %>
-        
-        <%= render "customer_image" %>
-        <%= render "payment_info" %>
-      </aside> <!--end sidebar-->
-    </div>
-  </div>
-</section>
+<%= render partial: 'content_top' %> 					  							  	
+
+  <% @i = 0 %>
+  <% @products.each do |product| %>
+    <%= raw('<div class="row-fluid">') if @i == 0 || @i % 3 == 0 %>
+    <% @i += 1 %>
+    <%= render 'product', product: product %>
+    <%= raw("</div><!-- end row-fluid -->") if @i == @products.count || @i % 3 == 0 %>
+  <% end %>                                         
+
+<%= render partial: 'content_bottom', locals: {partials: %w[cart days_left customer_image payment_info]} %>

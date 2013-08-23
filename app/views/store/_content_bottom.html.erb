@@ -9,10 +9,9 @@
       </div>
         
       <aside class="span3 sidebar">
-        <%= render "cart" %>
-        
-        <%= render "customer_image" %>
-        <%= render "payment_info" %>
+        <% partials.each do |partial| %>
+        <%= render partial %>
+        <% end %>  
       </aside> <!--end sidebar-->
     </div>
   </div>

@@ -2,100 +2,72 @@
   <h1>Beställ bilder</h1>
 <% end %>
 
-<!--main content-->
-<section class="mainContentWrap">
-  <div class="container mainContent">
-    <div class="row-fluid">
-      <div class="span9">
-        <div class="row-fluid">
-          <div class="innerSpacer">
-            
-            <!--post content-->
-            <div class="contentWrap">
-              
-              <div class="row-fluid">
-                <div class="span12"> 
-                  <h3>Varukorg</h3>
-                  <table class="table table-striped" id="checkout-table">
-	            	    <thead>
-	            	    	<tr>
-	            	    		<th></th><th>Produkt</th><th>Bildnr.</th><th>Ant.</th><th>Summa</th><th>Total</th><th></th>
-	            	    	</tr>
-	            	    </thead>
-	            	    <%= form_tag update_multiple_cart_items_path, method: :put, class: "" do %>
-	            	    <tbody>			            	    	
-	            	    	<% @cart.summary[:products].each do |product| %>
-	            	    	<tr>
-	            	    		<td class="cart_item_row">
-	            	    		  <%= check_box_tag "cart_item_ids[]", product[:cart_item_id] %>
-	            	    		</td>
-	            	    		<td><%= product[:name] %></td>
-	            	    		<td><%= product[:image_nr] %></td>
-	            	    		<td>
-	            	    		  
-	            	    		  <%= text_field_tag "cart_items[#{product[:cart_item_id]}]", product[:quantity], class: "update-count input-mini" %>
-	            	    		  </td>
-	            	    		<td><%= to_curr(product[:price]) %></td>
-	            	    		<td><%= to_curr(product[:total_price]) %> Kr</td>
-	            	    	</tr>
-	            	    	<% end %>
-	            	    	<tr>
-	            	    	  <td></td>
-	            	    		<td>Varav moms</td>
-	            	    		<td></td>
-	            	    		<td></td>
-	            	    		<td></td>
-	            	    		<td>(<%= to_curr(@cart.summary[:vat]) %> Kr)</td>
-	            	    	</tr>
-	            	    	<tr>
-	            	    		<td></td>
-	            	    		<td>Expeditionsavgift</td>
-	            	    		<td><%= submit_tag "Uppdatera", class: 'btn btn-mini btn-success' %></td>
-	            	    		<td></td>
-	            	    		<td></td>
-	            	    		<td><%= to_curr(@cart.summary[:delivery]) %> Kr</td>
-	            	    	</tr>
-	            	    </tbody>
-	            	    <% end %>
-	            	    <tfoot>
-	            	    	<tr>
-	            	    		<td colspan="3" id="actions">
-		            	    		
-		            	    		<%= form_tag delete_multiple_cart_items_path, method: :delete, class: "form-inline" do %>
-                            <%= hidden_field_tag "cart_items", nil, id: "delete_cart_items" %>
-                            <%= submit_tag "Radera markerade", class: 'btn btn-mini btn-danger' %>
-                          <% end %>
-		            	    		
-		            	    		<%= button_to "Tom varukorg", destroy_multiple_cart_items_path, method: :delete, class: 'btn btn-mini btn-danger'   %>
-		            	    	</td>
-	            	    		<td></td>
-	            	    		<td>Total:</td>
-	            	    		<td>
-	            	    			<%= to_curr(@cart.summary[:sum]) %> Kr
-	            	    		</td>
-	            	    	</tr>
-	            	    </tfoot>
-    							</table>
-    							<hr>
-    							<div align="right">
-    								<br><br>
-    								<%= link_to 'Fortsätt handla', store_path, class: 'btn btn-large' %>
-    								<%= link_to 'Vidare till betalning', store_payment_path, class: 'btn btn-success btn-large' %>
-    							</div>
-    						</div> 
-              </div>
-	  
-            </div>
-            <!--end post content-->
-                  
-          </div>
-        </div>
-      </div>
-        
-      <aside class="span3 sidebar">
-        <%= render "customer_image" %>
-        <%= render "payment_info" %>
-      </aside> <!--end sidebar-->
-    </div>
-  </div>
-</section>
+<%= render partial: 'content_top' %> 
+  <h3>Varukorg</h3>
+  <table class="table table-striped" id="checkout-table">
+    <thead>
+    	<tr>
+    		<th></th><th>Produkt</th><th>Bildnr.</th><th>Ant.</th><th>Summa</th><th>Total</th><th></th>
+    	</tr>
+    </thead>
+    <%= form_tag update_multiple_cart_items_path, method: :put, class: "" do %>
+    <tbody>			            	    	
+    	<% @cart.summary[:products].each do |product| %>
+    	<tr>
+    		<td class="cart_item_row">
+    		  <%= check_box_tag "cart_item_ids[]", product[:cart_item_id] %>
+    		</td>
+    		<td><%= product[:name] %></td>
+    		<td><%= product[:image_nr] %></td>
+    		<td>
+    		  
+    		  <%= text_field_tag "cart_items[#{product[:cart_item_id]}]", product[:quantity], class: "update-count input-mini" %>
+    		  </td>
+    		<td><%= to_curr(product[:price]) %></td>
+    		<td><%= to_curr(product[:total_price]) %> Kr</td>
+    	</tr>
+    	<% end %>
+    	<tr>
+    	  <td></td>
+    		<td>Varav moms</td>
+    		<td></td>
+    		<td></td>
+    		<td></td>
+    		<td>(<%= to_curr(@cart.summary[:vat]) %> Kr)</td>
+    	</tr>
+    	<tr>
+    		<td></td>
+    		<td>Expeditionsavgift</td>
+    		<td><%= submit_tag "Uppdatera", class: 'btn btn-mini btn-success' %></td>
+    		<td></td>
+    		<td></td>
+    		<td><%= to_curr(@cart.summary[:delivery]) %> Kr</td>
+    	</tr>
+    </tbody>
+    <% end %>
+    <tfoot>
+    	<tr>
+    		<td colspan="3" id="actions">
+	    		
+	    		<%= form_tag delete_multiple_cart_items_path, method: :delete, class: "form-inline" do %>
+            <%= hidden_field_tag "cart_items", nil, id: "delete_cart_items" %>
+            <%= submit_tag "Radera markerade", class: 'btn btn-mini btn-danger' %>
+          <% end %>
+	    		
+	    		<%= button_to "Tom varukorg", destroy_multiple_cart_items_path, method: :delete, class: 'btn btn-mini btn-danger'   %>
+	    	</td>
+    		<td></td>
+    		<td>Total:</td>
+    		<td>
+    			<%= to_curr(@cart.summary[:sum]) %> Kr
+    		</td>
+    	</tr>
+    </tfoot>
+	</table>
+	<hr>
+	<div align="right">
+		<br><br>
+		<%= link_to 'Fortsätt handla', store_path, class: 'btn btn-large' %>
+		<%= link_to 'Vidare till betalning', store_payment_path, class: 'btn btn-success btn-large' %>
+	</div>
+<%= render partial: 'content_bottom', locals: {partials: %w[customer_image payment_info]} %>
