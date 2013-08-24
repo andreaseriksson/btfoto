@@ -54,7 +54,7 @@ class StoreController < ApplicationController
     @picture = Picture.current_image(params[:image_nr]).first
     
     if @picture
-      cookies[:image_nr] = { :value => @picture.image_nr, :expires => 60.minutes.from_now }
+      cookies[:image_nr] = { :value => @picture.image_nr, :expires => 180.minutes.from_now }
       redirect_to store_path, notice: "Du är nu inloggad"
     else
       redirect_to store_login_path, warning: "Det gick inte att logga in med dina uppgifter"
