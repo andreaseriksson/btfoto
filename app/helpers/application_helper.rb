@@ -23,22 +23,19 @@ module ApplicationHelper
   end
   
   def flash_message(name,msg)
-
-		if name == :notice 
-			box_class = "success"
-			name = "Success"
+    if name == :notice 
+			title = t('Success')
+			theme = 'blue'
+      sticky = 'false'
 		else
-			box_class = "error"
-			name = "Error"
+			title = t('Failure')
+			theme = 'red'
+			sticky = 'true'
 		end
-
-		link = link_to "x", "", :class => "close", data: { dismiss: "alert" }
-
-		content_tag :div, class: "alert alert-#{box_class}" do #alert alert-success		
-			link + raw("<b>#{name.capitalize}: </b> #{msg}")
-		end
-
-	end
+    
+    msgs = "$.jGrowl('#{msg}', {header: '#{title}', sticky: #{sticky}, theme: '#{theme}'});"
+    content_tag :script , raw("$(document).ready(function() { #{msgs} });") , :type => "text/javascript"
+  end
   
   def pdf_image_tag(image, options={})
     image_path = "file:///#{File.expand_path(Rails.root)}/public#{image}"
