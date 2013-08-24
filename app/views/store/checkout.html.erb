@@ -22,11 +22,19 @@
     		<td><%= to_curr(product[:total_price]) %> Kr</td>
     	</tr>
     	<% end %>
+    	<% if @cart.days_left >= 20 %>
+    	<tr>
+    	  <td></td>
+    		<td>Rabatt 10%</td>
+    		<td colspan="3"></td>
+    		<td>-<%= to_curr(@cart.summary[:discount]) %> Kr</td>
+    	</tr>
+    	<% end %>
     	<tr>
     	  <td></td>
     		<td>Varav moms</td>
     		<td colspan="3"></td>
-    		<td>(<%= to_curr(@cart.summary[:vat]) %> Kr)</td>
+    		<td>(<%=  @cart.days_left >= 0 ? to_curr(@cart.summary[:vat_after_discount]) : to_curr(@cart.summary[:vat]) %> Kr)</td>
     	</tr>
     	<tr>
     		<td></td>
