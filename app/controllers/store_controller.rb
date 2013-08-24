@@ -51,7 +51,7 @@ class StoreController < ApplicationController
   end
   
   def auth
-    @picture = Picture.current_image params[:image_nr] 
+    @picture = Picture.current_image(params[:image_nr]).first
     
     if @picture
       cookies[:image_nr] = { :value => @picture.image_nr, :expires => 60.minutes.from_now }

@@ -38,7 +38,7 @@ class ApplicationController < ActionController::Base
   end
   
   def load_picture
-    @picture ||= Picture.current_image(cookies[:image_nr]) if cookies[:image_nr]
+    @picture ||= Picture.current_image(cookies[:image_nr]).first if cookies[:image_nr]
   end
   
   def set_locale
