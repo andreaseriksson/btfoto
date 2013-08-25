@@ -4,7 +4,7 @@ class Product < ActiveRecord::Base
   extend FriendlyId
   friendly_id :name, use: :slugged
   
-  has_many :categorizations, -> { includes(:product_categories) }
+  has_many :categorizations
   has_many :product_categories, through: :categorizations
   
   has_many :cart_items
