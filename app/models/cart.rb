@@ -5,7 +5,7 @@ class Cart < ActiveRecord::Base
   attr_writer :image_nr
   
   def summary
-    cart = self
+    @cart = self
     
     products = []
     total_price = 0
@@ -14,7 +14,7 @@ class Cart < ActiveRecord::Base
     total_discount = 0
     total_discount_vat = 0
         
-    cart.cart_items.each do |cart_item|
+    @cart.cart_items.each do |cart_item|
       price = cart_item.product.price.to_f * (1+(cart_item.product.vat)) || 0
 	    quantity = cart_item.quantity.to_i || 0
 	    vat = price - cart_item.product.price.to_f || 0
@@ -23,7 +23,7 @@ class Cart < ActiveRecord::Base
 	    total_quantity = total_quantity.to_i + quantity || 0
 	    total_vat = total_vat.to_f + (quantity * vat) || 0
 	    
-	    if days_left(cart) >= 0 && cart_item.product.allow_discount
+	    if days_left(@cart) >= 0 && cart_item.product.allow_discount
 	      total_discount = total_discount.to_f + (price * quantity * 0.1) || 0
 	      total_discount_vat = total_discount_vat.to_f + (vat * quantity * 0.1) || 0
 	    end
@@ -67,9 +67,17 @@ class Cart < ActiveRecord::Base
   private
   
   def delivery(sum)
+    return 0 if only_freight_free_products == true
     sum < CONFIG[:freight_free] ? CONFIG[:shipping_fee] : 0
   end
   
+  def only_freight_free_products
+    all_freight_free = true
+    @cart.cart_items.each do |cart_item|
+      all_freight_free = false if cart_item.product.freight == true
+    end
+    all_freight_free
+  end
   
   def to_curr(num)
     number_with_precision(num, locale: :fr, scale: 2)
