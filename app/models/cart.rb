@@ -42,8 +42,9 @@ class Cart < ActiveRecord::Base
     cart_summary[:discount] = total_discount || 0
     cart_summary[:sum_after_discount] = total_price - total_discount || 0
     cart_summary[:vat_after_discount] = total_vat - total_discount_vat || 0
+    cart_summary[:sum_plus_delivery] = cart_summary[:sum_after_discount] + cart_summary[:delivery]
     
-    cart_summary[:products] = products;    
+    cart_summary[:products] = products    
     cart_summary
     
   end
