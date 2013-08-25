@@ -33,7 +33,7 @@ class Cart < ActiveRecord::Base
 	  end
     
     cart_summary = {}
-    cart_summary[:delivery] = 20
+    cart_summary[:delivery] = delivery(total_price-total_discount)
     cart_summary[:quantity] = total_quantity || 0
     cart_summary[:sum_without_delivery] = total_price || 0
     cart_summary[:sum] = total_price + cart_summary[:delivery] || 0
@@ -63,6 +63,13 @@ class Cart < ActiveRecord::Base
       -1
     end  
   end
+  
+  private
+  
+  def delivery(sum)
+    sum < CONFIG[:freight_free] ? CONFIG[:shipping_fee] : 0
+  end
+  
   
   def to_curr(num)
     number_with_precision(num, locale: :fr, scale: 2)
