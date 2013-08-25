@@ -28,7 +28,7 @@ class Payson
   end
   
   def shipping_fee
-    to_curr CONFIG[:shipping_fee]
+    to_curr @cart.summary[:delivery]
   end
   
   def order_nr
