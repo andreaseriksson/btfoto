@@ -3,7 +3,7 @@
 FactoryGirl.define do
   factory :appointment do
     label "Photoshoot"
-    start_time "2013-07-07 19:20:55"
+    start_time Date.today
     approved false
     booked false
     name "Nisse Gunnarsson"

@@ -2,15 +2,20 @@ require 'spec_helper'
 
 describe CartItem do
   
-  let(:cart_item) { FactoryGirl.create(:cart_item) }
-  
   it "has a valid factory" do
-    cart_item.should be_valid
+    build(:cart_item).should be_valid
   end
   
   it "must have an image_nr" do
-    cart_item = FactoryGirl.build(:cart_item, image_nr: nil)
-    cart_item.should_not be_valid
+    build(:cart_item, image_nr: nil).should_not be_valid
   end
-      
+  
+  it "belongs to cart" do
+    build(:cart_item, cart: nil).should_not be_valid
+  end
+  
+  it "belongs to product" do
+    build(:cart_item, product: nil).should_not be_valid
+  end
+   
 end

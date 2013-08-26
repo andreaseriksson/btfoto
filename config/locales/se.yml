@@ -50,7 +50,13 @@ se:
       index:
         
         
-  
+  date:
+    order:
+      - :year
+      - :month
+      - :day
+      
+       
   
   
   simple_form:
