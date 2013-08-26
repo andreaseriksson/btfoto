@@ -2,9 +2,7 @@ class Gallery < ActiveRecord::Base
   
   mount_uploader :image, GalleryUploader
   
-  include RankedModel
-  ranks :position
-  include Sortable
+  acts_as_list
   
   validates_presence_of :image
   

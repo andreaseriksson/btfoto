@@ -2,6 +2,6 @@
 
 FactoryGirl.define do
   factory :gallery do
-    image "MyString"
+    image File.open(File.join(Rails.root, '/spec/fixtures/files/gallery1.jpg'))
   end
 end
