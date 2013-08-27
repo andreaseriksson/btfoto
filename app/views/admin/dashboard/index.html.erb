@@ -1,2 +1,135 @@
-<h1>Dashboard#index</h1>
-<p>Find me in app/views/dashboard/index.html.erb</p>
+<!-- Grid row -->
+<div class="row">
+  <!-- Data block -->
+  <article class="span8 data-block">
+    <header>
+      <h2><span class="icon-tasks"></span> Ordrar & bokningar</h2>
+    </header>
+    <section>
+      <h3>Ordrar denna vecka</h3>
+      
+      <h3>Senaste ordrarna</h3>
+      <table class="table table-striped table-hover">
+        <thead>
+          <tr>
+            <th>Nr</th>
+            <th>Namn</th>
+            <th>Summa</th>
+            <th>Bekräftad</th>
+            <th>Skapad</th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @dashboard.last_ten_orders.each do |order| %>
+          <tr>
+            <td><%= order.id %></td>
+            <td><%= order.first_name %> <%= order.family_name %></td>
+            <td></td>
+            <td><%= order.confirmed %></td>
+            <td><%= order.created_at.strftime("%Y-%m-%d") %></td>
+            <td><%= link_to raw('<i class="icon-file-alt"></i>'), [:admin, order] %></td>
+            <td><%= link_to raw('<i class="icon-envelope-alt"></i>'), [:admin, order] %></td>
+            <td><%= link_to raw('<i class="icon-print"></i>'), admin_order_path(order, format: :pdf) %></td>
+            <td><%= link_to raw('<i class="icon-trash"></i>'), [:admin, order], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+      
+      <h3>Bokningar att godkänna</h3>
+      <table class="table table-striped table-hover">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Assigned to</th>
+            <th>Due</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>#16 513</td>
+            <td><a href="#">Tommy Tornstone</a></td>
+            <td><time>12.04. 2015</time></td>
+            <td><span class="label label-success">open</span></td>
+          </tr>
+          <tr>
+            <td>#16 512</td>
+            <td><a href="#">Remi Redstone</a></td>
+            <td><time>09.04. 2015</time></td>
+            <td><span class="label label-important">closed</span></td>
+          </tr>
+          <tr>
+            <td>#16 511</td>
+            <td><a href="#">Gabi Gabstone</a></td>
+            <td><time>10.04. 2015</time></td>
+            <td><span class="label label-important">closed</span></td>
+          </tr>
+        </tbody>
+      </table>
+
+    </section>
+  </article>
+  
+  <!-- Data block -->
+  <article class="span4 turquoise data-block">
+    <header>
+      <h2><span class="icon-tasks"></span> Bästsäljare</h2>
+    </header>
+    <section>
+      <h4>Bäst säljande produkter</h4>
+      <table class="table table-striped table-hover">
+        <thead>
+          <tr>
+            <th>Produkt</th>
+            <th>Antal</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>#16 513</td>
+            <td><a href="#">Tommy Tornstone</a></td>
+          </tr>
+          <tr>
+            <td>#16 512</td>
+            <td><a href="#">Remi Redstone</a></td>
+          </tr>
+          <tr>
+            <td>#16 511</td>
+            <td><a href="#">Gabi Gabstone</a></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h4>Sämst säljande produkter</h4>
+      <table class="table table-striped table-hover">
+        <thead>
+          <tr>
+            <th>Produkt</th>
+            <th>Antal</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>#16 513</td>
+            <td><a href="#">Tommy Tornstone</a></td>
+          </tr>
+          <tr>
+            <td>#16 512</td>
+            <td><a href="#">Remi Redstone</a></td>
+          </tr>
+          <tr>
+            <td>#16 511</td>
+            <td><a href="#">Gabi Gabstone</a></td>
+          </tr>
+        </tbody>
+      </table>
+
+    </section>
+  </article>
+  <!-- /Data block -->
+</div>
