@@ -8,6 +8,7 @@ class Product < ActiveRecord::Base
   has_many :product_categories, through: :categorizations
   
   has_many :cart_items
+  has_many :order_items
   
   validates :name, presence: true
   validates_presence_of :image

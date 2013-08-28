@@ -90,18 +90,12 @@
           </tr>
         </thead>
         <tbody>
+          <% @dashboard.top_selling_products.each do |product| %>
           <tr>
-            <td>#16 513</td>
-            <td><a href="#">Tommy Tornstone</a></td>
+            <td><%= product[1] %></td>
+            <td><%= product[2] %></td>
           </tr>
-          <tr>
-            <td>#16 512</td>
-            <td><a href="#">Remi Redstone</a></td>
-          </tr>
-          <tr>
-            <td>#16 511</td>
-            <td><a href="#">Gabi Gabstone</a></td>
-          </tr>
+          <% end %>
         </tbody>
       </table>
 
@@ -114,18 +108,12 @@
           </tr>
         </thead>
         <tbody>
+          <% @dashboard.least_selling_products.each do |product| %>
           <tr>
-            <td>#16 513</td>
-            <td><a href="#">Tommy Tornstone</a></td>
+            <td><%= product[1] %></td>
+            <td><%= product[2] %></td>
           </tr>
-          <tr>
-            <td>#16 512</td>
-            <td><a href="#">Remi Redstone</a></td>
-          </tr>
-          <tr>
-            <td>#16 511</td>
-            <td><a href="#">Gabi Gabstone</a></td>
-          </tr>
+          <% end %>
         </tbody>
       </table>
 
