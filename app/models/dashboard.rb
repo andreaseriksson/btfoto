@@ -5,11 +5,11 @@ class Dashboard
   end
   
   def last_weeks_grouped_orders
-  
+     Order.group("DATE(exposed_at)")
   end
   
   def new_appointments
-  
+    Appointment.where(approved: false, booked: true).order('id desc')
   end
   
   def top_selling_products
