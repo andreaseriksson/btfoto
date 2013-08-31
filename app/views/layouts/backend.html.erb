@@ -28,9 +28,9 @@
               <li><%= link_to raw('<i class="icon-rss"></i> Nyheter'), '/admin/news' %></li>
               <li><%= link_to raw('<i class="icon-play-circle"></i> Galleri'), admin_galleries_path %></li>
               
-              <li><%= link_to raw('<i class="icon-user"></i> Användare'), admin_product_categories_path %></li>
+              <li><%= link_to raw('<i class="icon-user"></i> Användare'), admin_users_path %></li>
               <li class="divider"></li>
-              <li><a href="#"><i class="icon-off"></i> Logga ut</a></li>
+              <li><%= link_to raw('<i class="icon-off"></i> Logga ut'), admin_logout_path %></li>
             </ul>
           </div>
           <%= link_to 'BTFoto', admin_root_path, class: 'brand' %>
