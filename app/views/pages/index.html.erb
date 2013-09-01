@@ -5,7 +5,7 @@
       <div class='span12'>
         <div class='carousel slide' id='myCarousel'>
           <div class='carousel-inner'>
-            <% Gallery.all.each do |gallery| %>
+            <% @frontpage.gallery.each do |gallery| %>
               <% style = 'item' %>
               <% style = 'item active' if gallery.id == Gallery.all.first.id %>
               <%= content_tag(:div, nil, class: style) do %>
@@ -41,46 +41,44 @@
 
 <section class='mainContentWrap'>
   <div class='container mainContent'>
-    <div class='row-fluid'>
-      <div class='span12'>
-        <div class='row-fluid featuredContent'>
-          <div class='span4'>
-            <h1>
-              <span class='btn btn-inverse'>01</span>
-              Boka uppdrag
-            </h1>
-            <p>Jag bedriver nu fotoverksamhet från vår gård utanför Ystad. Verksamheten är huvudsakligen inriktad på reklamfotografering åt företag, men porträttfotograferingen börjar få en allt större plats.</p>
-            <p>
-              <strong>Varmt välkomna.</strong>
-            </p>
-          </div>
-          <div class='span4'>
-            <h1>
-              <span class='btn btn-inverse'>02</span>
-              Beställ bilder
-            </h1>
-            <%= raw @page.content %>
-          </div>
-          <div class='span4'>
-            <h1>
-              <span class='btn btn-inverse'>03</span>
-              Nyheter
-            </h1>
-            <% @news.each do |news| %>
-            <p>
-              <strong><%= news.created_at.strftime("%Y-%m-%d") %></strong> <%= news.title %> 
-              <%= news.preamble %>
-            </p>
-            <hr>
-            <% end %>
-          </div>
-        </div>
-        <div class='row-fluid'>
-          <div class='divider dotted clearfix'>
-            <span></span>
-          </div>
-        </div>
+    
+    <div class='row-fluid featuredContent'>
+      <div class='span4'>
+        <h1>
+          <span class='btn btn-inverse'>01</span>
+          Boka uppdrag
+        </h1>
+        <p>Jag bedriver nu fotoverksamhet från vår gård utanför Ystad. Verksamheten är huvudsakligen inriktad på reklamfotografering åt företag, men porträttfotograferingen börjar få en allt större plats.</p>
+        <p>
+          <strong>Varmt välkomna.</strong>
+        </p>
+      </div>
+      <div class='span4'>
+        <h1>
+          <span class='btn btn-inverse'>02</span>
+          Beställ bilder
+        </h1>
+        <%= raw @frontpage.page.content %>
+      </div>
+      <div class='span4'>
+        <h1>
+          <span class='btn btn-inverse'>03</span>
+          Nyheter
+        </h1>
+        <% @frontpage.news.each do |news| %>
+        <p>
+          <strong><%= news.created_at.strftime("%Y-%m-%d") %></strong> <%= news.title %> 
+          <%= news.preamble %>
+        </p>
+        <hr>
+        <% end %>
       </div>
     </div>
+    <div class='row-fluid'>
+      <div class='divider dotted clearfix'>
+        <span></span>
+      </div>
+    </div>
+      
   </div>
 </section>

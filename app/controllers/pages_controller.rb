@@ -4,8 +4,7 @@ class PagesController < ApplicationController
   before_action :load_menu
   
   def index
-    @page = Page.first
-    @news = News.all
+    @frontpage = Frontpage.new
   end
   
   def show
