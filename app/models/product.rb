@@ -20,4 +20,12 @@ class Product < ActiveRecord::Base
     product.price * (1+product.vat)
   end
   
+  after_initialize :default_vat
+  
+  private
+  
+  def default_vat
+    self.vat = "0.25" if self.vat == 0
+  end
+  
 end
