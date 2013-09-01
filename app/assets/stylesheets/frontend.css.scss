@@ -272,6 +272,18 @@ p.radio-buttons span {
   font-size: 12px;
 }
 
+.thumbnail.product  {
+  
+  a.display {
+    display: block;
+    text-align: center;
+    min-height: 180px;
+    img {
+      max-height: 180px; 
+    }  
+  }
+}
+
 /* jQuery jGrowl */
 div.jGrowl div.jGrowl-notification,
 div.jGrowl div.jGrowl-closer {
