@@ -23,6 +23,7 @@ gem "haml"
 gem "simple_form", '3.0.0.rc'
 gem "bourbon"
 gem 'elusive-icons-sass-rails'
+gem "bootstrap-wysihtml5-rails", "~> 0.3.1.22"
 
 gem 'ancestry'
 gem 'acts_as_list'
