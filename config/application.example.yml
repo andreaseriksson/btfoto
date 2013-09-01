@@ -1,5 +1,4 @@
-
-application_name: ''
+application_name: 'BTFoto'
 seed_user_name: ''
 seed_user_email: ''
 seed_user_password: ''
@@ -7,3 +6,16 @@ application_creator: ''
 gmail_email: ''
 gmail_pass: ''
 host: ''
+discount_days: 20
+freight_free: 580
+
+gateway_uri: ''
+owner_email: ''
+agent_id: ''
+hash: ""
+return_uri: ''
+shipping_fee: 33
+prepaid_fee: 19
+allowed_emails: ''
+
+secret_token: ''
