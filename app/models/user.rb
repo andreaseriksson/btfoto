@@ -1,7 +1,6 @@
 class User < ActiveRecord::Base
-  validates :email, presence: true, uniqueness: true, format: { 
-    with: /\A([\A@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i 
-  }
+  
+  validates :email,  presence: true, uniqueness: true, format: { with: /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i, multiline: true }
   validate :allowed_to_register, on: :create
   
   private

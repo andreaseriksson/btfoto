@@ -1,6 +1,7 @@
 module Admin
   class UsersController < ApplicationController
     
+    respond_to :html
     layout 'login', only: [:new, :create]
     
     def new
