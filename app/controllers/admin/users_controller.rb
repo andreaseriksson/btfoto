@@ -1,9 +1,11 @@
 module Admin
   class UsersController < ApplicationController
-    respond_to :html
-  
+    
+    layout 'login', only: [:new, :create]
+    
     def new
       @user = User.new
+      redirect_to admin_root_path if current_user
     end
   
     def create
