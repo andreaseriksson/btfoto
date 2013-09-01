@@ -11,6 +11,7 @@ Btfoto::Application.routes.draw do
   end
   
   resources :orders, only: [:create]
+  resources :appointments, only: [:index, :edit, :update]
     
   get 'store', to: 'store#index'#, as: 'store'
   get 'store/show_product', to: 'store#show_product'

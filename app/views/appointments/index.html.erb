@@ -1,0 +1,39 @@
+<% content_for(:tagline) do %> 
+  <h1>Boka fotografering</h1>
+<% end %>
+
+<%= render partial: '/store/content_top' %>
+<table class="table appointments">
+  <tr>
+    <th style="width: 20%">Datum och tid</th>
+    <th>Information</th>
+    <th style="width: 15%"></th>
+  </tr>
+  <% @days.each do |day| %>
+  <tr>
+    <td colspan="3" style="border-top:1px solid #5bb75b">
+      <h5 style="font-size:11px; margin:0; padding:0;"><%= day.strftime("%Y-%m-%d") %></h5>
+    </td>
+  </tr>
+  <% @appointments.each do |appointment| %>
+    <% if appointment.start_time.strftime("%Y-%m-%d") == day.strftime("%Y-%m-%d") %>
+    <tr>
+      <td class="<%= 'booked' if appointment.booked %>">
+        <%= appointment.start_time.strftime("%Y-%m-%d %H:%M") %>
+      </td>
+      <td class="<%= 'booked' if appointment.booked %>">
+        <%= appointment.label %></td>
+      <td class="buttons">
+        <%= link_to_unless appointment.booked, 'Boka tiden', edit_appointment_path(appointment), class: 'btn btn-mini btn-success pull-right' %>
+      </td>
+    </tr>
+    <% end %>
+  <% end %>
+  <% end %>
+</table>
+<%= render partial: '/store/content_bottom', locals: {partials: %w[]} %>
+
+<style>
+  td.buttons {color: #fff }
+  td.booked { text-decoration: line-through }
+</style>
