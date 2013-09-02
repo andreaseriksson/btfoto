@@ -25,7 +25,7 @@ class OrdersController < ApplicationController
         OrderMailer.order_confirmation(@order, @cart).deliver
         @cart.destroy
         cookies[:cart_id].destroy
-        redirect_to "/store", notice: 'Order was successfully created.'     
+        redirect_to "/store", notice: t('.notice')     
       end
     else
       render action: 'new'

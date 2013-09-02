@@ -26,15 +26,15 @@ class StoreController < ApplicationController
       
     if @picture    
       cookies[:image_nr] = { :value => params[:image_nr], :expires => 60.minutes.from_now }
-      redirect_to store_path, notice: "Du har nu bytt bildnummer"
+      redirect_to store_path, notice: t('.notice')
     else
-      redirect_to store_edit_image_path, warning: "Det gick inte att byta bild till det angivna bildnummret"
+      redirect_to store_edit_image_path, warning: t('.warning')
     end
   end
   
   def switch_image
     cookies[:image_nr] = { :value => params[:image_nr], :expires => 60.minutes.from_now }
-    redirect_to store_path, notice: "Du har nu bytt visningsbild"
+    redirect_to store_path, notice: t('.notice')
   end
   
   def payment
@@ -55,9 +55,9 @@ class StoreController < ApplicationController
     
     if @picture
       cookies[:image_nr] = { :value => @picture.image_nr, :expires => 180.minutes.from_now }
-      redirect_to store_path, notice: "Du är nu inloggad"
+      redirect_to store_path, notice: t('.notice')
     else
-      redirect_to store_login_path, warning: "Det gick inte att logga in med dina uppgifter"
+      redirect_to store_login_path, warning: t('.warning')
     end
   end
   

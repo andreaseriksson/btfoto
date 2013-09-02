@@ -9,22 +9,19 @@ class CartItemsController < ApplicationController
     @cart_item.quantity = @cart_item.quantity.to_i + 1
     
     if @cart_item.save
-      redirect_to "/store", notice: 'Cart item was successfully created.'
+      redirect_to store_path, notice: t('.notice')
     else
       render action: 'new'
     end
   end
 
-  # DELETE
   def delete_multiple
     ids = params[:cart_items].split(",")
     CartItem.destroy(ids)
-    redirect_to store_checkout_path, notice: 'Cart items was successfully destroyed.'
+    redirect_to store_checkout_path, notice: t('.notice')
   end
   
   def update_multiple
-    #raise params[:cart_items].inspect
-    
     if params[:cart_items]
       params[:cart_items].each do |k,v|
         
@@ -37,24 +34,21 @@ class CartItemsController < ApplicationController
         end
       end
     end
-    redirect_to store_checkout_path, notice: 'Cart items was successfully destroyed.'
+    redirect_to store_checkout_path, notice: t('.notice')
   end
   
   def destroy_multiple
     @cart = Cart.where(id: cookies[:cart_id]).first_or_create
     @cart.cart_items.each(&:destroy)
     
-    
-    redirect_to "/store", notice: 'Cart items was successfully destroyed.'
+    redirect_to store_path, notice: t('.notice')
   end
   
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_cart_item
       @cart_item = CartItem.find(params[:id])
     end
 
-    # Only allow a trusted parameter "white list" through.
     def cart_item_params
       params.require(:cart_item).permit(:cart_id, :product_id, :quantity, :image_nr)
     end

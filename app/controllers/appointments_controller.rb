@@ -19,7 +19,7 @@ class AppointmentsController < ApplicationController
     if @appointment.update_attributes(appointment_params)
       @appointment.booked = true
       @appointment.save
-      redirect_to appointments_path, notice: 'Tack för din bokning.'
+      redirect_to appointments_path, notice: t('.notice')
     else
       render action: "edit"
     end

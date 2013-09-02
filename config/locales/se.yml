@@ -13,6 +13,9 @@ se:
   Yes: 'Ja'
   No: 'Nej'
   
+  Success: 'Lyckat'
+  Failure: 'Misslyckat'
+  
   admin:
     pages:
       Title: 'Sidhantering'
@@ -100,6 +103,34 @@ se:
         create: "Skapa"
         update: "Skicka bokning"
         
+  store:
+    update_image:
+      notice: "Du har nu bytt bildnummer"
+      warning: "Det gick inte att byta bild till det angivna bildnummret"
+    switch_image: 
+      notice: "Du har nu bytt visningsbild"
+    auth:
+      notice: "Du är nu inloggad"
+      warning: "Det gick inte att logga in med dina uppgifter"
+  payments:
+    create:
+      notice: "Ordern skapades."
+      warning: "Det blev något fel när ordern skapades."
+  orders:
+    create:
+      notice: "Ordern skapades."
+  cart_items:
+    create:
+      notice: 'Produkten har lagts i varukorgen.'
+    delete_multiple:
+      notice: 'Produkterna togs bort från varukorgen.'
+    update_multiple:
+      notice: 'Varukorgen har uppdaterats.'
+    destroy_multiple:
+      notice: 'Produkterna togs bort från varukorgen.'
+  appointments:
+    update:
+      notice: 'Tack för din bokning.'
 
 
 
