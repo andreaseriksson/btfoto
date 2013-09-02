@@ -13,25 +13,25 @@
               <td width="70%"> <%= @order.created_at.strftime("%Y-%m-%d") %></td>
             </tr>
             <tr>
-              <td align="right">Leveranssätt: </td>
-              <td></td>
+              <td align="right">Ordernummer: </td>
+              <td><%= @order.id %></td>
+            </tr>
+            <tr>
+              <td align="right">Betalningssätt: </td>
+              <td><%= @order.payment_type=='card' ? 'Kort':'Förskott' %></td>
             </tr>
           </table>
         </td>
         <td valign="top">
           <table width="100%">
             <tr>
-              <td valign="top" align="right" width="20%">
-                <h1>&nbsp;</h1>
-                Kund:
-              </td>
-              <td valign="top" width="80%">
-                <h1>Packsedel</h1>
-                <%= @order.first_name %> <%= @order.family_name %><br>
+              <td valign="top" width="100%">
+                <h4>Packsedel</h4>
+                <small><%= @order.first_name %> <%= @order.family_name %><br>
                 <%= @order.address1 %> <%= @order.address2 %><br>
                 <%= @order.zip %> <%= @order.city %><br><br>
                 <%= @order.email %><br>
-                <%= @order.phone %> 
+                <%= @order.phone %></br><small> 
               </td>
             </tr>
           </table>
@@ -57,7 +57,8 @@
     
     <div class="row">
     <% @pictures.each do |picture| %>
-      <div class="span2">
+      <div class="span1">
+      <%= picture.image %>
       <%= pdf_image_tag picture.image, class: 'thumbnail'  %>
       </div>
     <% end %>
