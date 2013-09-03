@@ -1,0 +1,27 @@
+<!-- Grid row -->
+<div class="row">
+  <!-- Data block -->
+  <article class="span8 data-block">
+    <header>
+      <h2><i class="icon-reorder"></i> Användare</h2>
+    </header>
+    <section>
+      <h3>Visa användare</h3>
+      <table class="table table-bordered table-striped table-highlight">
+      <thead>
+      <tr>
+        <th>Användare</th>
+        <th></th>
+      </tr>
+      </thead>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.email %></td>
+        <td><%#= link_to raw('<i class="icon-edit"></i>'), edit_admin_users_path(user) %> <%= link_to(raw('<i class="icon-trash"></i>'), [:admin, user], method: :delete, data: { confirm: 'Are you sure?' }) unless user == current_user %></td>
+      </tr>
+    <% end %>
+    </table>
+    </section>
+  </article>
+  <!-- /Data block -->
+</div>

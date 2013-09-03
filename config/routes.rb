@@ -45,7 +45,7 @@ Btfoto::Application.routes.draw do
     resources :pictures
     resources :customers
     resource :session, only: [:new, :create, :destroy]
-    resources :users, only: [:new, :create]
+    resources :users, only: [:new, :create, :index, :destroy]
     
     resources :news, only: [:index, :new, :create, :edit, :update, :destroy]
     resources :appointments, only: [:index, :new, :create, :edit, :update, :destroy]
