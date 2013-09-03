@@ -54,6 +54,10 @@ $ ->
 
       ), 1500
 
+$ ->
+  $('.img-modal a').magnificPopup
+    type:'image'
+    mainClass: 'mfp-fade'
 
   #$("form div.input, form div.submit").addClass "control-group"
   #$("form label").addClass "control-label"
