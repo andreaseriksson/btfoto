@@ -47,8 +47,8 @@
       </table>
       
       <div class="row">
-      <% @pictures.each do |picture| %>
-        <div class="span2">
+        <% @pictures.each do |picture| %>
+        <div class="span1">
           <%= link_to image_tag(picture.image, class: 'thumbnail'), picture.image.url %>
         </div>
       <% end %>

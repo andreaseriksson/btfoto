@@ -10,9 +10,7 @@ module Admin
     def show
       @order = Order.find(params[:id])
       order_items = OrderItem.where(order_id: @order.id).group(:image_nr).pluck(:image_nr)
-      @pictures = Picture.where(name: order_items)
-      
-      #raise @pictures.inspect
+      @pictures = @order.order_pictures order_items
       
       respond_to do |format|
         format.html
@@ -20,7 +18,6 @@ module Admin
           render :pdf => "file_name", :show_as_html => params[:debug]
         end
       end
-      
     end
     
     def destroy

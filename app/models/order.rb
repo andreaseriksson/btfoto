@@ -27,4 +27,13 @@ class Order < ActiveRecord::Base
     order.save
   end
   
+
+  def order_pictures order_items
+    pictures = []
+    order_items.each do |order_item|
+      pictures << Picture.current_image(order_item).first
+    end
+    pictures
+  end 
+
 end

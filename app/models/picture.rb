@@ -33,6 +33,5 @@ class Picture < ActiveRecord::Base
     Picture.where(name: self.name).where.not(id: self.id).order(:letter)
   end
   
-  
 end
 
