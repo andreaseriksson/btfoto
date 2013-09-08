@@ -24,7 +24,7 @@ class OrdersController < ApplicationController
         @order.confirm
         OrderMailer.order_confirmation(@order, @cart).deliver
         @cart.destroy
-        cookies[:cart_id].destroy
+        cookies.delete :cart_id
         redirect_to "/store", notice: t('.notice')     
       end
     else
