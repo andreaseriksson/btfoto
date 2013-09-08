@@ -36,6 +36,8 @@ se:
         Image: 'Bild'
         Price: 'Pris'
         Free_shipping: 'Fri frakt'
+        Product_type: 'Typ'
+        Allow_discount: 'Rabatt'
       new:
         New_product: 'Ny produkt'
       edit:

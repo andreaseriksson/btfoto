@@ -16,6 +16,7 @@
         <th><%= sortable 'price', t('.Price') %></th>
         <th><%= t '.Price_vat' %></th>
         <th><%= t '.Free_shipping' %></th>
+        <th><%= t '.Allow_discount' %></th>
         <th><%= sortable 'product_type', t('.Product_type') %></th>
         <th></th>
       </tr>
@@ -27,6 +28,7 @@
         <td><%= to_curr product.price %></td>
         <td><%= to_curr product.price_with_vat %></td>
         <td><%= product.freight == true ? t('Yes'):t('No') %></td>
+        <td><%= product.allow_discount == true ? t('Yes'):t('No') %></td>
         <td><%= product.types[product.product_type] %></td>
         <td><%= link_to raw('<i class="icon-edit"></i>'), edit_admin_product_path(product) %> <%= link_to raw('<i class="icon-trash"></i>'), [:admin, product], method: :delete, data: { confirm: t('delete?') } %></td>
       </tr>
