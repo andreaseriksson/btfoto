@@ -33,6 +33,7 @@ gem 'monban'
 gem "friendly_id", "5.0.0.beta4"
 gem 'carrierwave'
 gem 'jquery-fileupload-rails'
+gem 'ransack'
 
 gem "rspec-rails", :group => [:test, :development]
 group :test do
