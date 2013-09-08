@@ -17,3 +17,15 @@
     <% end %>
   </div>
 </div>
+
+<% if @picture.group_image %>
+  <h5>Gruppbild</h5>
+  <div class="row">
+    <div class="span7 offset1">
+      <div class="thumbnail img-modal">
+        <%= thumbnail(@picture.group_image, @picture.group_image.image.url) %>
+      </div>
+    </div>
+    <div class="span4"></div>
+  </div>
+<% end %>

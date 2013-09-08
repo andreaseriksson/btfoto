@@ -33,5 +33,9 @@ class Picture < ActiveRecord::Base
     Picture.where(year: self.year, school: self.school, no: self.no).where.not(id: self.id).order(:letter)
   end
   
+  def group_image
+    Picture.where(year: self.year, school: self.school, no: '00').first
+  end
+  
 end
 
