@@ -59,6 +59,11 @@ $ ->
     type:'image'
     mainClass: 'mfp-fade'
 
+$ ->
+  $('#product_type_form select').on 'change', ->
+    $(this.form).submit()
+
+
   #$("form div.input, form div.submit").addClass "control-group"
   #$("form label").addClass "control-label"
   #$("select,input[type=text],textarea").wrap "<div class=\"controls\" /></div>"

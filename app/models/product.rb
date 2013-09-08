@@ -13,7 +13,13 @@ class Product < ActiveRecord::Base
   validates :name, presence: true
   validates_presence_of :image
   
-  scope :in_category, ->(product_category_id) { includes(:categorizations).where("categorizations.product_category_id" => product_category_id) }
+  scope :in_category, ->(product_category_id) do 
+    includes(:categorizations).where("categorizations.product_category_id" => product_category_id) 
+  end
+  
+  scope :belongs_to_product_type, ->(product_type) do
+    where("product_type" => product_type) if product_type && product_type != ''
+  end
   
   def price_with_vat
     product = self

@@ -3,7 +3,7 @@
 <% end %>
 
 <%= render partial: 'content_top' %> 					  							  	
-
+  
   <% @i = 0 %>
   <% @products.each do |product| %>
     <%= raw('<div class="row-fluid">') if @i == 0 || @i % 3 == 0 %>
@@ -12,4 +12,4 @@
     <%= raw("</div><!-- end row-fluid -->") if @i == @products.count || @i % 3 == 0 %>
   <% end %>                                         
 
-<%= render partial: 'content_bottom', locals: {partials: %w[cart days_left customer_image payment_info]} %>
+<%= render partial: 'content_bottom', locals: {partials: %w[product_types cart days_left customer_image payment_info], product_types: @product_types} %>

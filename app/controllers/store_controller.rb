@@ -8,7 +8,10 @@ class StoreController < ApplicationController
   before_action :load_picture, except: [:login, :auth]
   
   def index
-    @products = Product.in_category @picture.product_category_id
+    cookies[:product_type] = params[:product_type] if params[:product_type]
+    product_type = cookies[:product_type] ||= nil
+    @products = Product.in_category(@picture.product_category_id).belongs_to_product_type(product_type)
+    @product_types = ProductType.new
   end
   
   def show
