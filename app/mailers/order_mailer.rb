@@ -9,6 +9,6 @@ class OrderMailer < ActionMailer::Base
   def order_confirmation(order,cart)
     @order = order
     @cart = cart
-    mail to: "andreas@codered.se", subject: "Order confirmation"
+    mail to: "info@btfoto.se", subject: "Order confirmation"
   end
 end
