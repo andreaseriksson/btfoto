@@ -1,10 +1,10 @@
 module Admin
   class ProductsController < ApplicationController
-    
+    helper_method :sort_column, :sort_direction
     before_action :authenticate_user
     
     def index
-      @products = Product.all
+      @products = Product.order(sort_column + " " + sort_direction)
     end
     
     def new
@@ -46,6 +46,15 @@ module Admin
     
     def product_params
       params.require(:product).permit(:name, :description, :price, :vat, :image, :discount, :allow_discount, :freight, :product_type, :product_category_ids => [])
+    end
+    
+    
+    def sort_column
+      Product.column_names.include?(params[:sort]) ? params[:sort] : "name"
+    end
+    
+    def sort_direction
+      %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
     end
     
   end
