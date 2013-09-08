@@ -36,12 +36,17 @@ class Payson
   end
   
   def hashed_string
-    string_to_hash = "#{owner_email}:#{to_curr(@cart.summary[:sum_without_delivery])}:#{to_curr(shipping_fee)}:#{return_uri}:1#{hash}"
+    string_to_hash = "#{owner_email}:#{self.sum}:#{to_curr(shipping_fee)}:#{return_uri}:1#{hash}"
     Digest::MD5.hexdigest(string_to_hash)
   end
   
   def sum
-    to_curr @cart.summary[:sum_without_delivery]
+    if @cart.days_left >= 0
+      sum = @cart.summary[:sum_after_discount]
+    else
+      sum = @cart.summary[:sum_without_delivery]
+    end
+    to_curr sum
   end
   
   private
