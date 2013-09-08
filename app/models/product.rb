@@ -18,7 +18,7 @@ class Product < ActiveRecord::Base
   end
   
   scope :belongs_to_product_type, ->(product_type) do
-    where("product_type" => product_type) if product_type && product_type != ''
+    where("product_type" => product_type) if product_type && product_type > 0
   end
   
   def price_with_vat

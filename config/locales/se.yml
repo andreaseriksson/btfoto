@@ -16,6 +16,13 @@ se:
   Success: 'Lyckat'
   Failure: 'Misslyckat'
   
+  product_type_text_1: 'Jag lägger mycket kraft och tid på att skolkatalogen ska bli fin och unik för varje skola.<br> 
+Alla skolkataloger trycks på ett miljövänligt papper.'
+  product_type_text_2: 'Bilderna är i 20x25cm storlek och ligger på A4 ark.'
+  product_type_text_3: 'Alla ark i paketen är i A4 storlek och bilderna är från 3x5 cm till 20x25 cm.'
+  product_type_text_4: 'Alla ark är i A4 storlek och bilderna är från 3x5 cm till 20x29 cm.'
+  product_type_text_5: 'Bilderna är i bästa jpg kvalitet.'
+  
   admin:
     pages:
       Title: 'Sidhantering'

@@ -9,8 +9,8 @@ class StoreController < ApplicationController
   
   def index
     cookies[:product_type] = params[:product_type] if params[:product_type]
-    product_type = cookies[:product_type] ||= nil
-    @products = Product.in_category(@picture.product_category_id).belongs_to_product_type(product_type)
+    @product_type = cookies[:product_type].to_i ||= nil
+    @products = Product.in_category(@picture.product_category_id).belongs_to_product_type(@product_type)
     @product_types = ProductType.new
   end
   
