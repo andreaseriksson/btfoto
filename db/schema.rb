@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130821181233) do
+ActiveRecord::Schema.define(version: 20130908111046) do
 
   create_table "appointments", force: true do |t|
     t.string   "label"
@@ -182,8 +182,10 @@ ActiveRecord::Schema.define(version: 20130821181233) do
     t.boolean  "freight",                                default: true
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "product_type"
   end
 
+  add_index "products", ["product_type"], name: "index_products_on_product_type"
   add_index "products", ["slug"], name: "index_products_on_slug"
 
   create_table "users", force: true do |t|

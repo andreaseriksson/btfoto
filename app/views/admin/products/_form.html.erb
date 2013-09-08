@@ -9,7 +9,7 @@
     <%= f.input :discount, input_html: {class: 'input-small'} %>
     <%= f.input :allow_discount %>
     <%= f.input :freight %>
-    
+    <%= f.input :product_type, collection: @product.types.invert %>
     
     <%= f.input :image, as: :file %>
     

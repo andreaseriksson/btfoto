@@ -20,6 +20,11 @@ class Product < ActiveRecord::Base
     product.price * (1+product.vat)
   end
   
+  def types
+    product_types = ProductType.new
+    product_types.types
+  end
+  
   after_initialize :default_vat
   
   private
