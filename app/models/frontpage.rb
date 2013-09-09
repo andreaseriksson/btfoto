@@ -1,6 +1,6 @@
 class Frontpage
   def news
-    News.where("published_at <= ?", Time.new.strftime("%Y-%m-%d")).limit(5).order("id desc")
+    News.where("published_at <= ?", Time.new.strftime("%Y-%m-%d")).limit(5).order("published_at desc")
   end
   
   def gallery
