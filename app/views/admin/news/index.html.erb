@@ -1,7 +1,7 @@
 <!-- Grid row -->
 <div class="row">
   <!-- Data block -->
-  <article class="span8 data-block">
+  <article class="span12 data-block">
     <header>
       <h2><i class="icon-reorder"></i> Nyheter</h2>
     </header>
@@ -12,12 +12,14 @@
       <thead>
       <tr>
         <th>Nyhet</th>
+        <th>Publicerad</th>
         <th></th>
       </tr>
       </thead>
     <% @news.each do |news_item| %>
       <tr>
         <td><%= news_item.title %></td>
+        <td><%= news_item.published_at %></td>
         <td><%= link_to raw('<i class="icon-edit"></i>'), edit_admin_news_path(news_item) %> <%= link_to raw('<i class="icon-trash"></i>'), [:admin, news_item], method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
