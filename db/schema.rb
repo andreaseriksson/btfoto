@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130908111046) do
+ActiveRecord::Schema.define(version: 20130909181527) do
 
   create_table "appointments", force: true do |t|
     t.string   "label"
@@ -84,6 +84,7 @@ ActiveRecord::Schema.define(version: 20130908111046) do
     t.text     "content"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.date     "published_at"
   end
 
   add_index "news", ["slug"], name: "index_news_on_slug"
