@@ -15,7 +15,7 @@ module Admin
       @news_item = News.new(news_params)
   
       if @news_item.save
-        redirect_to "/admin/news", notice: 'News item was successfully created.'
+        redirect_to admin_news_index_path, notice: 'News item was successfully created.'
       else
         render action: "new"
       end
@@ -29,7 +29,7 @@ module Admin
       @news_item = News.find_by(slug: params[:id])
   
       if @news_item.update_attributes(news_params)
-        redirect_to admin_news_path, notice: 'News was successfully updated.'
+        redirect_to admin_news_index_path, notice: 'News was successfully updated.'
       else
         render action: "edit"
       end
@@ -39,7 +39,7 @@ module Admin
       @news_item = News.find_by(slug: params[:id])
       @news_item.destroy
       
-      redirect_to admin_news_path, :notice => 'News was successfully deleted.'
+      redirect_to admin_news_index_path, :notice => 'News was successfully deleted.'
     end
     
     private
