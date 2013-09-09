@@ -45,7 +45,7 @@ module Admin
     private
       
     def news_params
-      params.require(:news).permit(:title, :preamble, :content)
+      params.require(:news).permit(:title, :preamble, :content, :published_at)
     end
     
   end
