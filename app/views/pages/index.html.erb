@@ -67,7 +67,7 @@
         </h1>
         <% @frontpage.news.each do |news| %>
         <p>
-          <strong><%= news.created_at.strftime("%Y-%m-%d") %></strong> <%= news.title %> 
+          <strong><%= news.published_at.strftime("%Y-%m-%d") %></strong> <%= news.title %> 
           <%= news.preamble %>
         </p>
         <hr>
