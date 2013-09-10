@@ -44,6 +44,7 @@
       <% @pictures.each do |picture| %>
         <div class="span1">
         <%= link_to image_tag(picture.image, class: 'thumbnail'), picture.image.url %>
+        <%= link_to 'x', [:admin, picture], method: :delete, class: 'destroy-link', data: { confirm: t('delete?') } %>
         </div>
       <% end %>
       </div>

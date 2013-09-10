@@ -22,7 +22,12 @@ module Admin
       end
     end
     
-    
+    def destroy
+      @picture = Picture.find(params[:id])
+      @picture.destroy
+      
+      redirect_to admin_pictures_path, :notice => 'Picture was successfully deleted.'
+    end
     
     private
     
