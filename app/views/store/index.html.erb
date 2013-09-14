@@ -4,12 +4,7 @@
 
 <%= render partial: 'content_top' %> 					  							  	
   
-  <% if @product_type and @product_type > 0 %>
-    <h1><%= @product_types.types[@product_type] %></h1>
-    <p><%= raw t("product_type_text_#{@product_type}") %></p>
-  <% else %>
-    <h1>Visar alla produkter</h1>
-  <% end %>
+  <%= render partial: 'store_header', locals: {product_types: @product_types}%> 
   
   <% @i = 0 %>
   <% @products.each do |product| %>
@@ -23,4 +18,4 @@
     <h5>Det finns tyvärr inga produkter i den här kategorin.</h5>
   <% end %>
   
-<%= render partial: 'content_bottom', locals: {partials: %w[product_types cart days_left customer_image payment_info], product_types: @product_types} %>
+<%= render partial: 'content_bottom', locals: {partials: %w[cart days_left customer_image payment_info]} %>
