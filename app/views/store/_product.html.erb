@@ -3,7 +3,7 @@
     <%= link_to image_tag(product.image), product, class: 'display' %> 					            
     <div class="caption">
       <h5><%= product.name %></h5>
-      <h3 class="product-price"><%= to_curr(product.price * (1+product.vat)) %> Kr</h3>
+      <h3 class="product-price"><%= extra_price(product) %> Kr</h3>
       <%= button_to "Lägg till", add_to_cart_path(product_id: product.id), class: 'btn btn-success'   %>
     </div>
   </div>

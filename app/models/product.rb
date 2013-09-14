@@ -23,7 +23,12 @@ class Product < ActiveRecord::Base
   
   def price_with_vat
     product = self
-    product.price * (1+product.vat)
+    vat = 1+product.vat
+    if product.discount > 0
+      product.discount * vat
+    else
+      product.price * vat
+    end
   end
   
   def types

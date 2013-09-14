@@ -6,7 +6,7 @@
               
   <h2>
     <%= @product.name %> 
-    <span class="pull-right"><%= to_curr(@product.price * (1+@product.vat)) %>Kr</span>
+    <span class="pull-right"><%= extra_price(@product) %> Kr</span>
   </h2>
   <div class="row-fluid">
     <div class="span6 thumbnail">
