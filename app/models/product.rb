@@ -14,7 +14,7 @@ class Product < ActiveRecord::Base
   validates_presence_of :image
   
   scope :in_category, ->(product_category_id) do 
-    includes(:categorizations).where("categorizations.product_category_id" => product_category_id) 
+    includes(:categorizations).where("categorizations.product_category_id" => product_category_id).order("name") 
   end
   
   scope :belongs_to_product_type, ->(product_type) do
