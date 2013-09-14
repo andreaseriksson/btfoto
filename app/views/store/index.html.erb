@@ -15,7 +15,7 @@
   <% end %>                                         
   
   <% if @products.size == 0 %>
-    <h5>Det finns tyvärr inga produkter i den här kategorin.</h5>
+    <h5>Det finns tyvärr inga produkter i den här kategorin med detta bild nr.</h5>
   <% end %>
   
 <%= render partial: 'content_bottom', locals: {partials: %w[cart days_left customer_image payment_info]} %>
