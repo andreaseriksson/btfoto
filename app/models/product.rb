@@ -21,14 +21,22 @@ class Product < ActiveRecord::Base
     where("product_type" => product_type) if product_type && product_type > 0
   end
   
+  def price
+    if self[:discount] > 0
+      self[:discount]
+    else
+      self[:price]
+    end
+  end
+   
+  def price_before_discount
+    self[:price]
+  end
+  
   def price_with_vat
     product = self
     vat = 1+product.vat
-    if product.discount > 0
-      product.discount * vat
-    else
-      product.price * vat
-    end
+    product.price * vat
   end
   
   def types
