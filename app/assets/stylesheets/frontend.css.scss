@@ -78,7 +78,14 @@ a:focus, a:active, input:focus, input:active, input[type="submit"]:active, input
           border-bottom: 2px solid #5bb75b;
           box-shadow: none;
         }
-        
+        li.logout a {
+          border-top-left-radius: 3px;
+          border-top-right-radius: 3px;
+          background-color: #b94a48;
+          color: #ffffff;
+          border-bottom: 2px solid #b94a48;
+          box-shadow: none;
+        }
       }
       
     }

@@ -47,7 +47,10 @@
                   %li{:class => is_active?(page.slug)}
                     = link_to page.title, "/#{page.slug}" 
                 %li{:class => is_active?('store')}
-                  = link_to 'Beställ bilder', "/store"
+                  = link_to 'Beställ bilder', store_path
+                - if cookies[:image_nr]
+                  %li{:class => 'logout'}
+                    = link_to 'Logga ut', store_logout_path
             / end main nav
           / end main menu
     =display_tagline yield(:tagline)
