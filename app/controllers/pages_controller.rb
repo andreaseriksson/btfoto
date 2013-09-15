@@ -10,6 +10,7 @@ class PagesController < ApplicationController
   def show
     if params[:id]
       @page = Page.find_by(slug: params[:id])
+      redirect_to root_path unless @page
     else
       @page = Page.first
     end
