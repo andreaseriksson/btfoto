@@ -29,7 +29,7 @@ module Admin
       @appointment = Appointment.find(params[:id])
   
       if @appointment.update_attributes(appointment_params)
-        redirect_to admin_appointment_path, notice: 'Appointment was successfully updated.'
+        redirect_to admin_appointments_path, notice: 'Appointment was successfully updated.'
       else
         render action: "edit"
       end
@@ -39,7 +39,7 @@ module Admin
       @appointment = Appointment.find(params[:id])
       @appointment.destroy
       
-      redirect_to admin_appointment_path, :notice => 'Appointment was successfully deleted.'
+      redirect_to admin_appointments_path, :notice => 'Appointment was successfully deleted.'
     end
     
     private
