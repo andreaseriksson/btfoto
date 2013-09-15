@@ -12,11 +12,11 @@
   <% @days.each do |day| %>
   <tr>
     <td colspan="3" style="border-top:1px solid #5bb75b">
-      <h5 style="font-size:11px; margin:0; padding:0;"><%= day.strftime("%Y-%m-%d") %></h5>
+      <h5 style="font-size:11px; margin:0; padding:0;"><%= day.start_time.strftime("%Y-%m-%d") %></h5>
     </td>
   </tr>
   <% @appointments.each do |appointment| %>
-    <% if appointment.start_time.strftime("%Y-%m-%d") == day.strftime("%Y-%m-%d") %>
+    <% if appointment.start_time.strftime("%Y-%m-%d") == day.start_time.strftime("%Y-%m-%d") %>
     <tr>
       <td class="<%= 'booked' if appointment.booked %>">
         <%= appointment.start_time.strftime("%Y-%m-%d %H:%M") %>

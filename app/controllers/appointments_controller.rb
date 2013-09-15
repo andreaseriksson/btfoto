@@ -5,7 +5,7 @@ class AppointmentsController < ApplicationController
   
   def index
     @appointments = Appointment.order("start_time asc")
-    @days = Appointment.group("DATE(appointments.start_time)").order("start_time asc").pluck(:start_time)
+    @days = Appointment.group("DATE(appointments.start_time)").order("start_time asc")
   end
   
   def edit
