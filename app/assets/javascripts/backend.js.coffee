@@ -11,5 +11,7 @@ jQuery ->
         data.context.find('.bar').css('width', progress + '%')
         
   $('.editor').each (i, elem) ->
-    $(elem).wysihtml5()
+    $(elem).wysihtml5
+      html: true
+
   
