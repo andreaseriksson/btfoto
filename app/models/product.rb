@@ -13,6 +13,10 @@ class Product < ActiveRecord::Base
   validates :name, presence: true
   validates_presence_of :image
   
+  validates :price, numericality: true, presence: true
+  validates :vat, numericality: true, presence: true
+  validates :discount, numericality: true, presence: true
+  
   scope :in_category, ->(product_category_id) do 
     includes(:categorizations).where("categorizations.product_category_id" => product_category_id).order("name") 
   end
