@@ -22,7 +22,7 @@ class Product < ActiveRecord::Base
   end
   
   def price
-    if self[:discount] > 0
+    if self[:discount].to_f > 0
       self[:discount]
     else
       self[:price]
@@ -36,7 +36,7 @@ class Product < ActiveRecord::Base
   def price_with_vat
     product = self
     vat = 1+product.vat
-    product.price * vat
+    product.price.to_f * vat
   end
   
   def types
