@@ -25,7 +25,7 @@ class StoreController < ApplicationController
   end
   
   def update_image
-    @picture = Picture.where(name: params[:image_nr]).order(:letter).first
+    @picture = Picture.current_image(params[:image_nr]).first
       
     if @picture    
       cookies[:image_nr] = { :value => params[:image_nr], :expires => 60.minutes.from_now }
