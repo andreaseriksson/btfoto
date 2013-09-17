@@ -21,8 +21,8 @@ class Picture < ActiveRecord::Base
       self.rand = s[-12,4] #s[-11,4]
       self.year = s[0,2]
       self.school = s[0,(s.length-13)][2,s.length] #s[0,(s.length-13)][2,s.length]
-      self.name = "#{self.year}#{self.school}-#{self.rand}-#{self.no}" #image.file.filename
-      self.folder = Time.new.strftime("%Y%m%d")
+      self.name = "#{self.year}#{self.school}-#{s[-12,4]}-#{self.no}" #image.file.filename
+      self.folder = "#{self.year}#{self.school.parameterize}"
     end
     
   end
