@@ -6,7 +6,6 @@
 
 <h2>Logga in</h2>
 <p>Logga in med ditt bildnummer som står under din provbild.</p>
-<div class="alert alert-info"><strong>Observera.</strong> Just nu utförs underhåll och det går inte att logga in. Försök igen lite senare.</div>
 <%= form_tag store_auth_path do %>
 <%= label_tag :image_nr, 'Bildnummer' %>
 <%= text_field_tag :image_nr, nil, :class => 'input-xlarge', :placeholder => "Ex: 12Test-F1-5544-22" %>
