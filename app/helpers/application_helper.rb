@@ -77,6 +77,8 @@ module ApplicationHelper
   def extra_price(product)
     if product.discount.to_f > 0 
       raw "<small style='text-decoration: line-through'>#{to_curr(product.price_before_discount*(1+product.vat))}</small> <span style='color: red'>#{to_curr(product.price_with_vat)}</span>"
+    elsif @cart.days_left > 0 and product.allow_discount
+      raw "<small style='text-decoration: line-through'>#{to_curr(product.price_before_discount*(1+product.vat))}</small> <span style='color: red'>#{to_curr(product.price_with_vat*0.9)}</span>"
     else
       to_curr(product.price_with_vat)
     end
