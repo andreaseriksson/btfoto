@@ -29,6 +29,7 @@ class StoreController < ApplicationController
       
     if @picture    
       cookies[:image_nr] = { :value => params[:image_nr], :expires => 60.minutes.from_now }
+      cookies.delete :product_type if cookies[:product_type]
       redirect_to store_path, notice: t('.notice')
     else
       redirect_to store_edit_image_path, warning: t('.warning')
@@ -37,6 +38,7 @@ class StoreController < ApplicationController
   
   def switch_image
     cookies[:image_nr] = { :value => params[:image_nr], :expires => 60.minutes.from_now }
+    cookies.delete :product_type if cookies[:product_type]
     redirect_to store_path, notice: t('.notice')
   end
   
@@ -50,6 +52,7 @@ class StoreController < ApplicationController
   
   def logout
     cookies.delete :image_nr
+    cookies.delete :product_type if cookies[:product_type]
     redirect_to store_login_path
   end
   
