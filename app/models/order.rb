@@ -57,4 +57,7 @@ class Order < ActiveRecord::Base
     summary
   end
   
+  def order_nr
+    self.id + 3200
+  end
 end
