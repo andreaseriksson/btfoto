@@ -4,7 +4,7 @@ module Admin
     before_action :authenticate_user, only: [:index, :destroy]
     
     def index
-      @orders = Order.paginate(:page => params[:page], :per_page => 10)
+      @orders = Order.includes(:order_items).paginate(:page => params[:page], :per_page => 10)
     end
     
     def show
