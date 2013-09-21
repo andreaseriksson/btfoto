@@ -8,7 +8,7 @@ class Order < ActiveRecord::Base
   validates :zip,  presence: true, length: { minimum: 2 }
   validates :city,  presence: true, length: { minimum: 2 }
   
-  has_many :order_items, -> { includes(:product) }
+  has_many :order_items
   
   before_create { generate_token(:token) }
   
@@ -35,5 +35,26 @@ class Order < ActiveRecord::Base
     end
     pictures
   end 
-
+  
+  def summary
+    order = self
+    order_items = []
+    
+    sum_with_vat = 0
+    sum_without_vat = 0
+    delivery = order.shipping_cost
+    
+    order.order_items.each do |order_item| 
+      sum_with_vat = sum_with_vat + (order_item.price * (1+order_item.vat) * order_item.quantity)
+      sum_without_vat = sum_without_vat + (order_item.price * order_item.quantity)
+    end
+    
+    summary = {}
+    summary[:sum_without_delivery] = sum_with_vat
+    summary[:sum] = sum_with_vat + delivery
+    summary[:vat] = sum_with_vat - sum_without_vat
+    summary[:delivery] = delivery
+    summary
+  end
+  
 end
