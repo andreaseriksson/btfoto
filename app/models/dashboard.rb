@@ -1,7 +1,7 @@
 class Dashboard
   
   def last_ten_orders
-    Order.limit(10)
+    Order.includes(:order_items).limit(10)
   end
   
   def last_weeks_grouped_orders
