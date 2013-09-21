@@ -1,5 +1,5 @@
 class OrderMailer < ActionMailer::Base
-  default from: "test@codered.se"
+  
   add_template_helper(ApplicationHelper)
   # Subject can be set in your I18n file at config/locales/en.yml
   # with the following lookup:
@@ -9,6 +9,9 @@ class OrderMailer < ActionMailer::Base
   def order_confirmation(order,cart)
     @order = order
     @cart = cart
-    mail to: "info@btfoto.se", subject: "Order confirmation"
+    payment_type = @order.payment_type=='cash'?'forskottsbetalning':'kortbetalning'
+    subject = "En order är gjord med #{payment_type}"
+    mail to: "andreas@codered.se", subject: subject
+    #mail to: "info@btfoto.se", subject: subject, bcc: "andreas@codered.se"
   end
 end
