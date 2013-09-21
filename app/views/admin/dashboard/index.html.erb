@@ -13,9 +13,10 @@
         <thead>
           <tr>
             <th>Nr</th>
-            <th>Namn</th>
+            <!--<th>Namn</th>-->
             <th>Summa</th>
             <th>Bekräftad</th>
+            <th>Metod</th>
             <th>Skapad</th>
             <th></th>
             <th></th>
@@ -27,9 +28,10 @@
           <% @dashboard.last_ten_orders.each do |order| %>
           <tr>
             <td><%= order.id %></td>
-            <td><%= order.first_name %> <%= order.family_name %></td>
-            <td></td>
-            <td><%= order.confirmed %></td>
+            <!--<td><%= order.first_name %> <%= order.family_name %></td>-->
+            <td><%= to_curr(order.summary[:sum]) %></td>
+            <td><%= order.confirmed == true ? 'Ja':'Nej' %></td>
+            <td><%= order.payment_type == 'card' ? 'Kort' : 'Förskott' %></td>
             <td><%= order.created_at.strftime("%Y-%m-%d") %></td>
             <td><%= link_to raw('<i class="icon-file-alt"></i>'), [:admin, order] %></td>
             <td><%= link_to raw('<i class="icon-envelope-alt"></i>'), [:admin, order] %></td>
