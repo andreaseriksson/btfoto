@@ -21,6 +21,9 @@ class StoreController < ApplicationController
   def checkout
   end
   
+  def success
+  end
+  
   def edit_image
   end
   
