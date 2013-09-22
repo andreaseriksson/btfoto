@@ -10,6 +10,6 @@ class OrderMailer < ActionMailer::Base
     @order = order
     payment_type = @order.payment_type=='cash'?'forskottsbetalning':'kortbetalning'
     subject = "En order är gjord med #{payment_type}"
-    mail to: "info@btfoto.se", subject: subject, from: "butik@btfoto.se", bcc: "andreas@codered.se"
+    mail to: "info@btfoto.se, bjorn@tufvessons.se, andreas@codered.se", subject: subject, from: "BTfoto webshop<butik@btfoto.se>"
   end
 end
