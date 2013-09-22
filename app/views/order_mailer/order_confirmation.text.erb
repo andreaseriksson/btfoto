@@ -23,20 +23,23 @@ Betalningssätt
  
 Produkter
 ------------------------------------------------------
+<%= @order.shipping_cost == 0 ? "1000 Gratis frakt":"1001 Expeditionsavgift #{to_curr(@order.shipping_cost)}" %>
+<%= "1002 Inbetalningskort" if @order.payment_type == 'cash' %>
+<%= @order.extra_shipment == true ? "1005 Katalogen skickas separat":"1004 En försändelse" %>
 <% @order.order_items.each do |order_item| %>
 <%= order_item.quantity %> x <%= order_item.product.name %> (<%= order_item.image_nr %>) = <%= to_curr order_item.total %>Kr
 <% end %>------------------------------------------------------
-Totalt exklusive frakt: <%= to_curr @cart.summary[:sum_without_delivery] %>Kr
+Totalt exklusive frakt: <%= to_curr @order.summary[:sum_without_delivery] %>Kr
 
 
 
 
 
-Varav moms : <%= to_curr @cart.summary[:vat] %>Kr
+Varav moms : <%= to_curr @order.summary[:vat] %>Kr
 
 
-Total: <%= to_curr @cart.summary[:sum] %>Kr
+Total: <%= to_curr @order.summary[:sum] %>Kr
 
 
-Bildnummer: <%= to_curr @cart.summary[:products][0][:image_nr] %>
+Bildnummer: 
 

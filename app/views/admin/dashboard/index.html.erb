@@ -34,7 +34,7 @@
             <td><%= order.payment_type == 'card' ? 'Kort' : 'Förskott' %></td>
             <td><%= order.created_at.strftime("%Y-%m-%d") %></td>
             <td><%= link_to raw('<i class="icon-file-alt"></i>'), [:admin, order] %></td>
-            <td><%= link_to raw('<i class="icon-envelope-alt"></i>'), [:admin, order] %></td>
+            <td><%= link_to raw('<i class="icon-envelope-alt"></i>'), admin_order_path(order, mail: true) %></td>
             <td><%= link_to raw('<i class="icon-print"></i>'), admin_order_path(order, format: :pdf) %></td>
             <td><%= link_to raw('<i class="icon-trash"></i>'), [:admin, order], method: :delete, data: { confirm: 'Are you sure?' } %></td>
           </tr>

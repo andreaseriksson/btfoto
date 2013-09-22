@@ -8,7 +8,7 @@ class PaymentsController < ApplicationController
     
     if @order
       @order.confirm
-      OrderMailer.order_confirmation(@order, @cart).deliver
+      OrderMailer.order_confirmation(@order).deliver
       
       @cart.destroy
       cookies[:cart_id].destroy

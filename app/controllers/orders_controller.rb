@@ -23,7 +23,7 @@ class OrdersController < ApplicationController
         render partial: "payson"
       else
         @order.confirm
-        OrderMailer.order_confirmation(@order, @cart).deliver
+        OrderMailer.order_confirmation(@order).deliver
         @cart.destroy
         cookies.delete :cart_id
         redirect_to store_success_path, notice: t('.notice')     

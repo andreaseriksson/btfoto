@@ -6,12 +6,10 @@ class OrderMailer < ActionMailer::Base
   #
   #   en.order_mailer.order_confirmation.subject
   #
-  def order_confirmation(order,cart)
+  def order_confirmation(order)
     @order = order
-    @cart = cart
     payment_type = @order.payment_type=='cash'?'forskottsbetalning':'kortbetalning'
     subject = "En order är gjord med #{payment_type}"
-    mail to: "info@btfoto.se", subject: subject, from: "info@btfoto.se", bcc: "andreas@codered.se"
-    #mail to: "info@btfoto.se", subject: subject, bcc: "andreas@codered.se"
+    mail to: "info@btfoto.se", subject: subject, from: "butik@btfoto.se", bcc: "andreas@codered.se"
   end
 end

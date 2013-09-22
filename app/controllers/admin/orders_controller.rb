@@ -11,11 +11,14 @@ module Admin
       @order = Order.find(params[:id])
       order_items = OrderItem.where(order_id: @order.id).group(:image_nr).pluck(:image_nr)
       @pictures = @order.order_pictures order_items
-      
-      respond_to do |format|
-        format.html
-        format.pdf do
-          render :pdf => "file_name", :show_as_html => params[:debug]
+      if params[:mail]
+        send_order_mail(@order) if params[:mail]
+      else
+        respond_to do |format|
+          format.html
+          format.pdf do
+            render :pdf => "file_name", :show_as_html => params[:debug]
+          end
         end
       end
     end
@@ -26,6 +29,12 @@ module Admin
       
       redirect_to admin_orders_path, notice: "Order was destroyed"
     end
-        
+    
+    private
+    
+    def send_order_mail(order)
+      OrderMailer.order_confirmation(order).deliver
+      redirect_to admin_orders_path, notice: "Email was sent"
+    end
   end
 end
