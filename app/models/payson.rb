@@ -49,6 +49,22 @@ class Payson
     to_curr sum
   end
   
+  def first_name
+    @order.first_name
+  end
+  
+  def family_name
+    @order.family_name
+  end
+  
+  def email
+    @order.email
+  end
+  
+  def order_id
+    @order.id
+  end
+  
   private
   
   def to_curr(num)

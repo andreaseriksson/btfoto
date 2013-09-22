@@ -1,7 +1,7 @@
 <%= form_tag @payson.gateway_uri, id: "payson"  do %>
-  <%= hidden_field_tag 'BuyerEmail', 'nisse@test.com' %>
-  <%= hidden_field_tag 'BuyerFirstName', 'Nisse' %>
-  <%= hidden_field_tag 'BuyerLastName', 'Pisse' %>
+  <%= hidden_field_tag 'BuyerEmail', @payson.email %>
+  <%= hidden_field_tag 'BuyerFirstName', @payson.first_name %>
+  <%= hidden_field_tag 'BuyerLastName', @payson.family_name %>
   <%= hidden_field_tag 'SellerEmail', @payson.owner_email %>
   <%= hidden_field_tag 'Description', 'Beskrivning' %>
   <%= hidden_field_tag 'Cost', @payson.sum %>
@@ -9,7 +9,7 @@
   <%= hidden_field_tag 'OkUrl', @payson.return_uri %>
   <%= hidden_field_tag 'AgentId', @payson.agent_id %>
   <%= hidden_field_tag 'GuaranteeOffered', '1' %>
-  <%= hidden_field_tag 'RefNr', '666' %>
+  <%= hidden_field_tag 'RefNr', @payson.order_id %>
   <%= hidden_field_tag 'MD5', @payson.hashed_string %>
 <% end %>
 <script>document.forms["payson"].submit();</script>
