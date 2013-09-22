@@ -79,6 +79,6 @@ Btfoto::Application.configure do
   config.log_formatter = ::Logger::Formatter.new
   
   config.action_mailer.delivery_method = :sendmail
-  config.action_mailer.default_url_options = { host: "www.btfoto.se", from: "info@btfoto.se" }
+  config.action_mailer.default_url_options = { host: "www.btfoto.se" }
   
 end
