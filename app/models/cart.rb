@@ -26,6 +26,7 @@ class Cart < ActiveRecord::Base
 	    if days_left(@cart) >= 0 && cart_item.product.allow_discount
 	      total_discount = total_discount.to_f + (price * quantity * 0.1) || 0
 	      total_discount_vat = total_discount_vat.to_f + (vat * quantity * 0.1) || 0
+	      price = price.to_f * 0.9
 	    end
 	    
 	    products << {id: cart_item.product_id, cart_item_id: cart_item.id, image_nr: cart_item.image_nr, name: cart_item.product.name, price: price, total_price: (price * quantity), quantity: quantity, vat: vat, total_vat: (vat * quantity),discount: nil}

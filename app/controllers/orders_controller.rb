@@ -13,6 +13,7 @@ class OrdersController < ApplicationController
     
   def create  
     @order = Order.new(order_params)
+    @order.shipping_cost = calc_shipping_cost(@order, @cart)
     
     if @order.save
       save_order_items @order, @cart
@@ -40,13 +41,25 @@ class OrdersController < ApplicationController
     end
    
     def save_order_items(order, cart)
-      cart.cart_items.each do |cart_item|
-        product = Product.find(cart_item.product_id)
+      cart.summary[:products].each do |cart_row|
+        cart_item = CartItem.find(cart_row[:cart_item_id])
         
-        order_item = OrderItem.create(order_id: order.id, product_id: cart_item.product_id, quantity: cart_item.quantity, price: product.price, vat: product.vat, discount: product.discount, image_nr: cart_item.image_nr)
-        
-        order_item.save
+        order_item = OrderItem.create(
+          order_id: order.id, 
+          product_id: cart_item.product_id, 
+          quantity: cart_row[:quantity], 
+          price: cart_row[:price], 
+          vat: cart_row[:vat], 
+          discount: cart_row[:discount], 
+          image_nr: cart_row[:image_nr]
+          )
       end
+    end
+    
+    def calc_shipping_cost(order, cart)
+      shipping_cost = cart.summary[:delivery]
+      shipping_cost = shipping_cost + CONFIG[:shipping_fee] if order.extra_shipment == true
+      shipping_cost
     end
     
 end
