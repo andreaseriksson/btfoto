@@ -60,7 +60,7 @@ class Order < ActiveRecord::Base
     
     summary = {}
     summary[:sum_without_delivery] = sum_with_vat + prepaid_fee
-    summary[:sum] = sum_with_vat + delivery + prepaid_fee
+    summary[:sum] = sum_with_vat + delivery + prepaid_fee + extra_shipment
     summary[:vat] = sum_vat
     summary[:delivery] = delivery
     summary[:extra_shipment] = extra_shipment
