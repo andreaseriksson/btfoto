@@ -19,9 +19,9 @@
         </div>
         <div class="span6">
           <p>
-            Betalning: <%= @order.payment_type %><br>
-            Försändelser: <%= @order.extra_shipment %><br>
-            Bekräftad: <%= @order.confirmed %><br>
+            Betalning: <%= @order.payment_type == 'card' ? 'Kort':'Förskott' %><br>
+            Försändelser: <%= @order.extra_shipment==true ? '2st':'1st'  %><br>
+            Bekräftad: <%= @order.confirmed==true ? 'Ja':'Nej' %><br>
             Token: <%= @order.token %>
           </p>
         </div>
