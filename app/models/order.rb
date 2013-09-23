@@ -56,7 +56,7 @@ class Order < ActiveRecord::Base
       sum_vat = sum_vat + (order_item.vat * order_item.quantity)
     end
     
-    prepaid_fee = CONFIG[:prepaid_fee] if order.payment_type = 'cash'
+    prepaid_fee = CONFIG[:prepaid_fee] if order.payment_type == 'cash'
     
     summary = {}
     summary[:sum_without_delivery] = sum_with_vat + prepaid_fee
