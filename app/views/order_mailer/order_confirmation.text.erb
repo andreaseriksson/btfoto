@@ -23,9 +23,9 @@ Betalningssätt
  
 Produkter
 ------------------------------------------------------
-<%= @order.shipping_cost == 0 ? "1000 Gratis frakt":"1001 Expeditionsavgift #{to_curr(@order.shipping_cost)}" %>
-<%= "1002 Inbetalningskort" if @order.payment_type == 'cash' %>
-<%= @order.extra_shipment == true ? "1005 Katalogen skickas separat":"1004 En försändelse" %>
+<%= @order.shipping_cost == 0 ? "1000 Gratis frakt":"1001 Expeditionsavgift #{to_curr(@order.summary[:delivery])}Kr" %>
+<%= "1002 Inbetalningskort #{to_curr(@order.summary[:prepaid_fee])}Kr" if @order.payment_type == 'cash' %>
+<%= @order.extra_shipment == true ? "1005 Katalogen skickas separat #{to_curr(@order.summary[:extra_shipment])}Kr":"1004 En försändelse" %>
 <% @order.order_items.each do |order_item| %>
 <%= order_item.quantity %> x <%= order_item.product.name %> (<%= order_item.image_nr %>) = <%= to_curr order_item.total %>Kr
 <% end %>------------------------------------------------------

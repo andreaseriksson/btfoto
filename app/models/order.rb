@@ -42,18 +42,29 @@ class Order < ActiveRecord::Base
     
     sum_with_vat = 0
     sum_vat = 0
+    prepaid_fee = 0
     delivery = order.shipping_cost
+    extra_shipment = 0
+    
+    if order.extra_shipment == true
+      delivery = delivery - CONFIG[:shipping_fee]
+      extra_shipment = CONFIG[:shipping_fee]
+    end
     
     order.order_items.each do |order_item| 
       sum_with_vat = sum_with_vat + order_item.total
       sum_vat = sum_vat + (order_item.vat * order_item.quantity)
     end
     
+    prepaid_fee = CONFIG[:prepaid_fee] if order.payment_type = 'cash'
+    
     summary = {}
-    summary[:sum_without_delivery] = sum_with_vat
-    summary[:sum] = sum_with_vat + delivery
+    summary[:sum_without_delivery] = sum_with_vat + prepaid_fee
+    summary[:sum] = sum_with_vat + delivery + prepaid_fee
     summary[:vat] = sum_vat
     summary[:delivery] = delivery
+    summary[:extra_shipment] = extra_shipment
+    summary[:prepaid_fee] = prepaid_fee
     summary
   end
   
