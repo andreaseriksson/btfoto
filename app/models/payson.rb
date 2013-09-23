@@ -28,7 +28,7 @@ class Payson
   end
   
   def shipping_fee
-    to_curr @cart.summary[:delivery]
+    to_curr @order.shipping_cost
   end
   
   def order_nr
@@ -41,12 +41,7 @@ class Payson
   end
   
   def sum
-    if @cart.days_left >= 0
-      sum = @cart.summary[:sum_after_discount]
-    else
-      sum = @cart.summary[:sum_without_delivery]
-    end
-    to_curr sum
+    to_curr @order.summary[:sum_without_delivery]
   end
   
   def first_name
