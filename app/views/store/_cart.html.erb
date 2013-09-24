@@ -27,8 +27,8 @@
 	        sum = @cart.summary[:sum_without_delivery]
 	      end
 	      
-	      diff = 650 - sum
+	      diff = CONFIG[:freight_free] - sum
 	  %>
-	  <%= sum < 650 ? raw("Beställningen har <strong>#{to_curr(diff)}Kr</strong> kvar till att skickas fraktfritt") : "Beställningen skickas fraktfritt" %>
+	  <%= sum < CONFIG[:freight_free] ? raw("Beställningen har <strong>#{to_curr(diff)}Kr</strong> kvar till att skickas fraktfritt") : "Beställningen skickas fraktfritt" %>
 </div>
 <% end %>
