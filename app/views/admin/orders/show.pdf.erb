@@ -2,6 +2,10 @@
   <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <%= wicked_pdf_stylesheet_link_tag "application" %>
+    <style>
+      #logo {margin-bottom: 20px; }
+      #logo img {border: none; }
+    </style>
   </head>
   <body>
     <center><h2>Packsedel</h2></center>
@@ -11,16 +15,18 @@
         <td valign="top" width="60%">
           <table width="100%">
             <tr>
-              <td align="right" width="30%">Beställd: </td>
-              <td width="70%"> <%= @order.created_at.strftime("%Y-%m-%d") %></td>
-            </tr>
-            <tr>
-              <td align="right">Ordernummer: </td>
-              <td><%= @order.id %></td>
-            </tr>
-            <tr>
-              <td align="right">Betalningssätt: </td>
-              <td><%= @order.payment_type=='card' ? 'Kort':'Förskott' %></td>
+              <td valign="top" width="100%">
+                <small>
+                  <div id="logo"><%= pdf_image_tag "/bt_logga.jpg", class: 'logo'  %></div>
+                  BTFOTO.SE<br> 
+                  Haraldstorpsvägen 235<br>
+                  271 91 Ystad<br>
+                  Sweden<br><br>
+                  
+                  Tel: 0702 - 21 05 70<br>
+                  www.btfoto.se | e-mail: info@btfoto.se
+                </small>
+              </td>
             </tr>
           </table>
         </td>
@@ -32,6 +38,11 @@
                   <%= @order.first_name %> <%= @order.family_name %><br>
                   <%= @order.address1 %> <%= @order.address2 %><br>
                   <%= @order.zip %> <%= @order.city %>
+                  <br><br><br>
+                  Ordernummer: <%= @order.id %><br>
+                  Beställd: <%= @order.created_at.strftime("%Y-%m-%d") %><br>
+                  Betalningssätt: <%= @order.payment_type=='card' ? 'Kort':'Förskott' %><br>
+                  Försändelser: <%= @order.extra_shipment == true ? raw('<strong>2 leveranser</strong>'):'1 leverans' %>
                 <small> 
               </td>
             </tr>
