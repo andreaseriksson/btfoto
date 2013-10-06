@@ -6,6 +6,9 @@
       <h2><i class="icon-inbox"></i> Orders</h2>
     </header>
     <section>
+      <%= search_form_for @search, url: admin_orders_path, class: 'form-inline pull-right', method: 'get' do |f| %>
+        <%= f.text_field :first_name_or_family_name_cont, class: 'input-medium', placeholder: 'Name' %>
+      <% end %>
       <h3>Visa orders</h3>
       <table class="table table-bordered table-striped table-highlight">
       <thead>
