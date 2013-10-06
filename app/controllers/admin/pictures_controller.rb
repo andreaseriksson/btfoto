@@ -5,7 +5,7 @@ module Admin
     
     def index
       @imports = Picture.group(:folder).pluck(:folder)
-      @pictures = Picture.where(folder: params[:folder]) if params[:folder]      
+      @pictures = Picture.where(folder: params[:folder]).order("no, letter") if params[:folder]      
     end
     
     def new
@@ -25,8 +25,6 @@ module Admin
     def destroy
       @picture = Picture.find(params[:id])
       @picture.destroy
-      
-      redirect_to admin_pictures_path, :notice => 'Picture was successfully deleted.'
     end
     
     private

@@ -7,7 +7,6 @@
     </header>
     <section>
       <h3>Ny bilduppladdning</h3>
-      
       <%= simple_form_for([:admin, Picture.new], :html => {:class => 'form-horizontal', :multipart => true}) do |f| %>
         <%= f.error_notification %>
         <div class="form-inputs">
@@ -21,8 +20,7 @@
           <%= link_to 'Back', admin_products_path, class: 'btn btn-alt' %>
         </div>
       <% end %>
-      
-    </section>  
+    </section>
     <section>
       <h3>Visa bilduppladdningar</h3>
       <%= form_tag(admin_pictures_path, class: 'form-horizontal', method: 'get') do %>
@@ -42,9 +40,9 @@
       <h3>Visa bilduppladdningar för <%= params[:folder] %></h3>
       <div class="row">
       <% @pictures.each do |picture| %>
-        <div class="span1">
+        <div class="span1" data-image="<%= picture.id %>">
         <%= link_to image_tag(picture.image, class: 'thumbnail'), picture.image.url %>
-        <%= link_to 'x', [:admin, picture], method: :delete, class: 'destroy-link', data: { confirm: t('delete?') } %>
+        <%= link_to 'x', [:admin, picture], method: :delete, remote: true, class: 'destroy-link', data: { confirm: t('delete?') } %>
         </div>
       <% end %>
       </div>
@@ -52,6 +50,18 @@
     <% end %>
   </article>
   <!-- /Data block -->
+  <article class="span4 data-block"> 
+    <% if @pictures %>
+    <section>
+      <h5>Lista bilder för <%= params[:folder] %></h5>
+      <ul class="unstyled">
+      <% @pictures.each do |picture| %>
+        <li data-image="<%= picture.id %>"><%= picture.image_nr %></li>
+      <% end %>
+      </ul>
+    </section>
+    <% end %>
+  </article>
 </div>
 
 
