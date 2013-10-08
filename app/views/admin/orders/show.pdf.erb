@@ -63,7 +63,7 @@
       </tr>
       <% @order.order_items.each do |order_item| %>
       <tr>
-        <td align="right">1</td>
+        <td align="right"><%= order_item.quantity %></td>
         <td>
           <%= order_item.product.name %> 
           <%= order_item.image_nr %>
