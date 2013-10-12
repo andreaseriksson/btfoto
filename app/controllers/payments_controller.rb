@@ -10,8 +10,8 @@ class PaymentsController < ApplicationController
       @order.confirm
       OrderMailer.order_confirmation(@order).deliver
       
-      @cart.destroy
-      cookies[:cart_id].destroy
+      @cart.destroy if @cart
+      cookies[:cart_id].destroy if cookies[:cart_id]
       redirect_to "/store", notice: t('.notice')
     else
       redirect_to "/store", warning: t('.warning')
