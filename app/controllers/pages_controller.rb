@@ -17,6 +17,10 @@ class PagesController < ApplicationController
     
     redirect_to root_path if @page == Page.first
   end
+  
+  def redirect
+    redirect_to root_path, :status => :moved_permanently
+  end
     
   private
   

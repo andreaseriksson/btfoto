@@ -61,6 +61,11 @@ Btfoto::Application.routes.draw do
   
   get '/:id' => 'pages#show'
   
-  #resource :session, only: [:new, :create, :destroy]
-  #resources :users, only: [:new, :create]
+  get '(*app)' => 'pages#redirect'
+  get '(*uppdrag)' => 'pages#redirect'
+  get '(*konfirmation)' => 'pages#redirect'
+  get '(*bildspel)' => 'pages#redirect'
+  get '(*photos)' => 'pages#redirect'
+  get '(*mig)' => 'pages#redirect'
+  
 end
