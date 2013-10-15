@@ -10,6 +10,7 @@ Btfoto::Application.routes.draw do
     end
   end
   
+  resources :news, only: [:index, :show]
   resources :orders, only: [:create]
   resources :appointments, only: [:index, :edit, :update]
     
