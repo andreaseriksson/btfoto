@@ -5,14 +5,18 @@ class PaymentsController < ApplicationController
   
   def create
     @order = Order.where(token: params[:token]).first
-    
+    @cart.destroy
     if @order
       @order.confirm
       OrderMailer.order_confirmation(@order).deliver
       
-      @cart.destroy if @cart
-      cookies[:cart_id].destroy if cookies[:cart_id]
-      redirect_to "/store", notice: t('.notice')
+      begin
+        @cart.destroy if defined? @cart
+        cookies[:cart_id].destroy if defined? cookies[:cart_id]  
+      ensure
+        redirect_to "/store", notice: t('.notice')     
+      end
+      
     else
       redirect_to "/store", warning: t('.warning')
     end
