@@ -5,7 +5,7 @@ class PaymentsController < ApplicationController
   
   def create
     @order = Order.where(token: params[:token]).first
-    @cart.destroy
+    
     if @order
       @order.confirm
       OrderMailer.order_confirmation(@order).deliver
