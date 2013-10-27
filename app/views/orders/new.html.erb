@@ -33,20 +33,26 @@
       							<p class="radio-buttons">
       							  <%= f.collection_radio_buttons :payment_type, [['card', 'Betalkort (Visa/Mastercard)'] ,['cash', 'Förskottsbetalning (+19kr) Du får ett inbetalningskort hemskickat med posten.']], :first, :last, checked: 'card' %>
       							</p>
-      
+                    
+                    <div class="school-catalog">
       						  <h3>Skolkatalog?</h3>
-      							<p>En leverans med porträttbilderna + klassfoto och en separat leverans av skolkatalogen eller en gemensam leverans med allt då skolkatalogen är klar.</p>
-      							<p class="radio-buttons">
-      							  <%= f.collection_radio_buttons :extra_shipment, [[false, 'Samma leverens'] ,[true, 'Separat leverans (+33kr)']], :first, :last, checked: false %>
-      							</p>
-      							<p><small>Om du väljer en leverans blir det endast en expeditionsavgift men du får vänta längre på att få hem dina foton.</small></p>
-      								
+      							  <p>En leverans med porträttbilderna + klassfoto och en separat leverans av skolkatalogen eller en gemensam leverans med allt då skolkatalogen är klar.</p>
+      							  <p class="radio-buttons">
+      							    <%= f.collection_radio_buttons :extra_shipment, [[false, 'Samma leverens'] ,[true, 'Separat leverans (+33kr)']], :first, :last, checked: false %>
+      							  </p>
+      							  <p><small>Om du väljer en leverans blir det endast en expeditionsavgift men du får vänta längre på att få hem dina foton.</small></p>
+                    </div>	
       							<div align="right">
       								<br><br>
       								<%= f.button :submit, class: 'btn btn-success btn-large' %>
       							</div>
-                    
-                    
+                    <% unless @cart.summary.to_json.downcase.include? "skolkatalog" %> 
+                    <style>
+                    .school-catalog {
+                      display: none;
+                    }
+                    </style>
+                    <% end %>
                   <% end %>
                 </div> 
               </div>
