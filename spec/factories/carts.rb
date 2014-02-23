@@ -6,7 +6,7 @@ FactoryGirl.define do
     after(:create) do |cart|
       picture = FactoryGirl.create(:picture)
       product = FactoryGirl.create(:product, price: 80, vat: 0.25, freight: true)
-      cart.cart_items << FactoryGirl.create(:cart_item, cart: cart, product: product)
+      cart.cart_items << FactoryGirl.create(:cart_item, cart: cart, product: product, quantity: 2)
     end  
   end
 end

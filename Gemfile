@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.0.0'
+gem 'rails', '4.0.3'
 
 gem 'sass-rails', '~> 4.0.0'
 gem 'uglifier', '>= 1.3.0'
@@ -16,11 +16,11 @@ end
 gem 'unicorn'
 gem 'capistrano'
 
-gem 'bcrypt-ruby', '~> 3.1.0'
+gem 'bcrypt-ruby', '~> 3.1.1'
 gem "bootstrap-sass", "~> 2.3.2.0"
 gem "font-awesome-rails"
 gem "haml"
-gem "simple_form", '3.0.0.rc'
+gem "simple_form", '3.0.1'
 gem "bourbon"
 gem 'elusive-icons-sass-rails'
 gem "bootstrap-wysihtml5-rails", "~> 0.3.1.22"

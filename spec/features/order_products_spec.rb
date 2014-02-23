@@ -51,7 +51,7 @@ feature 'Order product' do
     
   end
   
-  contect 'customer imgages' do
+  context 'customer imgages' do
     
     scenario 'show customer image'
     
@@ -59,7 +59,7 @@ feature 'Order product' do
     
   end
   
-  contect 'checkout page' do
+  context 'checkout page' do
     
     scenario 'if empty cart'
     
