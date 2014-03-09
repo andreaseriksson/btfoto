@@ -39,7 +39,7 @@ module Admin
       @news_item = News.find_by(slug: params[:id])
       @news_item.destroy
       
-      redirect_to admin_news_index_path, :notice => 'News was successfully deleted.'
+      redirect_to admin_news_index_path, notice: 'News was successfully deleted.'
     end
     
     private

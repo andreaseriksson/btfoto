@@ -69,7 +69,7 @@
         .container
           .row-fluid
             .span3.copyright
-              %p © 2013 BT-foto
+              %p= "© #{Date.today.strftime("%Y")} BT-foto"
             .span7.footNav
               -@pages.each do |page|
                 = link_to page.title, "/#{page.slug}"

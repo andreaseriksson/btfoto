@@ -18,7 +18,7 @@ module Admin
         respond_to do |format|
           format.html
           format.pdf do
-            render :pdf => "file_name", :show_as_html => params[:debug]
+            render pdf: "file_name", show_as_html: params[:debug]
           end
         end
       end

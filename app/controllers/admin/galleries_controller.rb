@@ -39,21 +39,21 @@ module Admin
       @gallery = Gallery.find(params[:id])
       @gallery.destroy
       
-      redirect_to admin_galleries_path, :notice => 'Gallery category was successfully deleted.'
+      redirect_to admin_galleries_path, notice: 'Gallery category was successfully deleted.'
     end
     
     def move_higher
       @gallery = Gallery.find(params[:gallery_id])
       @gallery.move_higher if @gallery
             
-      redirect_to admin_galleries_path, :notice => 'Gallery was successfully deleted.'
+      redirect_to admin_galleries_path, notice: 'Gallery was successfully deleted.'
     end
     
     def move_lower
       @gallery = Gallery.find(params[:gallery_id])
       @gallery.move_lower if @gallery
             
-      redirect_to admin_galleries_path, :notice => 'Gallery was successfully deleted.'
+      redirect_to admin_galleries_path, notice: 'Gallery was successfully deleted.'
     end
     
     private
