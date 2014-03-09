@@ -67,8 +67,8 @@
         </h1>
         <% @frontpage.news.each do |news| %>
         <p>
-          <strong><%= news.published_at.strftime("%Y-%m-%d") %></strong> <%= news.title %> 
-          <%= news.preamble %>
+          <strong><%= news.published_at.strftime("%Y-%m-%d") %></strong> <%= link_to news.title, news_path(news) %><br> 
+          <%= link_to news.preamble.html_safe, news_path(news) %>
         </p>
         <hr>
         <% end %>

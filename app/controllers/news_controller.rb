@@ -4,17 +4,12 @@ class NewsController < ApplicationController
   before_action :load_menu
   
   def index
-    @news = News.where("published_at <= ?", Time.new.strftime("%Y-%m-%d")).order("published_at desc").paginate(:page => params[:page], :per_page => 20)
+    @news = News.published.paginate(page: params[:page], per_page: 20)
   end
   
   def show
-    if params[:id]
-      @page = Page.find_by(slug: params[:id])
-      redirect_to root_path unless @page
-    else
-      @page = Page.first
-    end
-    
+    @page = Page.first
+    @news = News.find_by(slug: params[:id])
   end
   
   private

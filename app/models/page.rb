@@ -11,4 +11,8 @@ class Page < ActiveRecord::Base
   scope :active, -> { where(active: true) }
   default_scope -> { order("position ASC") }
   
+  def first_page?
+    self == Page.first
+  end
+  
 end

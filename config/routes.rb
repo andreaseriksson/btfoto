@@ -10,7 +10,9 @@ Btfoto::Application.routes.draw do
     end
   end
   
-  resources :news, only: [:index, :show]
+  get 'nyheter', to: 'news#index', as: 'news_index'
+  get 'nyheter/:id', to: 'news#show', as: 'news'
+  
   resources :orders, only: [:create]
   resources :appointments, only: [:index, :edit, :update]
     

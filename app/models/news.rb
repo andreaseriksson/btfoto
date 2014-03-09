@@ -5,5 +5,5 @@ class News < ActiveRecord::Base
   validates :title, presence: true
   
   default_scope -> { order("created_at DESC") }
-  
+  scope :published, -> { where("published_at <= ?", Date.today).order(published_at: :desc) }
 end
