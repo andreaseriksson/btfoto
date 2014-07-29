@@ -3,7 +3,7 @@
   <!-- Data block -->
   <article class="span8 data-block">
     <header>
-      <h2><i class="icon-play-circle"></i> <%= t 'admin.galleries.Title' %></h2>
+      <h2><i class="fa fa-play-circle"></i> <%= t 'admin.galleries.Title' %></h2>
     </header>
     <section>
       <%= link_to t('admin.galleries.new.New_image'), new_admin_gallery_path, :class => 'btn btn-alt btn-primary pull-right' %>
@@ -13,16 +13,17 @@
       <tr>
         <th>Produkt</th>
         <th></th>
+        <th></th>
       </tr>
       </thead>
     <% @galleries.each do |gallery| %>
       <tr>
         <td><%= gallery.image.file.filename %></td>
-        <td><%= link_to raw('<i class="icon-edit"></i>'), edit_admin_gallery_path(gallery) %> <%= link_to raw('<i class="icon-trash"></i>'), [:admin, gallery], method: :delete, data: { confirm: t('delete?') } %></td>
+        <td><%= link_to raw('<i class="fa fa-edit"></i>'), edit_admin_gallery_path(gallery) %> <%= link_to raw('<i class="fa fa-trash-o"></i>'), [:admin, gallery], method: :delete, data: { confirm: t('delete?') } %></td>
         
         <td>
-          <%= link_to "Upp", admin_gallery_move_higher_path(gallery.id) %>
-          <%= link_to "Ner", admin_gallery_move_lower_path(gallery.id) %>
+          <%= link_to '<i class="fa fa-chevron-up"></i>'.html_safe, admin_gallery_move_higher_path(gallery.id) %>
+          <%= link_to '<i class="fa fa-chevron-down"></i>'.html_safe, admin_gallery_move_lower_path(gallery.id) %>
         </td>
         
       </tr>

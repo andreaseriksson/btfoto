@@ -1,11 +1,15 @@
 class Dashboard
   
+  def unprinted_orders
+    Order.unprinted.includes(:order_items)
+  end
+  
   def last_ten_orders
     Order.includes(:order_items).limit(10)
   end
   
-  def last_weeks_grouped_orders
-     Order.group("DATE(exposed_at)")
+  def grouped_orders
+    Order.where('created_at between ? and ?', Date.today, 1.week.ago).group_by { |t| t.created_at.beginning_of_week }.inject({}) {|hash, o| hash[o.first] = o.last.size; hash}
   end
   
   def new_appointments

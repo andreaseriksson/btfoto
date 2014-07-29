@@ -6,9 +6,17 @@
   	<div class="row-fluid">
   		<div class="span12">
   			<div class="row-fluid featuredContent">
-  				
-  				<%= debug @news %>
-  						
+  
+  				<% @news.each do |news| %>
+            <h3><%= news.title %> <small>Publicerad <%= news.published_at.strftime("%Y-%m-%d") %></small></h3>
+            <p>
+              <%= news.preamble %><br>
+              <%= link_to('Läs mer <i class="fa fa-angle-double-right"></i>'.html_safe, news_path(news)) %>
+            </p>
+          <% end %>
+          <hr>
+          <%= will_paginate @news %>
+          
   			</div>
   			<div class="row-fluid">
   				<div class="divider dotted clearfix"><span></span></div>

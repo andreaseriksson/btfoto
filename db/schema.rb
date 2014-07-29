@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131015183501) do
+ActiveRecord::Schema.define(version: 20140311204359) do
 
   create_table "appointments", force: true do |t|
     t.string   "label"
@@ -128,6 +128,7 @@ ActiveRecord::Schema.define(version: 20131015183501) do
     t.boolean  "extra_shipment"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.datetime "printed_at"
   end
 
   create_table "pages", force: true do |t|

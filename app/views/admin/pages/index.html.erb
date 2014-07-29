@@ -3,7 +3,7 @@
   <!-- Data block -->
   <article class="span12 data-block">
     <header>
-      <h2><i class="icon-file-text-alt"></i> <%= t 'admin.pages.Title' %></h2>
+      <h2><i class="fa fa-file-text-o"></i> <%= t 'admin.pages.Title' %></h2>
     </header>
     <section>
       <%= link_to t('admin.pages.new.New_page'), new_admin_page_path, :class => 'btn btn-alt btn-primary pull-right' %>
@@ -21,9 +21,9 @@
             <td><%= page.title %></td>
             <td>/<%= page.slug %></td>
             <td>
-              <%= link_to raw('<i class="icon-chevron-up"></i>'), admin_page_move_higher_path(page.slug) %>
-              <%= link_to raw('<i class="icon-chevron-down"></i>'), admin_page_move_lower_path(page.slug) %>
-              <%= link_to raw('<i class="icon-edit"></i>'), edit_admin_page_path(page) %> <%= link_to raw('<i class="icon-trash"></i>'), [:admin, page], method: :delete, data: { confirm: t('delete?') } %></td>
+              <%= link_to raw('<i class="fa fa-chevron-up"></i>'), admin_page_move_higher_path(page.slug) %>
+              <%= link_to raw('<i class="fa fa-chevron-down"></i>'), admin_page_move_lower_path(page.slug) %>
+              <%= link_to raw('<i class="fa fa-edit"></i>'), edit_admin_page_path(page) %> <%= link_to raw('<i class="fa fa-trash-o"></i>'), [:admin, page], method: :delete, data: { confirm: t('delete?') } %></td>
           </tr>
           <%= render 'submenu_pages', pages: page.children %>
         <% end %>

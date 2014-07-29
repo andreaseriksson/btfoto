@@ -13,7 +13,7 @@ class Order < ActiveRecord::Base
   before_create { generate_token(:token) }
   
   default_scope -> { order("created_at DESC") }
-  
+  scope :unprinted, -> { where(printed_at: nil) }
   
   def generate_token(column)
 	  begin
@@ -71,4 +71,10 @@ class Order < ActiveRecord::Base
   def order_nr
     self.id + 3200
   end
+  
+  def mark_as_printed
+    self.printed_at = Time.now
+    self.save
+  end
+  
 end

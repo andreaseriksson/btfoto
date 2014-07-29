@@ -16,11 +16,12 @@ module PagesHelper
   
   def news_item(news)
     content_tag(:p) do   
-      text = content_tag(:strong) { news.published_at.strftime("%Y-%m-%d") }
-      text << link_to(news.title, news_path(news))
+      text = content_tag(:strong) { news.published_at.strftime("%Y-%m-%d") + " " + news.title }
       text << "<br>".html_safe
-      text << link_to(news.preamble, news_path(news))
-      text.html_safe
+      text << news.preamble
+      text << "<br>".html_safe
+      text << link_to('Läs mer <i class="fa fa-angle-double-right"></i>'.html_safe, news_path(news))
+      text
     end
   end
 end

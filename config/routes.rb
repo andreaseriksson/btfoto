@@ -44,7 +44,9 @@ Btfoto::Application.routes.draw do
     end
     resources :products
     resources :product_categories
-    resources :orders
+    resources :orders do
+      get :mark_as_printed
+    end
     resources :pictures
     resources :customers
     resource :session, only: [:new, :create, :destroy]

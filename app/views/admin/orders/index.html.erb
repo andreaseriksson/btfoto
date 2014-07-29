@@ -3,7 +3,7 @@
   <!-- Data block -->
   <article class="span12 data-block">
     <header>
-      <h2><i class="icon-inbox"></i> Orders</h2>
+      <h2><i class="fa fa-inbox"></i> Orders</h2>
     </header>
     <section>
       <%= search_form_for @search, url: admin_orders_path, class: 'form-inline pull-right', method: 'get' do |f| %>
@@ -33,10 +33,10 @@
         <td><%= order.confirmed == true ? 'Ja':'Nej' %></td>
         <td><%= order.payment_type == 'card' ? 'Kort' : 'Förskott' %></td>
         <td><%= order.created_at.strftime("%Y-%m-%d") %></td>
-        <td><%= link_to raw('<i class="icon-file-alt"></i>'), [:admin, order] %></td>
-        <td><%= link_to raw('<i class="icon-envelope-alt"></i>'), admin_order_path(order, mail: true) %></td>
-        <td><%= link_to raw('<i class="icon-print"></i>'), admin_order_path(order, format: :pdf) %></td>
-        <td><%= link_to raw('<i class="icon-trash"></i>'), [:admin, order], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to raw('<i class="fa fa-file-o"></i>'), [:admin, order] %></td>
+        <td><%= link_to raw('<i class="fa fa-envelope-o"></i>'), admin_order_path(order, mail: true) %></td>
+        <td><%= link_to raw('<i class="fa fa-print"></i>'), admin_order_path(order, format: :pdf) %></td>
+        <td><%= link_to raw('<i class="fa fa-trash-o"></i>'), [:admin, order], method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
     </table>

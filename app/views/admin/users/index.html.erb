@@ -3,7 +3,7 @@
   <!-- Data block -->
   <article class="span8 data-block">
     <header>
-      <h2><i class="icon-reorder"></i> Användare</h2>
+      <h2><i class="fa fa-user"></i> Användare</h2>
     </header>
     <section>
       <h3>Visa användare</h3>
@@ -17,7 +17,7 @@
     <% @users.each do |user| %>
       <tr>
         <td><%= user.email %></td>
-        <td><%#= link_to raw('<i class="icon-edit"></i>'), edit_admin_users_path(user) %> <%= link_to(raw('<i class="icon-trash"></i>'), [:admin, user], method: :delete, data: { confirm: 'Are you sure?' }) unless user == current_user %></td>
+        <td><%#= link_to raw('<i class="fa fa-edit"></i>'), edit_admin_users_path(user) %> <%= link_to(raw('<i class="fa fa-trash-o"></i>'), [:admin, user], method: :delete, data: { confirm: 'Are you sure?' }) unless user == current_user %></td>
       </tr>
     <% end %>
     </table>

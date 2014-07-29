@@ -3,7 +3,7 @@
   <!-- Data block -->
   <article class="span12 data-block">
     <header>
-      <h2><i class="icon-table"></i> <%= t 'admin.products.Title' %></h2>
+      <h2><i class="fa fa-table"></i> <%= t 'admin.products.Title' %></h2>
     </header>
     <section>
       <%= link_to t('admin.products.new.New_product'), new_admin_product_path, :class => 'btn btn-alt btn-primary pull-right' %>
@@ -30,7 +30,7 @@
         <td><%= product.freight == true ? t('Yes'):t('No') %></td>
         <td><%= product.allow_discount == true ? t('Yes'):t('No') %></td>
         <td><%= product.types[product.product_type] %></td>
-        <td><%= link_to raw('<i class="icon-edit"></i>'), edit_admin_product_path(product) %> <%= link_to raw('<i class="icon-trash"></i>'), [:admin, product], method: :delete, data: { confirm: t('delete?') } %></td>
+        <td><%= link_to raw('<i class="fa fa-edit"></i>'), edit_admin_product_path(product) %> <%= link_to raw('<i class="fa fa-trash-o"></i>'), [:admin, product], method: :delete, data: { confirm: t('delete?') } %></td>
       </tr>
     <% end %>
     </table>

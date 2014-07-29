@@ -31,6 +31,11 @@ module Admin
       redirect_to admin_orders_path, notice: "Order was destroyed"
     end
     
+    def mark_as_printed
+      @order = Order.find(params[:order_id])
+      @order.mark_as_printed
+    end
+    
     private
     
     def send_order_mail(order)

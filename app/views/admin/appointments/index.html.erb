@@ -3,7 +3,7 @@
   <!-- Data block -->
   <article class="span12 data-block">
     <header>
-      <h2><i class="icon-reorder"></i> Tidsbokning</h2>
+      <h2><i class="fa fa-calendar"></i> Tidsbokning</h2>
     </header>
     <section>
       <%= link_to "Ny tid", new_admin_appointment_path, :class => 'btn btn-alt btn-primary pull-right' %>
@@ -28,7 +28,7 @@
         <td><%= appointment.name %></td>
         <td><%= appointment.email %></td>
         <td><%= appointment.phone %></td>
-        <td><%= link_to raw('<i class="icon-edit"></i>'), edit_admin_appointment_path(appointment) %> <%= link_to raw('<i class="icon-trash"></i>'), [:admin, appointment], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to raw('<i class="fa fa-edit"></i>'), edit_admin_appointment_path(appointment) %> <%= link_to raw('<i class="fa fa-trash-o"></i>'), [:admin, appointment], method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
     </table>

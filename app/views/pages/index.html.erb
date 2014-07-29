@@ -6,9 +6,7 @@
         <div class='carousel slide' id='myCarousel'>
           <div class='carousel-inner'>
             <% @frontpage.gallery.each do |gallery| %>
-              <% style = 'item' %>
-              <% style = 'item active' if gallery.id == Gallery.all.first.id %>
-              <%= content_tag(:div, nil, class: style) do %>
+              <%= content_tag(:div, nil, class: (gallery.id == Gallery.all.first.id ? 'item active' : 'item')) do %>
                 <%= image_tag gallery.image %>
               <% end %>
             <% end %>         
@@ -69,6 +67,7 @@
           <%= news_item(news) %>
           <hr>
         <% end %>
+        <%= link_to('Alla nyheter <i class="fa fa-angle-double-right"></i>'.html_safe, news_index_path, class: 'pull-right') %>
       </div>
     </div>
     <div class='row-fluid'>
