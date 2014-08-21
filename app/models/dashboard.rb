@@ -9,7 +9,7 @@ class Dashboard
   end
   
   def grouped_orders
-    Order.where('created_at between ? and ?', Date.today, 1.week.ago).group_by { |t| t.created_at.beginning_of_week }.inject({}) {|hash, o| hash[o.first] = o.last.size; hash}
+    Order.where('created_at between ? and ?', 8.week.ago, Date.today).group_by { |t| t.created_at.beginning_of_week }.inject({}) {|hash, o| hash[o.first.strftime("%U")] = o.last.size; hash}
   end
   
   def new_appointments
@@ -24,4 +24,7 @@ class Dashboard
     Product.joins("LEFT JOIN order_items ON products.id=order_items.product_id").group('products.id').order('total asc').limit(5).pluck("products.id,products.name, sum(quantity) as total")
   end
   
+  def week_dates
+    ((Date.today-(7*7)-1)..Date.today).inject({}) {|hash, d| hash[d.beginning_of_week.strftime("%U")] = 0; hash}
+  end
 end

@@ -5,8 +5,8 @@
   function drawChart() {
     var data = google.visualization.arrayToDataTable([
       ['Vecka', 'Ordrar'],
-      <% @dashboard.grouped_orders.each do |order| %>
-      ['V.<%= order.first.strftime("%U").to_i %>', <%= order.last %>],
+      <% @dashboard.week_dates.each do |week, order_count| %>
+      ['V.<%= week %>', <%= @dashboard.grouped_orders.fetch(week, order_count) %>],
       <% end %>
     ]);
 
