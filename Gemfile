@@ -14,7 +14,7 @@ group :doc do
 end
 
 gem 'unicorn'
-gem 'capistrano'
+gem 'capistrano', '~> 2.15.4'
 
 gem 'bcrypt-ruby', '~> 3.1.1'
 gem "bootstrap-sass", "~> 2.3.2.0"
