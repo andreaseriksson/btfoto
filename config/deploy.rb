@@ -74,6 +74,6 @@ namespace :deploy do
     end
   end
   before "deploy", "deploy:check_revision"
-  before "deploy", "deploy:remove_json"
+  #after "deploy", "deploy:remove_json"
   after "deploy", "deploy:migrate"
 end
