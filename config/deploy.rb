@@ -74,6 +74,13 @@ namespace :deploy do
     end
   end
   before "deploy", "deploy:check_revision"
-  #after "deploy", "deploy:remove_json"
   after "deploy", "deploy:migrate"
+end
+
+namespace :sake do
+  desc "Run a task on a remote server."
+  # run like: cap staging rake:invoke task=a_certain_task  
+  task :invoke do
+    run("cd #{deploy_to}/current && bundle exec rake #{ENV['task']} RAILS_ENV=#{rails_env}")
+  end
 end
