@@ -30,7 +30,8 @@ class Picture < ActiveRecord::Base
   scope :current_image, ->(image_nr) { where(name: image_nr[0,(image_nr.length-1)], letter: image_nr[-1,1]) }
   
   def syblings
-    Picture.where(year: self.year, school: self.school, no: self.no).where.not(id: self.id).order(:letter)
+    #Picture.where(year: self.year, school: self.school, no: self.no).where.not(id: self.id).order(:letter)
+    Picture.where(year: self.year, school: self.school, no: self.no).order(:letter)
   end
   
   def group_image

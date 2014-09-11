@@ -1,21 +1,20 @@
 <h3>Provbild</h3>
-<div class="row">
-  <div class="span7 offset1">
-    <div class="thumbnail img-modal">
-      <%= thumbnail(@picture, @picture.image.url) %>
-    </div>
-    <div align="center">
-      <div style="padding-top:6px;padding-bottom:3px"><small><em>Lägga till syskon?</em></small></div>
-      <%= link_to "Byt bildnr.", store_edit_image_path, class: 'btn btn-success btn-small' %>
-    </div>
-  </div>
-  <div class="span4">
-    <% @picture.syblings.each do |picture| %>
-    <div class="thumbnail">
-      <%= thumbnail(picture, store_switch_image_path(image_nr: picture.image_nr) ) %>
-    </div>
+
+<% @picture.syblings.in_groups_of(2, false) do |row| %>
+  <div class="row-fluid" style="margin-bottom: 5px;">
+    <% row.each do |picture| %>
+      <div class="span6 thumbnail <%= "chosen" if picture.id == @picture.id %>">
+        <div class="img-modal"><%= thumbnail(picture, picture.image.url ) %></div>
+        <%- btn_class = (picture.id == @picture.id ? 'btn-danger':'') -%>
+        <%= link_to (picture.id == @picture.id ? 'Vald!':'Välj'), store_switch_image_path(image_nr: picture.image_nr), class: "btn-block btn btn-small #{btn_class}" %>
+      </div>
     <% end %>
   </div>
+<% end %>
+
+<div align="center">
+  <div style="padding-top:6px;padding-bottom:3px"><small><em>Lägga till syskon?</em></small></div>
+  <%= link_to "Byt bildnr.", store_edit_image_path, class: 'btn btn-success btn-small' %>
 </div>
 
 <% if @picture.group_image %>
@@ -29,3 +28,10 @@
     <div class="span4"></div>
   </div>
 <% end %>
+
+<style>
+.thumbnail.chosen {
+  border-color: red;
+  box-shadow: 0 0 2px red;
+}
+</style>

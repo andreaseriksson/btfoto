@@ -133,6 +133,8 @@ sv:
       update: Ändra %{model}
       news:
         create: Create News
+      picture:
+        create: Create Picture
   number:
     currency:
       format:
@@ -203,8 +205,12 @@ sv:
         preamble: Preamble
         published_at: Published at
         title: Title
+      picture:
+        image: Image
+        product_category: Product category
     models:
       news: News
+      picture: Picture
   simple_form:
     hints:
       news:
@@ -213,6 +219,10 @@ sv:
           preamble: 
           published_at: 
           title: 
+      picture:
+        index:
+          image: 
+          product_category: 
     labels:
       news:
         new:
@@ -220,6 +230,10 @@ sv:
           preamble: 
           published_at: 
           title: 
+      picture:
+        index:
+          image: 
+          product_category: 
     placeholders:
       news:
         new:
@@ -231,3 +245,16 @@ sv:
       mark: '*'
       text: required
   Success: 
+  admin:
+    pictures:
+      Title: 
+  delete?: 
+  store:
+    auth:
+      notice: 
+      warning: 
+    switch_image:
+      notice: 
+  cart_items:
+    create:
+      notice: 
