@@ -14,4 +14,8 @@ jQuery ->
     $(elem).wysihtml5
       html: true
 
-  
+  $('.filter').click (e) ->
+    e.preventDefault
+    filter = $(this).data('filter')
+    value = $(this).data('value')
+    $('[data-'+filter+'="'+value+'"]').toggle()

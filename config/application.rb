@@ -36,6 +36,8 @@ module Btfoto
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
+    config.i18n.default_locale = :sv
+    
     
     config.assets.precompile << %w( frontend.css frontend.js admin/theme.css admin/backend.css backend.js favicon.ico jquery.sidr.min.js jquery.sidr.dark.css jquery.jgrowl.js jquery.jgrowl.css )
   end

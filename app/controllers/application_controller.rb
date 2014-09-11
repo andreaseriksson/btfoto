@@ -6,8 +6,6 @@ class ApplicationController < ActionController::Base
   
   layout 'backend'
   
-  before_filter :set_locale
-  
   private
   
   def authenticate_user
@@ -40,9 +38,4 @@ class ApplicationController < ActionController::Base
   def load_picture
     @picture ||= Picture.current_image(cookies[:image_nr]).first if cookies[:image_nr]
   end
-  
-  def set_locale
-    I18n.locale = 'se'
-  end
-  
 end

@@ -20,7 +20,7 @@ module PagesHelper
       text << "<br>".html_safe
       text << news.preamble
       text << "<br>".html_safe
-      text << link_to('Läs mer <i class="fa fa-angle-double-right"></i>'.html_safe, news_path(news))
+      text << link_to('Läs mer <i class="fa fa-angle-double-right"></i>'.html_safe, news_path(news)) if news.content.present?
       text
     end
   end
