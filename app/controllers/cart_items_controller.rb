@@ -9,7 +9,7 @@ class CartItemsController < ApplicationController
     @cart_item.quantity = @cart_item.quantity.to_i + 1
     
     if @cart_item.save
-      redirect_to store_path, notice: t('.notice')
+      redirect_to store_path, notice: t('cart_items.create.notice')
     else
       render action: 'new'
     end
@@ -18,7 +18,7 @@ class CartItemsController < ApplicationController
   def delete_multiple
     ids = params[:cart_items].split(",")
     CartItem.destroy(ids)
-    redirect_to store_checkout_path, notice: t('.notice')
+    redirect_to store_checkout_path, notice: t('cart_items.delete_multiple.notice')
   end
   
   def update_multiple
@@ -34,14 +34,14 @@ class CartItemsController < ApplicationController
         end
       end
     end
-    redirect_to store_checkout_path, notice: t('.notice')
+    redirect_to store_checkout_path, notice: t('cart_items.update_multiple.notice')
   end
   
   def destroy_multiple
     @cart = Cart.where(id: cookies[:cart_id]).first_or_create
     @cart.cart_items.each(&:destroy)
     
-    redirect_to store_path, notice: t('.notice')
+    redirect_to store_path, notice: t('cart_items.destroy_multiple.notice')
   end
   
   private

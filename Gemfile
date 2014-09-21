@@ -35,6 +35,7 @@ gem 'carrierwave'
 gem 'jquery-fileupload-rails'
 gem 'ransack'
 gem 'localeapp'
+gem 'i18n-tasks', '~> 0.7.6'
 
 gem "rspec-rails", :group => [:test, :development]
 group :test do

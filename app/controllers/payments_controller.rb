@@ -14,11 +14,11 @@ class PaymentsController < ApplicationController
         @cart.destroy if defined? @cart
         cookies[:cart_id].destroy if defined? cookies[:cart_id]  
       ensure
-        redirect_to "/store", notice: t('.notice')     
+        redirect_to "/store", notice: t('payments.create.notice')     
       end
       
     else
-      redirect_to "/store", warning: t('.warning')
+      redirect_to "/store", warning: t('payments.create.warning')
     end
   end
 end

@@ -33,16 +33,16 @@ class StoreController < ApplicationController
     if @picture    
       cookies[:image_nr] = { :value => params[:image_nr], :expires => 60.minutes.from_now }
       cookies.delete :product_type if cookies[:product_type]
-      redirect_to store_path, notice: t('.notice')
+      redirect_to store_path, notice: t('store.update_image.notice')
     else
-      redirect_to store_edit_image_path, warning: t('.warning')
+      redirect_to store_edit_image_path, warning: t('store.update_image.warning')
     end
   end
   
   def switch_image
     cookies[:image_nr] = { :value => params[:image_nr], :expires => 60.minutes.from_now }
     cookies.delete :product_type if cookies[:product_type]
-    redirect_to store_path, notice: t('.notice')
+    redirect_to store_path, notice: t('store.switch_image.notice')
   end
   
   def payment
@@ -64,9 +64,9 @@ class StoreController < ApplicationController
     
     if @picture
       cookies[:image_nr] = { :value => @picture.image_nr, :expires => 180.minutes.from_now }
-      redirect_to store_path, notice: t('.notice')
+      redirect_to store_path, notice: t('store.auth.notice')
     else
-      redirect_to store_login_path, warning: t('.warning')
+      redirect_to store_login_path, warning: t('store.auth.warning')
     end
   end
   

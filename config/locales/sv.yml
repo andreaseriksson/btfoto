@@ -1,4 +1,33 @@
 sv:
+  Success: 
+  activerecord:
+    attributes:
+      news:
+        content: Content
+        preamble: Preamble
+        published_at: Published at
+        title: Title
+      picture:
+        image: Image
+        product_category: Product category
+    models:
+      news: News
+      picture: Picture
+  admin:
+    pictures:
+      Title: 
+  appointments:
+    update:
+      notice: Din tid är nu bokat
+  cart_items:
+    create:
+      notice: Produkten har lagts i varukorgen.
+    delete_multiple:
+      notice: Produkterna togs bort från varukorgen.
+    destroy_multiple:
+      notice: Produkterna togs bort från varukorgen.
+    update_multiple:
+      notice: Varukorgen har uppdaterats.
   date:
     abbr_day_names:
     - sön
@@ -95,6 +124,7 @@ sv:
       month: Månad
       second: Sekund
       year: År
+  delete?: 
   errors:
     format: '%{attribute} %{message}'
     messages:
@@ -129,12 +159,12 @@ sv:
       prompt: Välj
     submit:
       create: Skapa %{model}
-      submit: Spara %{model}
-      update: Ändra %{model}
       news:
         create: Create News
       picture:
         create: Create Picture
+      submit: Spara %{model}
+      update: Ändra %{model}
   number:
     currency:
       format:
@@ -182,35 +212,17 @@ sv:
     precision:
       format:
         delimiter: ''
+  orders:
+    create:
+      notice: Ordern skapades.
   pages:
     index:
       maintitle: VÄLKOMMEN TILL FOTOGRAFEN PÅ LANDET!
       maintitle_lead: Företagspresentationer, barndop, vigslar, studentexamen, familjehögtider
-  support:
-    array:
-      last_word_connector: ' och '
-      two_words_connector: ' och '
-      words_connector: ', '
-  time:
-    am: ''
-    formats:
-      default: '%a, %e %b %Y %H:%M:%S %z'
-      long: '%e %B %Y %H:%M'
-      short: '%e %b %H:%M'
-    pm: ''
-  activerecord:
-    attributes:
-      news:
-        content: Content
-        preamble: Preamble
-        published_at: Published at
-        title: Title
-      picture:
-        image: Image
-        product_category: Product category
-    models:
-      news: News
-      picture: Picture
+  payments:
+    create:
+      notice: Ordern skapades.
+      warning: Det blev något fel när ordern skapades.
   simple_form:
     hints:
       news:
@@ -244,17 +256,24 @@ sv:
       html: <abbr title="required">*</abbr>
       mark: '*'
       text: required
-  Success: 
-  admin:
-    pictures:
-      Title: 
-  delete?: 
   store:
     auth:
-      notice: 
-      warning: 
+      notice: Du är nu inloggad
+      warning: Det gick inte att logga in med dina uppgifter
     switch_image:
-      notice: 
-  cart_items:
-    create:
-      notice: 
+      notice: Du har nu bytt visningsbild
+    update_image:
+      notice: Du har nu bytt bildnummer
+      warning: Det gick inte att byta bild till det angivna bildnummret
+  support:
+    array:
+      last_word_connector: ' och '
+      two_words_connector: ' och '
+      words_connector: ', '
+  time:
+    am: ''
+    formats:
+      default: '%a, %e %b %Y %H:%M:%S %z'
+      long: '%e %B %Y %H:%M'
+      short: '%e %b %H:%M'
+    pm: ''

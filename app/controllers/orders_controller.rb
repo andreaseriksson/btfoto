@@ -26,7 +26,7 @@ class OrdersController < ApplicationController
         OrderMailer.order_confirmation(@order).deliver
         @cart.destroy
         cookies.delete :cart_id
-        redirect_to store_success_path(type: 'cash'), notice: t('.notice')     
+        redirect_to store_success_path(type: 'cash'), notice: t('orders.create.notice')     
       end
     else
       render action: 'new'
