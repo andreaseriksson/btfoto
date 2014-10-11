@@ -1,5 +1,10 @@
 sv:
-  Success: 
+  Email: 
+  Failure: Misslyckat
+  'No': Nej
+  Success: Lyckat
+  Telefon: 
+  'Yes': Ja
   activerecord:
     attributes:
       news:
@@ -12,10 +17,34 @@ sv:
         product_category: Product category
     models:
       news: News
+      order: Order
       picture: Picture
+  address1: Adress 1
+  address2: Adress 2
   admin:
+    pages:
+      Title: 
+      index:
+        Page: 
+        Show_pages: 
+        Url: 
+      new:
+        New_page: 
     pictures:
       Title: 
+    products:
+      Title: 
+      index:
+        Allow_discount: 
+        Free_shipping: 
+        Image: 
+        Price: 
+        Price_vat: 
+        Product: 
+        Product_type: 
+        Show_products: 
+      new:
+        New_product: 
   appointments:
     update:
       notice: Din tid är nu bokat
@@ -28,6 +57,7 @@ sv:
       notice: Produkterna togs bort från varukorgen.
     update_multiple:
       notice: Varukorgen har uppdaterats.
+  city: Ort
   date:
     abbr_day_names:
     - sön
@@ -124,7 +154,8 @@ sv:
       month: Månad
       second: Sekund
       year: År
-  delete?: 
+  delete?: Vill du verkligen radera?
+  email: 
   errors:
     format: '%{attribute} %{message}'
     messages:
@@ -154,6 +185,8 @@ sv:
       header:
         one: Ett fel förhindrade denna %{model} från att sparas
         other: '%{count} fel förhindrade denna %{model} från att sparas'
+  family_name: Efternamn
+  first_name: Förnamn
   helpers:
     select:
       prompt: Välj
@@ -161,10 +194,13 @@ sv:
       create: Skapa %{model}
       news:
         create: Create News
+      order:
+        create: Create Order
       picture:
         create: Create Picture
       submit: Spara %{model}
       update: Ändra %{model}
+  name: Name
   number:
     currency:
       format:
@@ -223,6 +259,8 @@ sv:
     create:
       notice: Ordern skapades.
       warning: Det blev något fel när ordern skapades.
+  phone: 
+  postnummer: 
   simple_form:
     hints:
       news:
@@ -231,6 +269,16 @@ sv:
           preamble: 
           published_at: 
           title: 
+      order:
+        new:
+          address1: 
+          address2: 
+          city: 
+          email: 
+          family_name: 
+          first_name: 
+          phone: 
+          zip: 
       picture:
         index:
           image: 
@@ -252,6 +300,16 @@ sv:
           content: 
           preamble: 
           title: 
+      order:
+        new:
+          address1: 
+          address2: 
+          city: 
+          email: 
+          family_name: 
+          first_name: 
+          phone: 
+          zip: 
     required:
       html: <abbr title="required">*</abbr>
       mark: '*'
@@ -277,3 +335,4 @@ sv:
       long: '%e %B %Y %H:%M'
       short: '%e %b %H:%M'
     pm: ''
+  zip: Postnummer
