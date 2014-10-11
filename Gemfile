@@ -34,7 +34,6 @@ gem "friendly_id", "5.0.0.beta4"
 gem 'carrierwave'
 gem 'jquery-fileupload-rails'
 gem 'ransack'
-gem 'localeapp'
 
 gem "rspec-rails", :group => [:test, :development]
 group :test do
@@ -50,6 +49,7 @@ group :development do
   gem "better_errors"
   gem "binding_of_caller"
   gem "bullet"
+  gem 'localeapp'
   #gem 'i18n-tasks', '~> 0.7.6'
 end
 
