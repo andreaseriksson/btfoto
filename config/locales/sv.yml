@@ -1,5 +1,4 @@
 sv:
-  Email: 
   Failure: Misslyckat
   'No': Nej
   Success: Lyckat
@@ -155,7 +154,7 @@ sv:
       second: Sekund
       year: År
   delete?: Vill du verkligen radera?
-  email: 
+  email: Email
   errors:
     format: '%{attribute} %{message}'
     messages:
@@ -251,6 +250,8 @@ sv:
   orders:
     create:
       notice: Ordern skapades.
+    new:
+      create_order: Skapa order
   pages:
     index:
       maintitle: VÄLKOMMEN TILL FOTOGRAFEN PÅ LANDET!
@@ -259,7 +260,7 @@ sv:
     create:
       notice: Ordern skapades.
       warning: Det blev något fel när ordern skapades.
-  phone: 
+  phone: Telefon
   postnummer: 
   simple_form:
     hints:

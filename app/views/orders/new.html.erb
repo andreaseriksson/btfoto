@@ -25,7 +25,7 @@
                     <%= f.input :address1, label: t('address1') %>
                     <%= f.input :address2, label: t('address2') %>
                     <%= f.input :city, label: t('city') %>
-                    <%= f.input :zip, label: t('postnummer') %>
+                    <%= f.input :zip, label: t('zip') %>
                     
                     
                     <br><br>
@@ -44,7 +44,7 @@
                     </div>	
       							<div align="right">
       								<br><br>
-      								<%= f.button :submit, class: 'btn btn-success btn-large' %>
+      								<%= f.button :submit, t('.create_order'), class: 'btn btn-success btn-large' %>
       							</div>
                     <% unless @cart.summary.to_json.downcase.include? "skolkatalog" %> 
                     <style>
