@@ -14,10 +14,19 @@ sv:
       picture:
         image: Image
         product_category: Product category
+      appointment:
+        approved: Approved
+        booked: Booked
+        label: Label
+        start_time: Start time
+        email: Email
+        name: Name
+        phone: Phone
     models:
       news: News
       order: Order
       picture: Picture
+      appointment: Appointment
   address1: Adress 1
   address2: Adress 2
   admin:
@@ -199,6 +208,9 @@ sv:
         create: Create Picture
       submit: Spara %{model}
       update: Ändra %{model}
+      appointment:
+        update: Update Appointment
+        create: Create Appointment
   name: Name
   number:
     currency:
@@ -284,6 +296,20 @@ sv:
         index:
           image: 
           product_category: 
+      appointment:
+        edit:
+          email: 
+          name: 
+          phone: 
+          approved: 
+          booked: 
+          label: 
+          start_time: 
+        new:
+          approved: 
+          booked: 
+          label: 
+          start_time: 
     labels:
       news:
         new:
@@ -295,6 +321,17 @@ sv:
         index:
           image: 
           product_category: 
+      appointment:
+        new:
+          approved: 
+          booked: 
+          label: 
+          start_time: 
+        edit:
+          approved: 
+          booked: 
+          label: 
+          start_time: 
     placeholders:
       news:
         new:
@@ -311,10 +348,20 @@ sv:
           first_name: 
           phone: 
           zip: 
+      appointment:
+        edit:
+          email: 
+          name: 
+          phone: 
+          label: 
+        new:
+          label: 
     required:
       html: <abbr title="required">*</abbr>
       mark: '*'
       text: required
+    error_notification:
+      appointment: 'Please review the problems below:'
   store:
     auth:
       notice: Du är nu inloggad

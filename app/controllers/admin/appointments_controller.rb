@@ -4,7 +4,7 @@ module Admin
     before_action :authenticate_user
     
     def index
-      @appointments = Appointment.all
+      @appointments = Appointment.order(start_time: :asc)
     end
     
     def new

@@ -5,19 +5,20 @@
 <%= render partial: '/store/content_top' %>
 <table class="table appointments">
   <tr>
+    <th style="width: 20%">Vecka</th>
     <th style="width: 20%">Datum och tid</th>
     <th>Information</th>
     <th style="width: 15%"></th>
   </tr>
-  <% @days.each do |day| %>
+ <% @appointments.group_by(&:week).each do |week, appointments| %>
   <tr>
-    <td colspan="3" style="border-top:1px solid #5bb75b">
-      <h5 style="font-size:11px; margin:0; padding:0;"><%= day %></h5>
+    <td colspan="4" style="border-top:1px solid #5bb75b">
+      <h5 style="font-size:11px; margin:0; padding:0;"><%= week %></h5>
     </td>
   </tr>
-  <% @appointments.each do |appointment| %>
-    <% if appointment.start_time.strftime("%Y-%m-%d") == day %>
+    <% appointments.each do |appointment| %>
     <tr>
+      <td></td>
       <td class="<%= 'booked' if appointment.booked %>">
         <%= appointment.start_time.strftime("%Y-%m-%d %H:%M") %>
       </td>
@@ -28,7 +29,6 @@
       </td>
     </tr>
     <% end %>
-  <% end %>
   <% end %>
 </table>
 <%= render partial: '/store/content_bottom', locals: {partials: %w[]} %>
