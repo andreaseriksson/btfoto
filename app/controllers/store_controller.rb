@@ -63,10 +63,10 @@ class StoreController < ApplicationController
     @picture = Picture.current_image(params[:image_nr]).first
     
     if @picture
-      cookies[:image_nr] = { :value => @picture.image_nr, :expires => 180.minutes.from_now }
+      cookies[:image_nr] = { value: @picture.image_nr, expires: 180.minutes.from_now }
       redirect_to store_path, notice: t('store.auth.notice')
     else
-      redirect_to store_login_path, warning: t('store.auth.warning')
+      redirect_to store_login_path(error: 'login'), warning: t('store.auth.warning')
     end
   end
   

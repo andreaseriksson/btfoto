@@ -9,9 +9,12 @@
 <%= form_tag store_auth_path do %>
 <%= label_tag :image_nr, 'Bildnummer' %>
 <%= text_field_tag :image_nr, nil, :class => 'input-xlarge', :placeholder => "Ex: 12Test-F1-5544-22" %>
+<% if params[:error] && params[:error] == 'login' %>
+  <p class="text-error" style="width: 80%"><strong>Det gick inte att logga in.</strong><br>Tänk på att bildnummret är skiftlägeskänsligt. Om det ändå inte fungerar så maila ditt felaktiga bildnummer till <a href="mailto: info@btfoto.se">info@btfoto.se</a>.</p>
+<% end %>
 <div align="right">
   <%= submit_tag "Logga in", :class => 'button btn btn-large btn-success' %>
 </div>
 <% end %>
-        	    
+
 <%= render partial: 'content_bottom', locals: {partials: %w[payment_info]} %>
