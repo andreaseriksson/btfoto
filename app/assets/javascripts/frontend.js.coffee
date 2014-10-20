@@ -7,7 +7,7 @@ getChecked = ->
   $("input:checked").each ->
     checked_list.push $(this).val()
   $("#delete_cart_items").val checked_list
-  
+
 
 $ ->
   $(".cart_item_row input[type=checkbox]").on 'click', getChecked

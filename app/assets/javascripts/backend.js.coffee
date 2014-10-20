@@ -9,7 +9,7 @@ jQuery ->
       if data.context
         progress = parseInt(data.loaded / data.total * 100, 10)
         data.context.find('.bar').css('width', progress + '%')
-        
+
   $('.editor').each (i, elem) ->
     $(elem).wysihtml5
       html: true
