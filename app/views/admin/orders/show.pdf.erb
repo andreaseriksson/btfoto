@@ -18,11 +18,11 @@
               <td valign="top" width="100%">
                 <small>
                   <div id="logo"><%= pdf_image_tag "/bt_logga.jpg", class: 'logo'  %></div>
-                  BTFOTO.SE<br> 
+                  BTFOTO.SE<br>
                   Haraldstorpsvägen 235<br>
                   271 91 Ystad<br>
                   Sweden<br><br>
-                  
+
                   Tel: 0702 - 21 05 70<br>
                   www.btfoto.se | e-mail: info@btfoto.se
                 </small>
@@ -38,7 +38,7 @@
                   <%= @order.first_name %> <%= @order.family_name %><br>
                   <%= @order.address1 %> <%= @order.address2 %><br>
                   <%= @order.zip %> <%= @order.city %>
-                <small> 
+                <small>
               </td>
             </tr>
             <tr>
@@ -47,8 +47,9 @@
                   Ordernummer: <%= @order.id %><br>
                   Beställd: <%= @order.created_at.strftime("%Y-%m-%d") %><br>
                   Betalningssätt: <%= @order.payment_type=='card' ? 'Kort':'Förskott' %><br>
-                  Försändelser: <%= @order.extra_shipment == true ? raw('<strong>2 leveranser</strong>'):'1 leverans' %>
-                <small> 
+                  Försändelser: <%= @order.extra_shipment == true ? raw('<strong>2 leveranser</strong>'):'1 leverans' %><br>
+                  Email: <%= @order.email %>
+                <small>
               </td>
             </tr>
           </table>
