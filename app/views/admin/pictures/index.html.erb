@@ -27,7 +27,8 @@
       <div class="control-group">
         <%= label_tag :folder, nil, class: 'control-label' %>
         <div class="controls">
-          <%= select_tag(:folder, options_for_select(@imports), prompt: 'Välj') %>
+          <%#= select_tag(:folder, options_for_select(@imports), prompt: 'Välj') %>
+          <%= text_field_tag :folder, params[:folder], class: 'typeahead', autocomplete: false, placeholder: 'Foldername' %>
         </div>
         <div class="form-actions">
           <%= submit_tag "Search", class: 'btn btn-alt btn-primary' %>
@@ -42,15 +43,17 @@
       <% @pictures.each do |picture| %>
         <div class="span1" data-image="<%= picture.id %>">
         <%= link_to image_tag(picture.image, class: 'thumbnail'), picture.image.url %>
-        <%= link_to 'x', [:admin, picture], method: :delete, remote: true, class: 'destroy-link', data: { confirm: t('delete?') } %>
+        <%= link_to 'x', [:admin, picture], method: :delete, class: 'destroy-link', data: { confirm: t('delete?') } %>
         </div>
       <% end %>
       </div>
+      <hr>
+      <%= link_to 'Delete all', delete_all_admin_pictures_path(folder: params[:folder]), class: 'btn btn-warning', method: :delete, data: { confirm: 'Are you sure?' } %>
     </section>
     <% end %>
   </article>
   <!-- /Data block -->
-  <article class="span4 data-block"> 
+  <article class="span4 data-block">
     <% if @pictures %>
     <section>
       <h5>Lista bilder för <%= params[:folder] %></h5>
@@ -64,10 +67,18 @@
   </article>
 </div>
 
+<script>
+$(function() {
+  $('.typeahead').typeahead({
+    minLength: 2,
+    source: [<%== @imports.sort.map{|folder| "'#{folder}'" }.join(',') %>]
+  });
+});
+</script>
 
 <script id="template-upload" type="text/x-tmpl">
 <div class="upload">
-  {%=o.name%}  
+  {%=o.name%}
   <div class="progress progress-striped active">
     <div class="bar" style="width: 0%;"></div>
   </div>
