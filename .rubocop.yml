@@ -1,0 +1,50 @@
+AllCops:
+  Exclude:
+    - db/schema.rb
+    - db/legacy.rb
+    - bin/**/*
+    - vendor/**/*
+    - log/**/*
+    - db/migrations/*.rb
+
+SingleSpaceBeforeFirstArg:
+  Enabled: false # You can't indent lines with this on
+
+LineLength:
+  Enabled: false
+
+MethodLength:
+  Enabled: false
+
+ClassLength:
+  Enabled: false
+
+Documentation:
+  Enabled: false
+
+Encoding:
+  Enabled: false
+
+Lambda:
+  Enabled: false
+
+CyclomaticComplexity:
+  Max: 10
+
+AsciiComments:
+  Enabled: false
+
+Lint/Eval:
+  Enabled: false
+
+EachWithObject:
+  Enabled: false # each_with_object vs. reduce
+
+Next:
+  Enabled: false
+
+Style/DotPosition:
+  EnforcedStyle: leading
+
+Style/StringLiterals:
+  EnforcedStyle: single_quotes

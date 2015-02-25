@@ -1,21 +1,14 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe Dashboard do
-  
+
   before(:all) do
-    
     @orders = []
-    10.times do
-      @orders << create(:order)
-    end
+    15.times { @orders << FactoryGirl.create(:order) }
+    @dashboard = Dashboard.new
   end
-  
-  it 'returns last weeks orders' do
-    @orders.length.should be 10
+
+  it 'returns last 10 orders' do
+    expect(@dashboard.last_ten_orders.size).to be 10
   end
-    
-  it 'returns all new appointments'
-  
-  it 'smurf'
-    
 end
