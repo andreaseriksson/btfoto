@@ -1,4 +1,4 @@
-<% content_for(:tagline) do %> 
+<% content_for(:tagline) do %>
   <h1>Alla nyheter</h1>
 <% end %>
 <section class="mainContentWrap">
@@ -6,7 +6,7 @@
   	<div class="row-fluid">
   		<div class="span12">
   			<div class="row-fluid featuredContent">
-  
+
   				<% @news.each do |news| %>
             <h3><%= news.title %> <small>Publicerad <%= news.published_at.strftime("%Y-%m-%d") %></small></h3>
             <p>
@@ -16,7 +16,7 @@
           <% end %>
           <hr>
           <%= will_paginate @news %>
-          
+
   			</div>
   			<div class="row-fluid">
   				<div class="divider dotted clearfix"><span></span></div>

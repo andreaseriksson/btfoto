@@ -69,8 +69,8 @@ $ ->
   #$("select,input[type=text],textarea").wrap "<div class=\"controls\" /></div>"
   #$("form").addClass "form-horizontal"
   #$("form div.submit").prepend "<label class=\"control-label\"></label>"
-  
-  
+
+
   #$("div.thumbnail a").on "click", (event) ->
   #  event.preventDefault()
   #  url = $(this).attr("href") + "?ajax=1&r=" + Math.random()
@@ -84,16 +84,16 @@ $ ->
 #Ajaxifiera varukorgen - inte klart
 #$("#CartAddToCartForm .btn-success").live('click', function(event){
 #	  			event.preventDefault();
-#	  			
+#
 #	  			var data = $(this).parent().parent().serialize();
 #	  			var url = $(this).parent().parent().attr("action")+"?ajax=1&r="+Math.random();
 #	  			var this_url = "/store";
-#	  			
+#
 #	  			$.post(url, function(data) {
 #					$('#modal-container').modal('hide');
 #					$('#cart-content-container').load(this_url+" #cart-content", function() {
 #				      $("#cart-content-container").effect('highlight', {}, 800);
 #				    });
 #				});
-#	  			
+#
 #	  		});

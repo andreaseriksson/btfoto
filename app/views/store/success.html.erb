@@ -1,15 +1,15 @@
-<% content_for(:tagline) do %> 
+<% content_for(:tagline) do %>
   <h1>Beställ bilder</h1>
 <% end %>
 
 <%= render partial: 'content_top' %>
 
 <% if params[:type] %>
-<h2>Tack för din beställning</h2>
-<p>Inbetalningskort kommer de närmaste dagarna med posten.</p>
+  <h2>Tack för din beställning</h2>
+  <p>Inbetalningskort kommer de närmaste dagarna med posten.</p>
 <% else %>
-<h2>Tack för din beställning</h2>
-<p>Ditt köp lyckades och du kommer snart få dina bilder hemskickade.</p>
-<% end %>  
-        	    
+  <h2>Tack för din beställning</h2>
+  <p>Ditt köp lyckades och du kommer snart få dina bilder hemskickade.</p>
+<% end %>
+
 <%= render partial: 'content_bottom', locals: {partials: %w[payment_info]} %>

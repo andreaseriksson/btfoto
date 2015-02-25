@@ -1,5 +1,5 @@
 module PagesHelper
-  
+
   def page_markup(content)
     content_tag :section, class: 'mainContentWrap' do
       content_tag :div, class: 'container mainContent' do
@@ -13,9 +13,9 @@ module PagesHelper
       end
     end
   end
-  
+
   def news_item(news)
-    content_tag(:p) do   
+    content_tag(:p) do
       text = content_tag(:strong) { news.published_at.strftime("%Y-%m-%d") + " " + news.title }
       text << "<br>".html_safe
       text << news.preamble

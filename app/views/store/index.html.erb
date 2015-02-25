@@ -1,21 +1,21 @@
-<% content_for(:tagline) do %> 
+<% content_for(:tagline) do %>
   <h1>Beställ bilder</h1>
 <% end %>
 
-<%= render partial: 'content_top' %> 					  							  	
-  
-  <%= render partial: 'store_header', locals: {product_types: @product_types}%> 
-  
+<%= render 'content_top' %>
+
+  <%= render 'store_header', product_types: @product_types %>
+
   <% @i = 0 %>
-  <% @products.each do |product| %>
+  <% @products.each_with_index do |product, index| %>
     <%= raw('<div class="row-fluid">') if @i == 0 || @i % 3 == 0 %>
     <% @i += 1 %>
     <%= render 'product', product: product %>
     <%= raw("</div><!-- end row-fluid -->") if @i == @products.count || @i % 3 == 0 %>
-  <% end %>                                         
-  
+  <% end %>
+
   <% if @products.size == 0 %>
     <h5>Det finns tyvärr inga produkter i den här kategorin med detta bild nr.</h5>
   <% end %>
-  
-<%= render partial: 'content_bottom', locals: {partials: %w[cart days_left customer_image payment_info]} %>
+
+<%= render 'content_bottom', partials: %w(cart days_left customer_image payment_info) %>

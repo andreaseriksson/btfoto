@@ -1,9 +1,10 @@
-<% content_for(:tagline) do %> 
+<% content_for(:tagline) do %>
   <h1>Boka fotografering</h1>
 <% end %>
 
-<%= render partial: '/store/content_top' %>
+<%= render '/store/content_top' %>
 <h4><%= @appointment.label %> <%= @appointment.start_time.strftime("%Y-%m-%d %H:%M") %></h4>
+
 <%= simple_form_for @appointment, html: {class: 'form-horizontal'} do |f| %>
   <%= f.input :name, label: t('name') %>
   <%= f.input :email, label: t('email') %>
@@ -13,4 +14,5 @@
 		<%= f.button :submit, class: 'btn btn-success' %>
 	</div>
 <% end %>
-<%= render partial: '/store/content_bottom', locals: {partials: %w[]} %>
+
+<%= render '/store/content_bottom', partials: [] %>

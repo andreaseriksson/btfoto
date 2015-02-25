@@ -1,24 +1,23 @@
-<% content_for(:tagline) do %> 
+<% content_for(:tagline) do %>
   <h1>Beställ bilder</h1>
 <% end %>
 
-<%= render partial: 'content_top' %> 
-              
-  <h2>
-    <%= @product.name %> 
-    <span class="pull-right"><%= extra_price(@product) %> Kr</span>
-  </h2>
-  <div class="row-fluid">
-    <div class="span6 thumbnail">
-      <%= image_tag @product.image %>
-    </div>
-    <div class="span6">
-      <%= raw @product.description %>
-      <hr>
-      <%= link_to 'Tillbaka', store_path, class: 'btn' %>
-      <%= button_to "Lägg till", add_to_cart_path(product_id: @product.id), class: 'btn btn-success' %>
-    </div> 
-  </div>
+<%= render partial: 'content_top' %>
 
-<%= render partial: 'content_bottom', locals: {partials: %w[cart days_left customer_image payment_info]} %>
-	  
+<h2>
+  <%= @product.name %>
+  <span class="pull-right"><%= extra_price(@product) %> Kr</span>
+</h2>
+<div class="row-fluid">
+  <div class="span6 thumbnail">
+    <%= image_tag @product.image %>
+  </div>
+  <div class="span6">
+    <%= raw @product.description %>
+    <hr>
+    <%= link_to 'Tillbaka', store_path, class: 'btn' %>
+    <%= button_to "Lägg till", add_to_cart_path(product_id: @product.id), class: 'btn btn-success' %>
+  </div>
+</div>
+
+<%= render partial: 'content_bottom', locals: { partials: %w[cart days_left customer_image payment_info] } %>

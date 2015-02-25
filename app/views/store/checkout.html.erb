@@ -1,8 +1,8 @@
-<% content_for(:tagline) do %> 
+<% content_for(:tagline) do %>
   <h1>Beställ bilder</h1>
 <% end %>
 
-<%= render partial: 'content_top' %> 
+<%= render 'content_top' %>
   <h3>Varukorg</h3>
   <table class="table table-striped" id="checkout-table">
     <thead>
@@ -11,7 +11,7 @@
     	</tr>
     </thead>
     <%= form_tag update_multiple_cart_items_path, method: :put, id: 'update-cart-form' do %>
-    <tbody>			            	    	
+    <tbody>
     	<% @cart.summary[:products].each do |product| %>
     	<tr>
     		<td class="cart_item_row"><%= check_box_tag "cart_item_ids[]", product[:cart_item_id] %></td>
@@ -65,4 +65,4 @@
 		<%= link_to 'Fortsätt handla', store_path, class: 'btn btn-large' %>
 		<%= link_to 'Vidare till betalning', store_payment_path, class: 'btn btn-success btn-large' %>
 	</div>
-<%= render partial: 'content_bottom', locals: {partials: %w[customer_image payment_info]} %>
+<%= render 'content_bottom', partials: %w(customer_image payment_info) %>

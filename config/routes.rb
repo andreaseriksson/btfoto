@@ -1,7 +1,7 @@
 Btfoto::Application.routes.draw do
-  
+
   root to: 'pages#index'
-  
+
   resources :cart_items, only: [:create] do
     collection do
       delete :delete_multiple
@@ -9,13 +9,13 @@ Btfoto::Application.routes.draw do
       put :update_multiple
     end
   end
-  
+
   get 'nyheter', to: 'news#index', as: 'news_index'
   get 'nyheter/:id', to: 'news#show', as: 'news'
-  
+
   resources :orders, only: [:create]
   resources :appointments, only: [:index, :edit, :update]
-    
+
   get 'store', to: 'store#index'#, as: 'store'
   get 'store/show_product', to: 'store#show_product'
   get 'store/checkout', to: 'store#checkout', as: 'store_checkout'
@@ -25,12 +25,12 @@ Btfoto::Application.routes.draw do
   get 'store/logout', to: 'store#logout'#, as: 'store_logout'
   post 'store/auth', to: 'store#auth'
   get 'store/success', to: 'store#success'
-  
+
   #Byta bildnummer
   get 'store/edit_image', to: 'store#edit_image'
   post 'store/update_image', to: 'store#update_image'
   get 'store/switch_image', to: 'store#switch_image'
-  
+
   post 'store/add_to_cart', to: 'cart_items#create', as: 'add_to_cart'
   post 'store/empty_cart', to: 'cart_items#destroy', as: 'empty_cart'
 
