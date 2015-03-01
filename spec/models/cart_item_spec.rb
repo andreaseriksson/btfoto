@@ -1,21 +1,24 @@
-require 'spec_helper'
+require 'rails_helper'
 
-describe CartItem do
-  
-  it "has a valid factory" do
-    build(:cart_item).should be_valid
+RSpec.describe CartItem, type: :model do
+
+  it 'has a valid factory' do
+    cart_item = FactoryGirl.build(:cart_item)
+    expect(cart_item).to be_valid
   end
-  
-  it "must have an image_nr" do
-    build(:cart_item, image_nr: nil).should_not be_valid
+
+  it 'must have an image_nr' do
+    cart_item = FactoryGirl.build(:cart_item, image_nr: nil)
+    expect(cart_item).not_to be_valid
   end
-  
-  it "belongs to cart" do
-    build(:cart_item, cart: nil).should_not be_valid
+
+  it 'belongs to cart' do
+    cart_item = FactoryGirl.build(:cart_item, cart: nil)
+    expect(cart_item).not_to be_valid
   end
-  
-  it "belongs to product" do
-    build(:cart_item, product: nil).should_not be_valid
+
+  it 'belongs to product' do
+    cart_item = FactoryGirl.build(:cart_item, product: nil)
+    expect(cart_item).not_to be_valid
   end
-   
 end

@@ -1,24 +1,19 @@
-<% content_for(:tagline) do %> 
-  <h1>Beställ bilder</h1>
+<% content_for(:tagline) do %>
+  <h1><%= t 'store.login.store_heading' %></h1>
 <% end %>
 
-<%= render partial: 'content_top' %> 
-              
-  <h2>
-    <%= @product.name %> 
-    <span class="pull-right"><%= extra_price(@product) %> Kr</span>
-  </h2>
+<%= store_page_markup(%w(cart days_left customer_image payment_info)) do %>
+  <%= heading_for @product %>
+
   <div class="row-fluid">
     <div class="span6 thumbnail">
       <%= image_tag @product.image %>
     </div>
     <div class="span6">
-      <%= raw @product.description %>
+      <%== @product.description %>
       <hr>
-      <%= link_to 'Tillbaka', store_path, class: 'btn' %>
-      <%= button_to "Lägg till", add_to_cart_path(product_id: @product.id), class: 'btn btn-success' %>
-    </div> 
+      <%= link_to t('common.back'), store_path, class: 'btn' %>
+      <%= button_to t('common.add_to_cart'), add_to_cart_path(product_id: @product.id), class: 'btn btn-success' %>
+    </div>
   </div>
-
-<%= render partial: 'content_bottom', locals: {partials: %w[cart days_left customer_image payment_info]} %>
-	  
+<% end %>

@@ -1,5 +1,3 @@
-# Read about factories at https://github.com/thoughtbot/factory_girl
-
 FactoryGirl.define do
   factory :order do
     first_name "Nisse"
@@ -15,5 +13,10 @@ FactoryGirl.define do
     token "12321213112121321132131231"
     payment_type "card"
     extra_shipment false
+
+    #after(:create) do |order|
+    #  product = FactoryGirl.create(:product, price: 80, vat: 0.25, freight: true)
+    #  order.order_items << FactoryGirl.create(:order_item, product: product, quantity: 2)
+    #end
   end
 end

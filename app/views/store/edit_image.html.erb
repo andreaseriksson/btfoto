@@ -1,17 +1,19 @@
-<% content_for(:tagline) do %> 
+<% content_for(:tagline) do %>
   <h1>Beställ bilder</h1>
 <% end %>
 
-<%= render partial: 'content_top' %> 
+<%= render 'content_top' %>
 
   <h2>Byt bildnummer</h2>
   <p>Skriv in det nya bildnummret. Nuvarande bildnummer är <strong><%= cookies[:image_nr] %></strong></p>
+
   <%= form_tag store_update_image_path do %>
-  <%= label_tag :image_nr, 'Bildnummer' %>
-  <%= text_field_tag :image_nr, nil, :class => 'input-xlarge', :placeholder => "Ex: 12Test-F1-5544-22" %>
-  <div align="right">
-    <%= submit_tag "Byt bildnummer", :class => 'button btn btn-large btn-success' %>
-  </div>
+    <%= label_tag :image_nr, 'Bildnummer' %>
+    <%= text_field_tag :image_nr, nil, class: 'input-xlarge', placeholder: 'Ex: 12Test-F1-5544-22' %>
+
+    <div align="right">
+      <%= submit_tag 'Byt bildnummer', class: 'button btn btn-large btn-success' %>
+    </div>
   <% end %>
-        	    
-<%= render partial: 'content_bottom', locals: {partials: %w[payment_info]} %>
+
+<%= render 'content_bottom', partials: %w(payment_info) %>

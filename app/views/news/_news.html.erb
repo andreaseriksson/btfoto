@@ -1,0 +1,5 @@
+<h3><%= news.title %> <small>Publicerad <%= news.published_at.strftime("%Y-%m-%d") %></small></h3>
+<p>
+  <%= news.preamble %><br>
+  <%= link_to('Läs mer <i class="fa fa-angle-double-right"></i>'.html_safe, news_path(news)) %>
+</p>

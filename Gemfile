@@ -1,63 +1,69 @@
 source 'https://rubygems.org'
 
-# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.0.3'
+gem 'rails', '4.2.0'
 
-gem 'sass-rails', '~> 4.0.0'
-gem 'uglifier', '>= 1.3.0'
-gem 'coffee-rails', '~> 4.0.0'
-gem 'jquery-rails'
-
-group :doc do
-  # bundle exec rake doc:rails generates the API under doc/api.
-  gem 'sdoc', require: false
-end
-
-gem 'unicorn'
-gem 'capistrano', '~> 2.15.4'
-
-gem 'bcrypt-ruby', '~> 3.1.1'
-gem "bootstrap-sass", "~> 2.3.2.0"
-gem "font-awesome-rails"
-gem "haml"
-gem "simple_form", '3.0.1'
-gem "bourbon"
-gem 'elusive-icons-sass-rails'
-gem "bootstrap-wysihtml5-rails", "~> 0.3.1.22"
-
-gem 'ancestry'
 gem 'acts_as_list'
-gem 'ranked-model'
-
-gem 'monban'
-gem "friendly_id", "5.0.0.beta4"
+gem 'ancestry'
+gem 'auto_strip_attributes', '~> 2.0'
+gem 'bcrypt', '~> 3.1.7'
+gem 'bootstrap-sass', '~> 2.3.2.0'
+gem 'bootstrap-wysihtml5-rails', '~> 0.3.1.22'
+gem 'bourbon'
 gem 'carrierwave'
+gem 'coffee-rails', '~> 4.1.0'
+gem 'dalli'
+gem 'elusive-icons-sass-rails'
+gem 'font-awesome-rails'
+gem 'friendly_id', '~> 5.1.0'
+gem 'haml'
+gem 'jbuilder', '~> 2.0'
 gem 'jquery-fileupload-rails'
+gem 'jquery-rails'
+gem 'monban'
+gem 'ranked-model'
 gem 'ransack'
-
-gem "rspec-rails", :group => [:test, :development]
-group :test do
-  gem "factory_girl_rails"
-  gem "capybara"
-  gem "guard-rspec"
-  gem "faker"
-  gem "poltergeist"
-end
+gem 'responders', '~> 2.0'
+gem 'sass-rails', '~> 5.0'
+gem 'simple_form'
+gem 'uglifier', '>= 1.3.0'
+gem 'wicked_pdf'
+gem 'will_paginate', '~> 3.0'
+gem 'wkhtmltopdf-binary'
 
 group :development do
+  # gem 'capistrano-rails'
+  gem 'better_errors'
+  gem 'binding_of_caller'
+  gem 'capistrano', '~> 2.15.4'
+  gem 'localeapp', require: false
+  gem 'quiet_assets'
+  gem 'bullet'
   gem 'sqlite3'
-  gem "better_errors"
-  gem "binding_of_caller"
-  gem "bullet"
-  gem 'localeapp'
-  #gem 'i18n-tasks', '~> 0.7.6'
+  gem 'thin'
+end
+
+group :development, :test do
+  gem 'byebug'
+  gem 'did_you_mean'
+  gem 'faker'
+  gem 'rspec-rails', '~> 3.0'
+  gem 'spring'
+  gem 'web-console', '~> 2.0'
+end
+
+group :test do
+  gem 'capybara'
+  gem 'capybara-screenshot'
+  gem 'capybara-webkit'
+  gem 'database_cleaner'
+  gem 'factory_girl_rails'
+  gem 'guard-rspec'
 end
 
 group :production do
-  gem "pg"
   gem 'newrelic_rpm'
+  gem 'pg'
+  gem 'unicorn'
 end
 
-gem 'wkhtmltopdf-binary'
-gem 'wicked_pdf'
-gem 'will_paginate', '~> 3.0'
+gem 'sdoc', '~> 0.4.0', group: :doc

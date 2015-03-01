@@ -1,17 +1,7 @@
-<% content_for(:tagline) do %> 
+<% content_for(:tagline) do %>
   <h1><%= @page.title %></h1>
 <% end %>
-<section class="mainContentWrap">
-  <div class="container mainContent">
-  	<div class="row-fluid">
-  		<div class="span12">
-  			<div class="row-fluid featuredContent">
-  				<%= raw @page.content %>				
-  			</div>
-  			<div class="row-fluid">
-  				<div class="divider dotted clearfix"><span></span></div>
-  			</div>
-  		</div>
-  	</div>
-  </div>
-</section>
+
+<%= default_page_markup do %>
+  <%== @page.content %>
+<% end %>

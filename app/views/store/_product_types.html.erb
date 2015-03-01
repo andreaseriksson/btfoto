@@ -1,7 +1,8 @@
-<h3>Filtrera på produkttyp</h3>
+<h3><%= t '.heading' %></h3>
 <%= content_tag 'div', id: 'product_type_form' do %>
   <%= form_for(:product_type, url: store_path, method: :get) do |f| %>
-    <%# @product_types = ProductType.new %>
-    <%= select_tag(:product_type, options_for_select(@product_types.types.invert, cookies[:product_type] ||= nil), include_blank: true) %>
+    <%= select_tag(:product_type,
+                   options_for_select(@product_types.types.invert, cookies[:product_type] ||= nil),
+                   include_blank: true) %>
   <% end %>
 <% end %>

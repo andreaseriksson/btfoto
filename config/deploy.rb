@@ -26,7 +26,7 @@ namespace :deploy do
       run "/etc/init.d/unicorn_#{application} #{command}"
     end
   end
-  
+
   namespace :assets do
     desc "Precompile assets on local machine and upload them to the server."
     task :precompile, roles: :web, except: {no_release: true} do
@@ -37,11 +37,11 @@ namespace :deploy do
       end
     end
   end
-  
+
   task :remove_json, roles: :app do
     run "rm #{shared_path}/assets/*.json"
   end
-  
+
   task :setup_config, roles: :app do
     sudo "ln -nfs #{current_path}/config/nginx.conf /etc/nginx/sites-enabled/#{application}"
     sudo "ln -nfs #{current_path}/config/unicorn_init.sh /etc/init.d/unicorn_#{application}"
@@ -57,14 +57,14 @@ namespace :deploy do
     run "ln -nfs #{shared_path}/config/application.yml #{release_path}/config/application.yml"
   end
   after "deploy:finalize_update", "deploy:symlink_config"
-  
+
   namespace :carrierwave do
     task :symlink, roles: :app do
       run "ln -nfs #{shared_path}/uploads/ #{release_path}/public/uploads"
     end
     after "deploy:finalize_update", "deploy:carrierwave:symlink"
   end
-  
+
   desc "Make sure local git is in sync with remote."
   task :check_revision, roles: :web do
     unless `git rev-parse HEAD` == `git rev-parse origin/master`
@@ -73,15 +73,15 @@ namespace :deploy do
       exit
     end
   end
-  
+
   namespace :bundle do
     desc "run bundle install and ensure all gem requirements are met"
     task :install do
       run "cd #{current_path} && bundle install --without=test --no-update-sources"
     end
   end
-  
-  before "deploy:restart", "bundle:install" 
+
+  before "deploy:restart", "bundle:install"
   before "deploy", "deploy:check_revision"
   before "deploy", "deploy:remove_json"
   after "deploy", "deploy:migrate"
@@ -89,7 +89,7 @@ end
 
 namespace :sake do
   desc "Run a task on a remote server."
-  # run like: cap staging rake:invoke task=a_certain_task  
+  # run like: cap staging rake:invoke task=a_certain_task
   task :invoke do
     run("cd #{deploy_to}/current && bundle exec rake #{ENV['task']} RAILS_ENV=#{rails_env}")
   end
