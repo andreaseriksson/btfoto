@@ -17,8 +17,8 @@ class AppointmentsController < ApplicationController
     @appointment = Appointment.find(params[:id])
 
     if @appointment.update_attributes(appointment_params)
-      @appointment.booked = true
-      @appointment.save
+      @appointment.book!
+
       redirect_to appointments_path, notice: t('appointments.update.notice')
     else
       render action: "edit"
@@ -30,5 +30,4 @@ class AppointmentsController < ApplicationController
   def appointment_params
     params.require(:appointment).permit(:name, :email, :phone)
   end
-
 end

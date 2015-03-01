@@ -1,5 +1,10 @@
 module ApplicationHelper
 
+  def fa(name, additional_class = nil)
+    name = name.gsub('fa-','')
+    content_tag(:i, class: "fa fa-#{name} #{additional_class}") {}
+  end
+
   def cart_summary(cart)
     number_to_currency(150, locale: :se, unit: " ")
   end

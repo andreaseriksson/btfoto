@@ -1,16 +1,15 @@
 <% if @cart.summary[:quantity] and @cart.summary[:quantity] > 0 %>
 <!-- Varukorg -->
 <div class="widget widget_text well alert alert-info">
-	<h3>Varukorg</h3>
+  <h3><%= t '.shopping_cart' %></h3>
     <hr>
     <div id="cart-content-container">
 	    <div id="cart-content">
-	    	<%= @cart.summary[:quantity] %>
-	    	<%= @cart.summary[:quantity] == 1 ? 'artikel':'artiklar' %> i kundvagnen<br>
-	    	<span class="ordinary-price">Totalt: <%= to_curr @cart.summary[:sum_without_delivery] %>Kr</span>
+        <%= t '.summary', cnt: @cart.summary[:quantity], items: ( @cart.summary[:quantity] == 1 ? 'artikel':'artiklar') %><br>
+        <span class="ordinary-price"><%= t '.total', sum: to_curr(@cart.summary[:sum_without_delivery]) %></span>
 
 	    	<% if @cart.days_left >= 0 %>
-	    	  <div><strong>Ditt pris: <%= to_curr @cart.summary[:sum_after_discount] %>Kr</strong></div>
+	    	  <div><strong><%= t '.your_price', sum: to_curr(@cart.summary[:sum_without_delivery]) %></div>
 	    	  <style>span.ordinary-price {text-decoration: line-through;}</style>
 	    	<% end %>
 
@@ -18,17 +17,9 @@
     </div>
     <hr>
 	<div align="right">
-		<a href="/store/checkout" class="btn btn-success"><i class="icon-shopping-cart icon-white"></i> Gå till kassan</a>
+    <%= link_to "#{fa('shopping-cart')} #{t('.checkout')}".html_safe, store_checkout_path, class: 'btn btn-success' %>
   </div>
 	<hr>
-	  <%  if @cart.days_left >= 0
-	        sum = @cart.summary[:sum_after_discount]
-	      else
-	        sum = @cart.summary[:sum_without_delivery]
-	      end
-
-	      diff = CONFIG[:freight_free] - sum
-	  %>
-	  <%= sum < CONFIG[:freight_free] ? raw("Beställningen har <strong>#{to_curr(diff)}Kr</strong> kvar till att skickas fraktfritt") : "Beställningen skickas fraktfritt" %>
+  <%= is_freight_free_text %>
 </div>
 <% end %>

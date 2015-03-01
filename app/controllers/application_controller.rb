@@ -18,7 +18,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_image_nr
 
   def check_login
-    redirect_to "/store/login" if current_image_nr.nil?
+    redirect_to store_login_path unless current_image_nr.present?
   end
 
   def load_menu

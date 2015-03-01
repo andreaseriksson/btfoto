@@ -4,7 +4,8 @@ class CartItemsController < ApplicationController
   def create
     @product = Product.find_by(id: params[:product_id])
 
-    @cart_item = CartItem.where(cart_id: cookies[:cart_id], product_id: @product.id, image_nr: cookies[:image_nr]).first_or_create
+    @cart_item = CartItem.where(cart_id: cookies[:cart_id], product_id: @product.id, image_nr: cookies[:image_nr])
+      .first_or_create
     @cart_item.quantity = @cart_item.quantity.to_i + 1
 
     if @cart_item.save
@@ -23,15 +24,8 @@ class CartItemsController < ApplicationController
 
   def update_multiple
     if params[:cart_items]
-      params[:cart_items].each do |k,v|
-
-        cart_item = CartItem.find(k)
-
-        if v.to_i > 0
-          cart_item.update(quantity: v)
-        else
-          cart_item.destroy
-        end
+      params[:cart_items].each do |id, value|
+        CartItem.find(id).update_or_destroy(value)
       end
     end
 

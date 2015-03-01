@@ -1,37 +1,37 @@
-<% content_for(:tagline) do %> 
-  <h1>Boka fotografering</h1>
+<% content_for(:tagline) do %>
+  <h1><%= t '.appointment_heading' %></h1>
 <% end %>
 
-<%= render partial: '/store/content_top' %>
-<table class="table appointments">
-  <tr>
-    <th style="width: 20%">Vecka</th>
-    <th style="width: 20%">Datum och tid</th>
-    <th>Information</th>
-    <th style="width: 15%"></th>
-  </tr>
- <% @appointments.group_by(&:week).each do |week, appointments| %>
-  <tr>
-    <td colspan="4" style="border-top:1px solid #5bb75b">
-      <h5 style="font-size:11px; margin:0; padding:0;"><%= week %></h5>
-    </td>
-  </tr>
-    <% appointments.each do |appointment| %>
+<%= store_page_markup([]) do %>
+  <table class="table appointments">
     <tr>
-      <td></td>
-      <td class="<%= 'booked' if appointment.booked %>">
-        <%= appointment.start_time.strftime("%Y-%m-%d %H:%M") %>
-      </td>
-      <td class="<%= 'booked' if appointment.booked %>">
-        <%= appointment.label %></td>
-      <td class="buttons">
-        <%= link_to_unless appointment.booked, 'Boka tiden', edit_appointment_path(appointment), class: 'btn btn-mini btn-success pull-right' %>
+      <th style="width: 20%"><%= t '.week' %></th>
+      <th style="width: 20%"><%= t '.date_time' %></th>
+      <th><%= t '.label' %></th>
+      <th style="width: 15%"></th>
+    </tr>
+   <% @appointments.group_by(&:week).each do |week, appointments| %>
+    <tr>
+      <td colspan="4" style="border-top:1px solid #5bb75b">
+        <h5 style="font-size:11px; margin:0; padding:0;"><%= week %></h5>
       </td>
     </tr>
+      <% appointments.each do |appointment| %>
+      <tr>
+        <td></td>
+        <td class="<%= 'booked' if appointment.booked %>">
+          <%= appointment.start_time.strftime("%Y-%m-%d %H:%M") %>
+        </td>
+        <td class="<%= 'booked' if appointment.booked %>">
+          <%= appointment.label %></td>
+        <td class="buttons">
+          <%= link_to_unless appointment.booked, t('.book'), edit_appointment_path(appointment), class: 'btn btn-mini btn-success pull-right' %>
+        </td>
+      </tr>
+      <% end %>
     <% end %>
-  <% end %>
-</table>
-<%= render partial: '/store/content_bottom', locals: {partials: %w[]} %>
+  </table>
+<% end %>
 
 <style>
   td.buttons {color: #fff }

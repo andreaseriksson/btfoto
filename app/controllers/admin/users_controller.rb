@@ -35,10 +35,10 @@ module Admin
 
     def resolve_layout
       case action_name
-      when "new", "create"
-        "login"
+      when 'new', 'create'
+        'login'
       else
-        "backend"
+        'backend'
       end
     end
 

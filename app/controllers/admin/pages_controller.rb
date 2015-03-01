@@ -40,21 +40,21 @@ module Admin
       @page = Page.find_by(slug: params[:id])
       @page.destroy
 
-      redirect_to admin_pages_path, :notice => 'Page was successfully deleted.'
+      redirect_to admin_pages_path, notice: 'Page was successfully deleted.'
     end
 
     def move_higher
       @page = Page.find_by(slug: params[:page_id])
       @page.move_higher if @page
 
-      redirect_to admin_pages_path, :notice => 'Page was successfully deleted.'
+      redirect_to admin_pages_path, notice: 'Page was successfully deleted.'
     end
 
     def move_lower
       @page = Page.find_by(slug: params[:page_id])
       @page.move_lower if @page
 
-      redirect_to admin_pages_path, :notice => 'Page was successfully deleted.'
+      redirect_to admin_pages_path, notice: 'Page was successfully deleted.'
     end
 
     private

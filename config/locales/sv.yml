@@ -6,27 +6,36 @@ sv:
   'Yes': Ja
   activerecord:
     attributes:
+      appointment:
+        approved: Godkänd
+        booked: Bokad
+        email: Email
+        label: Beskrivning
+        name: Namn
+        phone: Telefon
+        start_time: Starttid
       news:
         content: Content
         preamble: Preamble
         published_at: Published at
         title: Title
+      order:
+        address1: Adress 1
+        address2: Adress 2
+        city: Ort
+        email: Email
+        family_name: Efternamn
+        first_name: Förnamn
+        phone: Telefon
+        zip: Postnummer
       picture:
         image: Image
         product_category: Product category
-      appointment:
-        approved: Approved
-        booked: Booked
-        label: Label
-        start_time: Start time
-        email: Email
-        name: Name
-        phone: Phone
     models:
+      appointment: Appointment
       news: News
       order: Order
       picture: Picture
-      appointment: Appointment
   address1: Adress 1
   address2: Adress 2
   admin:
@@ -54,6 +63,12 @@ sv:
       new:
         New_product: 
   appointments:
+    index:
+      appointment_heading: Boka fotografering
+      book: Boka tiden
+      date_time: Datum och tid
+      label: Information
+      week: Vecka
     update:
       notice: Din tid är nu bokat
   cart_items:
@@ -66,6 +81,10 @@ sv:
     update_multiple:
       notice: Varukorgen har uppdaterats.
   city: Ort
+  common:
+    add_to_cart: Lägg till
+    back: Tillbaka
+    image_nr: Bildnummer
   date:
     abbr_day_names:
     - sön
@@ -194,11 +213,13 @@ sv:
         one: Ett fel förhindrade denna %{model} från att sparas
         other: "%{count} fel förhindrade denna %{model} från att sparas"
   family_name: Efternamn
-  first_name: Förnamn
   helpers:
     select:
       prompt: Välj
     submit:
+      appointment:
+        create: Create Appointment
+        update: Update Appointment
       create: Skapa %{model}
       news:
         create: Create News
@@ -208,10 +229,10 @@ sv:
         create: Create Picture
       submit: Spara %{model}
       update: "Ändra %{model}"
-      appointment:
-        update: Update Appointment
-        create: Create Appointment
   name: Name
+  news:
+    index:
+      all_news: Alla nyheter
   number:
     currency:
       format:
@@ -263,11 +284,41 @@ sv:
     create:
       notice: Ordern skapades.
     new:
+      card: Betalkort (Visa/Mastercard)
+      cash: Förskottsbetalning (+19kr) Du får ett inbetalningskort hemskickat med posten.
+      catalog_disclaimer: Om du väljer en leverans blir det endast en expeditionsavgift men du får vänta längre på att få hem dina foton.
+      catalog_heading: Skolkatalog?
+      catalog_text: En leverans med porträttbilderna + klassfoto och en separat leverans av skolkatalogen eller en gemensam leverans med allt då skolkatalogen är klar.
       create_order: Skapa order
+      extra_shipment: Separat leverans (+33kr)
+      form_heading: Namn- och adressuppgifter
+      payment_info_heading: Betalningsinformation
+      payment_info_logo: |-
+        <a href="https://www.payson.se" title="Payson internetbetalningar" style="width: 210px;
+          height: 80px; background: url('https://www.payson.se/sites/all/files/images/external/payson210x80.png');
+          float: left; text-indent: -6789px">Payson internetbetalningar</a>
+      payment_info_text: |-
+        <p>Betalning sker enkelt och säkert med Payson. Även om du inte har ett Paysonkonto sedan tidigare kan du snabbt göra transaktionen via Payson. Payson samarbetar med VISA, MasterCard samt alla svenska banker som erbjuder direktbetalningar, Swedbank, Handelsbanken, SEB och Nordea.</p>
+        <p>Payson håller höga säkerhetskrav och är PCI-certifierade av Trustwave som är en internationell organisation för säker e-handel. All trafik krypteras genom SSL 128 bitar och alla kortöverföringar bygger på bankernas så kallade 3D-secure teknik.</p>
+        <p>Payson startade 2004 i Sverige och över en miljon personer har använt Payson som är en välkänd betallösning på internet.</p>
+        <p>Läs mer om Payson här: <a href="http://www.payson.se" target="_blank">www.payson.se</a></p>
+      payment_options: Betalningssätt
+      same_delivery: Samma leverens
   pages:
-    index:
+    gallery:
       maintitle: VÄLKOMMEN TILL FOTOGRAFEN PÅ LANDET!
       maintitle_lead: Företagspresentationer, barndop, vigslar, studentexamen, familjehögtider
+      order_images: Beställ bilder
+    index:
+      all_news: Alla nyheter
+      booking_heading: Boka uppdrag
+      booking_text: |-
+        Jag bedriver nu fotoverksamhet från vår gård utanför Ystad. Verksamheten är huvudsakligen inriktad på reklamfotografering åt företag, men porträttfotograferingen börjar få en allt större plats.
+        <br><br>
+        <strong>Varmt välkomna.</strong>
+      news_heading: Nyheter
+      order_heading: Beställ bilder
+      read_more: Läs mer
   payments:
     create:
       notice: Ordern skapades.
@@ -275,7 +326,23 @@ sv:
   phone: Telefon
   postnummer: 
   simple_form:
+    error_notification:
+      appointment: 'Please review the problems below:'
     hints:
+      appointment:
+        edit:
+          approved: 
+          booked: 
+          email: 
+          label: 
+          name: 
+          phone: 
+          start_time: 
+        new:
+          approved: 
+          booked: 
+          label: 
+          start_time: 
       news:
         new:
           content: 
@@ -296,21 +363,18 @@ sv:
         index:
           image: 
           product_category: 
-      appointment:
-        edit:
-          email: 
-          name: 
-          phone: 
-          approved: 
-          booked: 
-          label: 
-          start_time: 
-        new:
-          approved: 
-          booked: 
-          label: 
-          start_time: 
     labels:
+      appointment:
+        edit:
+          approved: 
+          booked: 
+          label: 
+          start_time: 
+        new:
+          approved: 
+          booked: 
+          label: 
+          start_time: 
       news:
         new:
           content: 
@@ -321,18 +385,15 @@ sv:
         index:
           image: 
           product_category: 
-      appointment:
-        new:
-          approved: 
-          booked: 
-          label: 
-          start_time: 
-        edit:
-          approved: 
-          booked: 
-          label: 
-          start_time: 
     placeholders:
+      appointment:
+        edit:
+          email: 
+          label: 
+          name: 
+          phone: 
+        new:
+          label: 
       news:
         new:
           content: 
@@ -348,24 +409,71 @@ sv:
           first_name: 
           phone: 
           zip: 
-      appointment:
-        edit:
-          email: 
-          name: 
-          phone: 
-          label: 
-        new:
-          label: 
     required:
       html: <abbr title="required">*</abbr>
       mark: "*"
       text: required
-    error_notification:
-      appointment: 'Please review the problems below:'
   store:
     auth:
       notice: Du är nu inloggad
       warning: Det gick inte att logga in med dina uppgifter
+    cart:
+      checkout: Gå till kassan
+      freight_free: Beställningen skickas fraktfritt
+      shopping_cart: Varukorg
+      sum_until_freight_free: Beställningen har <strong>%{sum}Kr</strong> kvar till att skickas fraktfritt
+      summary: "%{cnt} %{items} i kundvagnen"
+      total: 'Totalt: %{sum}Kr'
+      your_price: 'Ditt pris: %{sum}Kr'
+    checkout:
+      delete_marked: Radera markerade
+      empty_cart: Töm varukorg
+      go_to_payment: Vidare till betalning
+      heading: Varukorg
+      image_nr: Bildnr.
+      keep_shopping: Fortsätt handla
+      'no': Ant.
+      product: Product
+      sum: Summa
+      total: Total
+    customer_image:
+      add_sybling: Lägga till syskon?
+      change_image: Byt bildnr.
+      choose: Välj!
+      chosen: Vald!
+      group_image: Gruppbild
+      heading: Provbild
+    days_left:
+      days_left: "%{days} dagar kvar"
+      text: För att få 10% rabatt på vissa utvalda produkter.
+    index:
+      no_images: Det finns tyvärr inga produkter i den här kategorin med detta bild nr.
+      store_heading: Beställ bilder
+    login:
+      error_message: '<strong>Det gick inte att logga in.</strong><br>Tänk på att bildnummret är skiftlägeskänsligt. Om det ändå inte fungerar så maila ditt felaktiga bildnummer till <a href="mailto: info@btfoto.se">info@btfoto.se</a>.'
+      login: Logga in
+      login_text: Logga in med ditt bildnummer som står under din provbild.
+    payment_info:
+      order_info_text: |-
+        <h3>Beställningsinformation</h3>
+        <p>Gör din beställning här och få ditt barns bild levererad hem till dig direkt hem i brevlådan inom 2 veckor. Du som beställer via webbshoppen får bättre priser, snabbare leverans.</p>
+        <p>Din provbild aktiveras på hemsidan för 20 dagar för att få 10% rabatt den dagen förskolan eller skolan kan börja dela ut provbilderna. Du borde även hinna ta del av rabatten om ditt barn har varit ledigt en vecka och får provbilden lite senare.</p>
+      payment_info_text: |-
+        <h3>Betalningsinformation</h3>
+        <p>Använd Payson för att enkelt och tryggt betala till oss. Med Payson kan du sätta in pengar med VISA, MasterCard samt internetbank (Swedbank, Handelsbanken, SEB och Nordea).</p>
+        <p>Läs mer om Payson här: <a href="http://www.payson.se" target="_blank">www.payson.se</a></p>
+        <p><a href="https://www.payson.se" title="Payson internetbetalningar" style="width:140px;height:42px;background:url('https://www.payson.se/sites/all/files/images/external/payson.png');float:left;text-indent:-9999px">Payson internetbetalningar</a><br clear="all"></p>
+    product_types:
+      heading: Filtrera på produkttyp
+    store_header:
+      filter: Filtrera
+      header: Visar alla produkter
+      show_all: Visa alla
+    success:
+      heading: Tack för din beställning
+      heading_alt: Tack för din beställning
+      text: Inbetalningskort kommer de närmaste dagarna med posten.
+      text_alt: Ditt köp lyckades och du kommer snart få dina bilder hemskickade.
     switch_image:
       notice: Du har nu bytt visningsbild
     update_image:

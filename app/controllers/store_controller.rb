@@ -31,7 +31,7 @@ class StoreController < ApplicationController
     @picture = Picture.current_image(params[:image_nr]).first
 
     if @picture
-      cookies[:image_nr] = { :value => params[:image_nr], :expires => 60.minutes.from_now }
+      cookies[:image_nr] = { value: params[:image_nr], expires: 60.minutes.from_now }
       cookies.delete :product_type if cookies[:product_type]
       redirect_to store_path, notice: t('store.update_image.notice')
     else
@@ -40,7 +40,7 @@ class StoreController < ApplicationController
   end
 
   def switch_image
-    cookies[:image_nr] = { :value => params[:image_nr], :expires => 60.minutes.from_now }
+    cookies[:image_nr] = { value: params[:image_nr], expires: 60.minutes.from_now }
     cookies.delete :product_type if cookies[:product_type]
     redirect_to store_path, notice: t('store.switch_image.notice')
   end

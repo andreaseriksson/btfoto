@@ -2,7 +2,7 @@
 
 #
 getChecked = ->
-  $("#delete_cart_items").val ""
+  $("#delete_cart_items").val ''
   checked_list = []
   $("input:checked").each ->
     checked_list.push $(this).val()

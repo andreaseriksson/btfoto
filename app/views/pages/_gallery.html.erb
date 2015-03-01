@@ -1,0 +1,32 @@
+<section class='taglineWrap'>
+  <div class='container'>
+    <div class='row-fluid sliderWrap'>
+      <div class='span12'>
+        <div class='carousel slide' id='myCarousel'>
+          <div class='carousel-inner'>
+            <% @frontpage.gallery.each do |gallery| %>
+              <%= content_tag(:div, nil, class: (gallery.id == Gallery.all.first.id ? 'item active' : 'item')) do %>
+                <%= image_tag gallery.image %>
+              <% end %>
+            <% end %>
+          </div>
+          <a class='left carousel-control' data-slide='prev' href='#myCarousel'>‹</a>
+          <a class='right carousel-control' data-slide='next' href='#myCarousel'>›</a>
+        </div>
+      </div>
+    </div>
+    <!-- /sliderWrap -->
+    <div class='row-fluid tagline'>
+      <div class='span8'>
+        <h2><%= t('.maintitle') %></h2>
+        <h3><%= t('.maintitle_lead') %></h3>
+      </div>
+      <div class='span4 action'>
+        <div>
+          <%= link_to t('.order_images'), store_path, class: 'btn btn-success btn-large pull-right' %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- /container -->
+</section>

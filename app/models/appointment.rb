@@ -12,6 +12,10 @@ class Appointment < ActiveRecord::Base
     start_time.strftime('%V')
   end
 
+  def book!
+    update_attribute :booked, true
+  end
+
   private
 
   def start_time_is_valid_datetime

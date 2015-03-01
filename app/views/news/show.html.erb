@@ -2,4 +2,6 @@
   <h1><%= @news.title %></h1>
 <% end %>
 
-<%= page_markup(@news.content.html_safe) %>
+<%= default_page_markup do %>
+  <%== @news.content %>
+<% end %>

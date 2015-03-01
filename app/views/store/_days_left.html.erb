@@ -1,6 +1,6 @@
 <% if @cart.days_left > 0 %>
 <div class="widget alert">
-  <h4><%= @cart.days_left %> dagar kvar</h4>
-  <span>För att få 10% rabatt på vissa utvalda produkter.</span>
+  <h4><%= t 'store.days_left.days_left', days: @cart.days_left %></h4>
+  <span><%= t 'store.days_left.text' %></span>
 </div>
 <% end %>

@@ -38,7 +38,7 @@ module Admin
       @product_category = ProductCategory.find_by(slug: params[:id])
       @product_category.destroy
 
-      redirect_to admin_product_categories_path, :notice => 'Product category was successfully deleted.'
+      redirect_to admin_product_categories_path, notice: 'Product category was successfully deleted.'
     end
 
     private
