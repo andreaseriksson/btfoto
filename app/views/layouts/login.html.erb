@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title><%= CONFIG[:application_name] %></title>
+    <title><%= ENV['APPLICATION_NAME'] %></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -16,7 +16,7 @@
     <section class="container" role="main">
       <div class="login-logo">
         <h1 style="font-size: 88px; color:#fff"><i class="icon-user"></i></h1>
-        <h4><%= CONFIG[:application_name] %></h4>
+        <h4><%= ENV['APPLICATION_NAME'] %></h4>
       </div>
 
       <%= yield %>

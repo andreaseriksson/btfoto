@@ -31,20 +31,19 @@ gem 'will_paginate', '~> 3.0'
 gem 'wkhtmltopdf-binary'
 
 group :development do
-  # gem 'capistrano-rails'
   gem 'better_errors'
   gem 'binding_of_caller'
-  gem 'capistrano', '~> 2.15.4'
   gem 'localeapp', require: false
   gem 'quiet_assets'
   gem 'bullet'
   gem 'sqlite3'
-  gem 'thin'
+  gem 'puma'
 end
 
 group :development, :test do
   gem 'byebug'
   gem 'did_you_mean'
+  gem 'dotenv-rails'
   gem 'faker'
   gem 'rspec-rails', '~> 3.0'
   gem 'spring'
@@ -63,6 +62,7 @@ end
 group :production do
   gem 'newrelic_rpm'
   gem 'pg'
+  gem 'rails_12factor'
   gem 'unicorn'
 end
 

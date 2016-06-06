@@ -71,7 +71,7 @@ class Cart < ActiveRecord::Base
 
   def delivery(sum)
     return 0 if only_freight_free_products == true
-    sum < CONFIG[:freight_free] ? CONFIG[:shipping_fee] : 0
+    sum < Order::FREIGHT_FREE ? Order::SHIPPING_FEE : 0
   end
 
   def only_freight_free_products

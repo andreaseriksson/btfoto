@@ -61,7 +61,7 @@ class OrdersController < ApplicationController
 
   def calc_shipping_cost(order, cart)
     shipping_cost = cart.summary[:delivery]
-    shipping_cost = shipping_cost + CONFIG[:shipping_fee] if order.extra_shipment == true
+    shipping_cost = shipping_cost + Order::SHIPPING_FEE if order.extra_shipment == true
     shipping_cost
   end
 end

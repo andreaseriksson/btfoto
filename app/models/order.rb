@@ -1,4 +1,8 @@
 class Order < ActiveRecord::Base
+  SHIPPING_FEE = 33
+  PREPAID_FEE = 19
+  FREIGHT_FREE = 650
+  DISCOUNT_DAYS = 20
 
   validates :first_name,  presence: true, length: { minimum: 2 }
   validates :family_name,  presence: true, length: { minimum: 2 }
@@ -38,8 +42,8 @@ class Order < ActiveRecord::Base
     extra_shipment = 0
 
     if extra_shipment == true
-      delivery = delivery - CONFIG[:shipping_fee]
-      extra_shipment = CONFIG[:shipping_fee]
+      delivery = delivery - SHIPPING_FEE
+      extra_shipment = SHIPPING_FEE
     end
 
     order_items.each do |order_item|
@@ -47,7 +51,7 @@ class Order < ActiveRecord::Base
       sum_vat = sum_vat + (order_item.vat * order_item.quantity)
     end
 
-    prepaid_fee = CONFIG[:prepaid_fee] if payment_type == 'cash'
+    prepaid_fee = PREPAID_FEE if payment_type == 'cash'
 
     summary = {}
     summary[:sum_without_delivery] = sum_with_vat + prepaid_fee

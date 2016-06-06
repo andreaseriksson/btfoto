@@ -35,9 +35,9 @@ module StoreHelper
       sum = @cart.summary[:sum_without_delivery]
     end
 
-    diff = CONFIG[:freight_free] - sum
+    diff = Order::FREIGHT_FREE - sum
 
-    if sum < CONFIG[:freight_free]
+    if sum < Order::FREIGHT_FREE
       t('store.cart.sum_until_freight_free', sum: to_curr(diff)).html_safe
     else
       t 'store.cart.freight_free'

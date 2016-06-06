@@ -1,9 +1,9 @@
-root = "/home/deployer/apps/btfoto/current"
-working_directory root
-pid "#{root}/tmp/pids/unicorn.pid"
-stderr_path "#{root}/log/unicorn.log"
-stdout_path "#{root}/log/unicorn.log"
+app_dir = "/app"
 
-listen "/tmp/unicorn.btfoto.sock"
-worker_processes 2
+working_directory app_dir
+
+pid "#{app_dir}/tmp/unicorn.pid"
+
+worker_processes 1
+listen "/tmp/unicorn.sock", :backlog => 64
 timeout 30

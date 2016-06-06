@@ -26,3 +26,5 @@ config/application.yml
 config/newrelic.yml
 public/assets/*
 public/uploads/*
+docker-compose.yml
+.env
