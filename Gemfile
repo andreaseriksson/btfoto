@@ -21,6 +21,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'jquery-fileupload-rails'
 gem 'jquery-rails'
 gem 'monban'
+gem 'pg'
 gem 'ranked-model'
 gem 'ransack'
 gem 'responders', '~> 2.0'
@@ -38,7 +39,6 @@ group :development do
   gem 'localeapp', require: false
   gem 'quiet_assets'
   gem 'bullet'
-  gem 'sqlite3'
   gem 'puma'
 end
 
@@ -62,8 +62,8 @@ group :test do
 end
 
 group :production do
+  gem 'foreman'
   gem 'newrelic_rpm'
-  gem 'pg'
   gem 'rails_12factor'
   gem 'unicorn'
 end

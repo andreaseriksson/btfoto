@@ -13,7 +13,10 @@
 
 ActiveRecord::Schema.define(version: 20140311204359) do
 
-  create_table "appointments", force: true do |t|
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "appointments", force: :cascade do |t|
     t.string   "label"
     t.datetime "start_time"
     t.boolean  "approved",   default: false
@@ -25,7 +28,7 @@ ActiveRecord::Schema.define(version: 20140311204359) do
     t.datetime "updated_at"
   end
 
-  create_table "cart_items", force: true do |t|
+  create_table "cart_items", force: :cascade do |t|
     t.integer  "cart_id"
     t.integer  "product_id"
     t.integer  "quantity"
@@ -34,25 +37,25 @@ ActiveRecord::Schema.define(version: 20140311204359) do
     t.datetime "updated_at"
   end
 
-  add_index "cart_items", ["cart_id"], name: "index_cart_items_on_cart_id"
-  add_index "cart_items", ["product_id"], name: "index_cart_items_on_product_id"
+  add_index "cart_items", ["cart_id"], name: "index_cart_items_on_cart_id", using: :btree
+  add_index "cart_items", ["product_id"], name: "index_cart_items_on_product_id", using: :btree
 
-  create_table "carts", force: true do |t|
+  create_table "carts", force: :cascade do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "categorizations", force: true do |t|
+  create_table "categorizations", force: :cascade do |t|
     t.integer  "product_id"
     t.integer  "product_category_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "categorizations", ["product_category_id"], name: "index_categorizations_on_product_category_id"
-  add_index "categorizations", ["product_id"], name: "index_categorizations_on_product_id"
+  add_index "categorizations", ["product_category_id"], name: "index_categorizations_on_product_category_id", using: :btree
+  add_index "categorizations", ["product_id"], name: "index_categorizations_on_product_id", using: :btree
 
-  create_table "customers", force: true do |t|
+  create_table "customers", force: :cascade do |t|
     t.string   "username"
     t.string   "password"
     t.string   "first_name"
@@ -68,9 +71,9 @@ ActiveRecord::Schema.define(version: 20140311204359) do
     t.datetime "updated_at"
   end
 
-  add_index "customers", ["username"], name: "index_customers_on_username"
+  add_index "customers", ["username"], name: "index_customers_on_username", using: :btree
 
-  create_table "documents", force: true do |t|
+  create_table "documents", force: :cascade do |t|
     t.string   "file_name"
     t.string   "file_type"
     t.string   "file_size"
@@ -78,14 +81,14 @@ ActiveRecord::Schema.define(version: 20140311204359) do
     t.datetime "updated_at"
   end
 
-  create_table "galleries", force: true do |t|
+  create_table "galleries", force: :cascade do |t|
     t.string   "image"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "position"
   end
 
-  create_table "news", force: true do |t|
+  create_table "news", force: :cascade do |t|
     t.string   "title"
     t.string   "slug"
     t.text     "preamble"
@@ -95,9 +98,9 @@ ActiveRecord::Schema.define(version: 20140311204359) do
     t.date     "published_at"
   end
 
-  add_index "news", ["slug"], name: "index_news_on_slug"
+  add_index "news", ["slug"], name: "index_news_on_slug", using: :btree
 
-  create_table "order_items", force: true do |t|
+  create_table "order_items", force: :cascade do |t|
     t.integer  "order_id"
     t.integer  "product_id"
     t.integer  "quantity"
@@ -109,10 +112,10 @@ ActiveRecord::Schema.define(version: 20140311204359) do
     t.datetime "updated_at"
   end
 
-  add_index "order_items", ["order_id"], name: "index_order_items_on_order_id"
-  add_index "order_items", ["product_id"], name: "index_order_items_on_product_id"
+  add_index "order_items", ["order_id"], name: "index_order_items_on_order_id", using: :btree
+  add_index "order_items", ["product_id"], name: "index_order_items_on_product_id", using: :btree
 
-  create_table "orders", force: true do |t|
+  create_table "orders", force: :cascade do |t|
     t.string   "first_name"
     t.string   "family_name"
     t.string   "address1"
@@ -131,7 +134,7 @@ ActiveRecord::Schema.define(version: 20140311204359) do
     t.datetime "printed_at"
   end
 
-  create_table "pages", force: true do |t|
+  create_table "pages", force: :cascade do |t|
     t.string   "ancestry"
     t.string   "slug"
     t.integer  "position"
@@ -150,10 +153,10 @@ ActiveRecord::Schema.define(version: 20140311204359) do
     t.datetime "updated_at"
   end
 
-  add_index "pages", ["ancestry"], name: "index_pages_on_ancestry"
-  add_index "pages", ["slug"], name: "index_pages_on_slug"
+  add_index "pages", ["ancestry"], name: "index_pages_on_ancestry", using: :btree
+  add_index "pages", ["slug"], name: "index_pages_on_slug", using: :btree
 
-  create_table "pictures", force: true do |t|
+  create_table "pictures", force: :cascade do |t|
     t.integer  "year"
     t.string   "school"
     t.string   "no"
@@ -168,19 +171,19 @@ ActiveRecord::Schema.define(version: 20140311204359) do
     t.string   "letter"
   end
 
-  add_index "pictures", ["name", "letter"], name: "index_pictures_on_name_and_letter"
-  add_index "pictures", ["product_category_id"], name: "index_pictures_on_product_category_id"
+  add_index "pictures", ["name", "letter"], name: "index_pictures_on_name_and_letter", using: :btree
+  add_index "pictures", ["product_category_id"], name: "index_pictures_on_product_category_id", using: :btree
 
-  create_table "product_categories", force: true do |t|
+  create_table "product_categories", force: :cascade do |t|
     t.string   "name"
     t.string   "slug"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "product_categories", ["slug"], name: "index_product_categories_on_slug"
+  add_index "product_categories", ["slug"], name: "index_product_categories_on_slug", using: :btree
 
-  create_table "products", force: true do |t|
+  create_table "products", force: :cascade do |t|
     t.string   "name"
     t.string   "slug"
     t.text     "description"
@@ -195,10 +198,10 @@ ActiveRecord::Schema.define(version: 20140311204359) do
     t.integer  "product_type"
   end
 
-  add_index "products", ["product_type"], name: "index_products_on_product_type"
-  add_index "products", ["slug"], name: "index_products_on_slug"
+  add_index "products", ["product_type"], name: "index_products_on_product_type", using: :btree
+  add_index "products", ["slug"], name: "index_products_on_slug", using: :btree
 
-  create_table "users", force: true do |t|
+  create_table "users", force: :cascade do |t|
     t.string   "email"
     t.string   "password_digest"
     t.datetime "created_at"
