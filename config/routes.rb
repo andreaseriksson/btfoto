@@ -1,5 +1,4 @@
 Btfoto::Application.routes.draw do
-
   root to: 'pages#index'
 
   resources :cart_items, only: [:create] do
@@ -16,17 +15,17 @@ Btfoto::Application.routes.draw do
   resources :orders, only: [:create]
   resources :appointments, only: [:index, :edit, :update]
 
-  get 'store', to: 'store#index'#, as: 'store'
+  get 'store', to: 'store#index'
   get 'store/show_product', to: 'store#show_product'
   get 'store/checkout', to: 'store#checkout', as: 'store_checkout'
   get 'store/payment', to: 'orders#new'
   get 'store/payment_return', to: 'payments#create'
-  get 'store/login', to: 'store#login'#, as: 'store_login'
-  get 'store/logout', to: 'store#logout'#, as: 'store_logout'
+  get 'store/login', to: 'store#login'
+  get 'store/logout', to: 'store#logout'
   post 'store/auth', to: 'store#auth'
+  get 'store/url_auth', to: 'store#auth'
   get 'store/success', to: 'store#success'
 
-  #Byta bildnummer
   get 'store/edit_image', to: 'store#edit_image'
   post 'store/update_image', to: 'store#update_image'
   get 'store/switch_image', to: 'store#switch_image'
@@ -63,6 +62,10 @@ Btfoto::Application.routes.draw do
       get 'move_lower', to: 'galleries#move_lower', as: 'move_lower'
     end
 
+    get 'csv_import', to: 'csv_import#index', as: 'csv_import'
+    post 'csv_import/preview', to: 'csv_import#preview', as: 'preview_csv_import'
+    post 'csv_import/import', to: 'csv_import#import', as: 'import_csv_import'
+
     get 'login', to: 'sessions#new', as: 'login'
     get 'logout', to: 'sessions#destroy', as: 'logout'
     get 'signup', to: 'users#new', as: 'signup'
@@ -76,5 +79,4 @@ Btfoto::Application.routes.draw do
   get '(*bildspel)' => 'pages#redirect'
   get '(*photos)' => 'pages#redirect'
   get '(*mig)' => 'pages#redirect'
-
 end
