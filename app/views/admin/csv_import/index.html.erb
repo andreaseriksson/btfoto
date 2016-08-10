@@ -1,0 +1,38 @@
+<!-- Grid row -->
+<div class="row">
+  <!-- Data block -->
+  <article class="span8 data-block">
+    <header>
+      <h2><i class="fa fa-picture-o"></i> <%= t 'admin.pictures.Title' %></h2>
+    </header>
+    <section>
+      <h3>Importera CSV</h3>
+      <%= form_tag admin_preview_csv_import_path, class: 'form-horizontal', method: :post, remote: true do %>
+      <div class="control-group">
+        <%= label_tag :csv_import, 'CSV Import', class: 'control-label' %>
+        <div class="controls">
+          <%= text_field_tag :csv_import, '', placeholder: 'Link to csv' %>
+        </div>
+        <div class="form-actions">
+          <%= submit_tag 'Preview', class: 'btn btn-alt btn-primary' %>
+        </div>
+      </div>
+      <% end %>
+    </section>
+
+    <div id="imports"></div>
+  </article>
+  <!-- /Data block -->
+  <article class="span4 data-block">
+    <% if @pictures %>
+    <section>
+      <h5>Lista bilder för <%= params[:folder] %></h5>
+      <ul class="unstyled">
+      <% @pictures.each do |picture| %>
+        <li data-image="<%= picture.id %>"><%= picture.image_nr %></li>
+      <% end %>
+      </ul>
+    </section>
+    <% end %>
+  </article>
+</div>

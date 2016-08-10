@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link href='/assets/favicon.ico' rel='shortcut icon' type='image/x-icon'>
-    <%= stylesheet_link_tag    "application", "admin/theme", "bootstrap-wysihtml5", "admin/backend",  :media => "all" %>
+    <%= stylesheet_link_tag    "application", "admin/theme", "bootstrap-wysihtml5", "admin/backend",  media: "all" %>
     <%= javascript_include_tag "application", "bootstrap-wysihtml5", "backend" %>
     <%= csrf_meta_tags %>
   </head>
@@ -23,6 +23,7 @@
               <li><%= link_to raw('<i class="fa fa-table"></i> Produkter'), admin_products_path %></li>
               <li><%= link_to raw('<i class="fa fa-sitemap"></i> Produktkategorier'), admin_product_categories_path %></li>
               <li><%= link_to raw('<i class="fa fa-picture-o"></i> Bilduppladdning'), admin_pictures_path %></li>
+              <li><%= link_to raw('<i class="fa fa-file-text-o"></i> CSV-import'), admin_csv_import_path %></li>
               <li><%= link_to raw('<i class="fa fa-inbox"></i> Orders'), admin_orders_path %></li>
 
               <li><%= link_to raw('<i class="fa fa-calendar"></i> Tidsbokning'), admin_appointments_path %></li>
@@ -30,6 +31,7 @@
               <li><%= link_to raw('<i class="fa fa-play-circle"></i> Galleri'), admin_galleries_path %></li>
 
               <li><%= link_to raw('<i class="fa fa-user"></i> Användare'), admin_users_path %></li>
+              <li><%= link_to raw('<i class="fa fa-envelope-o"></i> Mail preview'), admin_mails_path %></li>
               <li class="divider"></li>
               <li><%= link_to raw('<i class="fa fa-power-off"></i> Logga ut'), admin_logout_path %></li>
             </ul>

@@ -1,0 +1,23 @@
+<section>
+  <%= form_tag admin_import_csv_import_path, class: 'form-horizontal', method: :post, remote: true do %>
+    <h3>
+      Redo att importeras (<%= @imports.size %>)
+      <%= submit_tag 'Import', class: 'pull-right btn btn-alt btn-primary' %>
+    </h3>
+    <hr />
+    <% @imports.each do |import| %>
+      <%= hidden_field_tag 'imports[]', "#{import.email}|#{import.image}" %>
+      <div class="row-fluid">
+        <div class="span5">
+          <%= import.email %>
+        </div>
+        <div class="span5">
+          <%= import.image %>
+        </div>
+        <div class="span2">
+          <%= @pictures.include?(import.image) %>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+</section>
