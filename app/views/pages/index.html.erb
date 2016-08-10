@@ -16,7 +16,7 @@
     <% @frontpage.news.each do |news| %>
       <%= news_item(news) %>
     <% end %>
-    <%= link_to("#{t('.all_news')} #{fa 'angle-double-right'}".html_safe, 
+    <%= link_to("#{t('.all_news')} #{fa 'angle-double-right'}".html_safe,
                 news_index_path, class: 'pull-right') %>
   </div>
 <% end %>
