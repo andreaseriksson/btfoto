@@ -23,7 +23,7 @@ Btfoto::Application.routes.draw do
   get 'store/login', to: 'store#login'
   get 'store/logout', to: 'store#logout'
   post 'store/auth', to: 'store#auth'
-  get 'store/url_auth', to: 'store#auth'
+  get 'store/url_auth/:image_nr', to: 'store#auth', as: 'store_url_auth'
   get 'store/success', to: 'store#success'
 
   get 'store/edit_image', to: 'store#edit_image'
@@ -60,6 +60,12 @@ Btfoto::Application.routes.draw do
     resources :galleries do
       get 'move_higher', to: 'galleries#move_higher', as: 'move_higher'
       get 'move_lower', to: 'galleries#move_lower', as: 'move_lower'
+    end
+
+    resources :mails, only: [:index, :show] do
+      member do
+        get :preview
+      end
     end
 
     get 'csv_import', to: 'csv_import#index', as: 'csv_import'
