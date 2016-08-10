@@ -1,0 +1,33 @@
+Ordernummer: <%= @order.id %><br>
+Kundens epost: <%= @order.email %><br><br>
+
+
+Orderdatum: <%= @order.created_at.strftime("%Y-%m-%d") %><br><br>
+
+<strong>Fakturaadress</strong>
+<hr>
+<%= @order.first_name %> <%= @order.family_name %><br>
+<%= @order.address1 %> <%= @order.address2 %><br>
+<%= @order.zip %><br>
+<%= @order.city %><br>
+Sverige<br>
+<%= @order.phone %><br><br>
+
+<strong>Betalningssätt</strong>
+<hr>
+<%= @order.payment_type == 'card' ? 'Kortbetalning' : 'Förskottsbetalning' %><br><br>
+
+<strong>Produkter</strong>
+<hr>
+<%= @order.shipping_cost == 0 ? "1 x 1000. Gratis frakt":"1 x 1001. Expeditionsavgift #{to_curr(@order.summary[:delivery])}Kr" %><br>
+<%= "1 x 1002. Inbetalningskort #{to_curr(@order.summary[:prepaid_fee])}Kr" if @order.payment_type == 'cash' %><br>
+<%= @order.extra_shipment == true ? "1 x 1005. Katalogen skickas separat #{to_curr(@order.summary[:extra_shipment])}Kr":"1 x 1004. En försändelse" %><br>
+<% @order.order_items.each do |order_item| %>
+<%= order_item.quantity %> x <%= order_item.product.name %> (<%= order_item.image_nr %>) = <%= to_curr order_item.total %>Kr<br>
+<% end %>
+<hr><br>
+
+Totalt exklusive frakt: <%= to_curr @order.summary[:sum_without_delivery] %>Kr<br>
+Varav moms: <%= to_curr @order.summary[:vat] %>Kr<br>
+Total: <%= to_curr @order.summary[:sum] %>Kr
+
