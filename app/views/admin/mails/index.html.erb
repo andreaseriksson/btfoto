@@ -1,0 +1,29 @@
+<!-- Grid row -->
+<div class="row">
+  <!-- Data block -->
+  <article class="span4 data-block">
+    <header>
+      <h2><i class="fa fa-envelope-o"></i> <%= t 'admin.email.Title' %></h2>
+    </header>
+    <section>
+      <h3>Emails</h3>
+      <table class="table">
+        <thead></thead>
+        <tbody>
+          <% @grouped_emails.each do |mailer, emails| %>
+            <tr>
+              <td colspan="2"><strong><%= mailer %></strong></td>
+            </tr>
+            <% emails.each do |email| %>
+            <tr>
+              <td><%= email.humanize %></td>
+              <td><%= link_to raw('<i class="fa fa-eye"></i>'), admin_mail_path("#{mailer}|#{email}"), remote: true %></td>
+            </tr>
+            <% end %>
+          <% end %>
+        </tbody>
+      </table>
+    </section>
+  </article>
+  <article id="mail-previewer" class="span8 data-block" style="display: none"></article>
+</div>
