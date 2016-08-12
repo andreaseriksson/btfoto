@@ -10,4 +10,12 @@ class OrderMailer < ActionMailer::Base
     subject = "En order är gjord med #{payment_type}"
     mail to: @order.email, bcc: "orderbtfoto@gmail.com", subject: subject, from: "BTfoto webshop<info@btfoto.se>"
   end
+
+  def changed_status(order_id)
+    @order = Order.find order_id
+    return unless %w(progress sent).include? @order.status
+
+    subject = @order.status == 'progress' ? 'Din order behandlas' : 'Din order är redo att skickas'
+    mail to: @order.email, bcc: "orderbtfoto@gmail.com", subject: subject, from: "BTfoto webshop<info@btfoto.se>"
+  end
 end

@@ -32,7 +32,6 @@ class OrdersController < ApplicationController
     else
       render action: 'new'
     end
-
   end
 
   private

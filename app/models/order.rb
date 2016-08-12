@@ -4,6 +4,8 @@ class Order < ActiveRecord::Base
   FREIGHT_FREE = 650
   DISCOUNT_DAYS = 20
 
+  enum status: { received: 0, unpayed: 1, progress: 2, sent: 3, payed: 4 }
+
   validates :first_name,  presence: true, length: { minimum: 2 }
   validates :family_name,  presence: true, length: { minimum: 2 }
   validates :phone,  presence: true, length: { minimum: 2 }
@@ -18,6 +20,14 @@ class Order < ActiveRecord::Base
 
   default_scope -> { order(created_at: :desc) }
   scope :unprinted, -> { where(printed_at: nil) }
+
+  ransacker :full_name do |parent|
+    Arel::Nodes::InfixOperation.new('||',
+      Arel::Nodes::InfixOperation.new('||',
+        parent.table[:first_name], Arel::Nodes.build_quoted(' ')
+      ), parent.table[:family_name]
+    )
+  end
 
   def confirm
     update_attribute :confirmed, true

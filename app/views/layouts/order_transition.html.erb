@@ -1,0 +1,28 @@
+<html data-ember-extension="1" lang="en"><head>
+    <meta charset="utf-8">
+    <title>Transition order</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+      body { padding-top: 60px; }
+    </style>
+    <%= stylesheet_link_tag 'application', media: "all" %>
+    <%= javascript_include_tag 'application' %>
+    <%= csrf_meta_tags %>
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="brand">Transition order</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="container" style="max-width: 500px;">
+      <%= yield %>
+    </div>
+  </body>
+</html>

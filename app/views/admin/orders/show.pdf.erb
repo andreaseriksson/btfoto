@@ -66,13 +66,13 @@
       <tr>
         <td align="right"><%= order_item.quantity %></td>
         <td>
-          <%= order_item.product.name %> 
+          <%= order_item.product.name %>
           <%= order_item.image_nr %>
         </td>
       </tr>
       <% end %>
     </table>
-    
+
     <div class="row">
     <% @pictures.each do |picture| %>
       <div class="span1" style="width: 80px; margin-height: 10px; float:left">
@@ -80,7 +80,8 @@
       </div>
     <% end %>
     </div>
-    
+    <hr>
+    <%= image_tag embed_remote_image(qr_tag(edit_order_transition_url(@order.token), size: 250), 'image/png' ), alt: 'QR code' %>
   </body>
 </html>
 

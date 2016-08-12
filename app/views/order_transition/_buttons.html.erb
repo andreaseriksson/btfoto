@@ -1,0 +1,11 @@
+<% Order.statuses.keys.each do |status| %>
+  <div style="margin-top: 10px">
+    <button
+      data-status="<%= status %>"
+      data-url="<%= order_transition_path(@order.token) %>"
+      class="change-transition btn btn-large btn-block <%= 'btn-primary' if status == @order.status %>"
+    >
+        <%= status.humanize %>
+    </button>
+  </div>
+<% end %>

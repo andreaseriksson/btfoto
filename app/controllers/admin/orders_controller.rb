@@ -5,15 +5,16 @@ module Admin
 
     def index
       @search = Order.search(params[:q])
-      @orders = @search.result.includes(:order_items).paginate(:page => params[:page], :per_page => 20)
+      @orders = @search.result.paginate(page: params[:page], per_page: 20)
     end
 
     def show
       @order = Order.find(params[:id])
       order_items = OrderItem.where(order_id: @order.id).group(:image_nr).pluck(:image_nr)
       @pictures = @order.order_pictures order_items
+
       if params[:mail]
-        send_order_mail(@order) if params[:mail]
+        send_order_mail(@order)
       else
         respond_to do |format|
           format.html

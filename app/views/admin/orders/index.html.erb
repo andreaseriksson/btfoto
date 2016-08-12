@@ -7,46 +7,47 @@
     </header>
     <section>
       <%= search_form_for @search, url: admin_orders_path, class: 'form-inline pull-right', method: 'get' do |f| %>
-        <%= f.text_field :first_name_or_family_name_cont, class: 'input-medium', placeholder: 'Name' %>
+        <%= f.text_field :first_name_or_family_name_or_full_name_cont, class: 'input-medium', placeholder: 'Name' %>
         <%= f.text_field :id_eq, class: 'input-small', placeholder: 'Order nr' %>
         <%= f.submit "Search", class: 'btn' %>
       <% end %>
       <h3>Visa orders</h3>
       <table class="table table-bordered table-striped table-highlight">
-      <thead>
-      <tr>
-        <th>Nr</th>
-        <th>Namn</th>
-        <th>Summa</th>
-        <th>Bekräftad</th>
-        <th>Metod</th>
-        <th>Skapad</th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
-      </tr>
-      </thead>
-    <% @orders.each do |order| %>
-      <tr>
-        <td><%= order.id %></td>
-        <td><%= order.first_name %> <%= order.family_name %></td>
-        <td><%= to_curr(order.summary[:sum]) %></td>
-        <td><%= order.confirmed == true ? 'Ja':'Nej' %></td>
-        <td><%= order.payment_type == 'card' ? 'Kort' : 'Förskott' %></td>
-        <td><%= order.created_at.strftime("%Y-%m-%d") %></td>
-        <td><%= link_to raw('<i class="fa fa-file-o"></i>'), [:admin, order] %></td>
-        <td><%= link_to raw('<i class="fa fa-envelope-o"></i>'), admin_order_path(order, mail: true) %></td>
-        <td><%= link_to raw('<i class="fa fa-print"></i>'), admin_order_path(order, format: :pdf) %></td>
-        <td><%= link_to raw('<i class="fa fa-trash-o"></i>'), [:admin, order], method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-    </table>
-    
-    <%= will_paginate @orders %>
-    
+        <thead>
+          <tr>
+            <th>Nr</th>
+            <th>Namn</th>
+            <th>Summa</th>
+            <th>Bekräftad</th>
+            <th>Status</th>
+            <th>Metod</th>
+            <th>Skapad</th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <% @orders.each do |order| %>
+          <tr>
+            <td><%= order.id %></td>
+            <td><%= order.first_name %> <%= order.family_name %></td>
+            <td><%= to_curr(order.summary[:sum]) %></td>
+            <td><%= order.confirmed == true ? 'Ja':'Nej' %></td>
+            <td><%= order.status.humanize %></td>
+            <td><%= order.payment_type == 'card' ? 'Kort' : 'Förskott' %></td>
+            <td><%= order.created_at.strftime("%Y-%m-%d") %></td>
+            <td><%= link_to raw('<i class="fa fa-file-o"></i>'), [:admin, order] %></td>
+            <td><%= link_to raw('<i class="fa fa-envelope-o"></i>'), admin_order_path(order, mail: true) %></td>
+            <td><%= link_to raw('<i class="fa fa-print"></i>'), admin_order_path(order, format: :pdf) %></td>
+            <td><%= link_to raw('<i class="fa fa-trash-o"></i>'), [:admin, order], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        <% end %>
+      </table>
+
+      <%= will_paginate @orders %>
+
     </section>
-    
   </article>
   <!-- /Data block -->
 </div>

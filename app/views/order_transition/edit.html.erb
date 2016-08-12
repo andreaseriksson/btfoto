@@ -1,0 +1,22 @@
+<div id="status-buttons">
+  <%= render 'buttons' %>
+</div>
+
+<script>
+  $(function() {
+    $('body').on('click', '.change-transition', function() {
+      var isConfirmed=confirm('New status: ' + $(this).text() );
+
+      if(isConfirmed) {
+        $.ajax({
+          url: $(this).data('url'),
+          type: 'PUT',
+          data: { order: { status: $(this).data('status') } },
+          success: function(result) {
+              // Nothing ATM
+          }
+        });
+      }
+    });
+  });
+</script>

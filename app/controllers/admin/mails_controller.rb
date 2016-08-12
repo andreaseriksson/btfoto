@@ -39,6 +39,9 @@ module Admin
       when %w(OrderMailer order_confirmation)
         order = Order.last
         [order]
+      when %w(OrderMailer changed_status)
+        order = Order.last
+        [order.id]
       end
     end
   end
