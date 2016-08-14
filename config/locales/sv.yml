@@ -472,7 +472,9 @@ sv:
     success:
       heading: Tack för din beställning
       heading_alt: Tack för din beställning
-      text: Inbetalningskort kommer de närmaste dagarna med posten.
+      text: |-
+        Du kommer snart att få ett mail med instruktioner om hur du ska betala din order.<br><br>
+        <strong>Obs.</strong> Beställningen behöver vara betald innan förfallodatum för att eventuella rabatter och erbjudan ska gälla.
       text_alt: Ditt köp lyckades och du kommer snart få dina bilder hemskickade.
     switch_image:
       notice: Du har nu bytt visningsbild

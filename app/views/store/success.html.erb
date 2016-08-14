@@ -1,12 +1,12 @@
 <% content_for(:tagline) do %>
-  <h1><%= t 'store.login.store_heading' %></h1>
+  <h1><%= t 'store.index.store_heading' %></h1>
 <% end %>
 
 <%= store_page_markup(%w(payment_info)) do %>
 
   <% if params[:type] %>
     <h2><%= t '.heading' %></h2>
-    <p><%= t '.text' %></p>
+    <p><%== t '.text' %></p>
   <% else %>
     <h2><%= t '.heading_alt' %></h2>
     <p><%= t '.text_alt' %></p>

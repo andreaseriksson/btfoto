@@ -43,7 +43,6 @@ class Order < ActiveRecord::Base
 
   def summary
     order = self
-    order_items = []
 
     sum_with_vat = 0
     sum_vat = 0
@@ -58,6 +57,7 @@ class Order < ActiveRecord::Base
 
     order_items.each do |order_item|
       sum_with_vat = sum_with_vat + order_item.total
+      puts sum_with_vat
       sum_vat = sum_vat + (order_item.vat * order_item.quantity)
     end
 

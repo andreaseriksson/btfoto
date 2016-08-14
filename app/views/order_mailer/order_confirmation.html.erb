@@ -1,10 +1,21 @@
 <strong>Orderbekräftelse</strong><br>
 
-Ordernummer: <%= @order.id %><br>
+Ordernummer: <%= @order.order_nr %><br>
 Kundens epost: <%= @order.email %><br><br>
 
-
 Orderdatum: <%= @order.created_at.strftime("%Y-%m-%d") %><br><br>
+
+<strong>Betalningssätt</strong>
+<hr>
+<%= @order.payment_type == 'card' ? 'Kortbetalning' : 'Förskottsbetalning' %><br><br>
+
+<% if @order.payment_type == 'cash' %>
+  Förfallodag: <strong><%= 30.days.from_now.strftime('%Y-%m-%d') %> (30 dagar)</strong><br />
+  Betala in på bankgiro: <strong>5574-3751</strong><br />
+  Obs: Ange i meddelandefältet: <strong>Ordernr <%= @order.order_nr %></strong><br />
+  Summa: <strong><%= to_curr @order.summary[:sum] %>Kr</strong><br />
+  <strong>Betala endast om du vill beställa</strong><br /><br />
+<% end %>
 
 <strong>Fakturaadress</strong>
 <hr>
@@ -15,16 +26,12 @@ Orderdatum: <%= @order.created_at.strftime("%Y-%m-%d") %><br><br>
 Sverige<br>
 <%= @order.phone %><br><br>
 
-<strong>Betalningssätt</strong>
-<hr>
-<%= @order.payment_type == 'card' ? 'Kortbetalning' : 'Förskottsbetalning' %><br><br>
-
 <strong>Produkter</strong>
 <hr>
 <%= @order.shipping_cost == 0 ? "1 x 1000. Gratis frakt":"1 x 1001. Expeditionsavgift #{to_curr(@order.summary[:delivery])}Kr" %><br>
 <%= "1 x 1002. Inbetalningskort #{to_curr(@order.summary[:prepaid_fee])}Kr" if @order.payment_type == 'cash' %><br>
 <%= @order.extra_shipment == true ? "1 x 1005. Katalogen skickas separat #{to_curr(@order.summary[:extra_shipment])}Kr":"1 x 1004. En försändelse" %><br>
-<% @order.order_items.each do |order_item| %>
+<% @order.order_items.includes(:product).each do |order_item| %>
 <%= order_item.quantity %> x <%= order_item.product.name %> (<%= order_item.image_nr %>) = <%= to_curr order_item.total %>Kr<br>
 <% end %>
 <hr><br>

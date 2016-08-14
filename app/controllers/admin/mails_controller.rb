@@ -34,13 +34,13 @@ module Admin
     def get_mail_params(mail)
       case mail
       when %w(ImportMailer notification)
-        order = Order.last
+        order = Order.first
         [order&.email, order&.order_items&.first&.image_nr]
       when %w(OrderMailer order_confirmation)
-        order = Order.last
+        order = Order.first
         [order]
       when %w(OrderMailer changed_status)
-        order = Order.last
+        order = Order.first
         [order.id]
       end
     end
