@@ -5,7 +5,7 @@ class ImportMailer < ActionMailer::Base
   def notification(email, image)
     @email = email
     @image = image
-    subject = "Your image is available"
-    mail to: 'andreas@codered.se', subject: subject, from: "BTfoto webshop<info@btfoto.se>"
+    subject = 'Din bild är nu tillgänglig'
+    mail to: email, subject: subject, from: "BTfoto webshop<info@btfoto.se>"
   end
 end

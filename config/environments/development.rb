@@ -32,12 +32,14 @@ Btfoto::Application.configure do
   config.action_mailer.delivery_method = :smtp
 
   config.action_mailer.smtp_settings = {
-    address: "smtp.gmail.com",
+    address: "smtp.sparkpostmail.com",
     port: 587,
-    domain: "codered.se",
     authentication: "plain",
+    user_name: "SMTP_Injection",
+    password:  ENV['SPARKPOST_PASSWORD'],
     enable_starttls_auto: true,
-    user_name: ENV['GMAIL_EMAIL'],
-    password:  ENV['GMAIL_PASS']
+    format: :html,
   }
+
+  config.action_mailer.raise_delivery_errors = true
 end
