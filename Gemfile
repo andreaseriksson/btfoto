@@ -40,6 +40,7 @@ group :development do
   gem 'quiet_assets'
   gem 'bullet'
   gem 'puma'
+  gem 'web-console', '~> 2.0'
 end
 
 group :development, :test do
@@ -49,7 +50,6 @@ group :development, :test do
   gem 'faker'
   gem 'rspec-rails', '~> 3.0'
   gem 'spring'
-  gem 'web-console', '~> 2.0'
 end
 
 group :test do
