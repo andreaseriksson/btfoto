@@ -27,3 +27,4 @@ public/uploads/*
 docker-compose.yml
 .env
 todo.md
+test.csv
