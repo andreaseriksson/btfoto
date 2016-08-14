@@ -75,13 +75,15 @@
 
     <div class="row">
     <% @pictures.each do |picture| %>
-      <div class="span1" style="width: 80px; margin-height: 10px; float:left">
-      <%= pdf_image_tag embed_remote_image(picture.image), class: 'thumbnail'  %>
+      <div class="span1" style="width: 80px; margin-right: 20px; float:left">
+        <%= image_tag embed_remote_image(picture.image.url, 'image/jpeg'), class: 'thumbnail'  %>
       </div>
     <% end %>
     </div>
     <hr>
-    <%= image_tag embed_remote_image(qr_tag(edit_order_transition_url(@order.token), size: 250), 'image/png' ), alt: 'QR code' %>
+    <div class="text-center">
+      <%= image_tag embed_remote_image(qr_tag(edit_order_transition_url(@order.token), size: 120), 'image/png' ), alt: 'QR code' %>
+    </div>
   </body>
 </html>
 

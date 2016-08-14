@@ -2,6 +2,7 @@ class OrderTransitionController < ApplicationController
 
   layout 'order_transition'
 
+  before_action :authenticate_user
   before_action :load_order
 
   def edit
