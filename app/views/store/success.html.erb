@@ -5,11 +5,11 @@
 <%= store_page_markup(%w(payment_info)) do %>
 
   <% if params[:type] %>
-    <h2><%= '.heading' %></h2>
-    <p><%= '.text' %></p>
+    <h2><%= t '.heading' %></h2>
+    <p><%= t '.text' %></p>
   <% else %>
-    <h2><%= '.heading_alt' %></h2>
-    <p><%= '.text_alt' %></p>
+    <h2><%= t '.heading_alt' %></h2>
+    <p><%= t '.text_alt' %></p>
   <% end %>
 
 <% end %>
