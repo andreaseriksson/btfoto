@@ -28,7 +28,7 @@ module ApplicationHelper
   end
 
   def flash_message(name,msg)
-    if name == :notice
+    if name.to_s == 'notice'
 			title = t('Success')
 			theme = 'blue'
       sticky = 'false'
@@ -39,7 +39,7 @@ module ApplicationHelper
 		end
 
     msgs = "$.jGrowl('#{msg}', {header: '#{title}', sticky: #{sticky}, theme: '#{theme}'});"
-    content_tag :script , raw("$(document).ready(function() { #{msgs} });") , :type => "text/javascript"
+    content_tag :script , raw("$(document).ready(function() { #{msgs} });") , type: 'text/javascript'
   end
 
   def pdf_image_tag(image, options={})
