@@ -9,7 +9,7 @@ class PaymentsController < ApplicationController
 
     if @order
       @order.confirm
-      OrderMailer.order_confirmation(@order).deliver
+      OrderMailer.order_confirmation(@order).deliver_now
 
       begin
         @cart.destroy if defined? @cart
