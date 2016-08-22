@@ -1,5 +1,9 @@
 <h3><%= t '.heading' %></h3>
 
+<div class="thumbnail img-modal" style="margin-bottom: 5px;">
+  <%= thumbnail(@picture, @picture.image.url) %>
+</div>
+
 <% @picture.syblings.in_groups_of(2, false) do |row| %>
   <div class="row-fluid" style="margin-bottom: 5px;">
     <% row.each do |picture| %>
