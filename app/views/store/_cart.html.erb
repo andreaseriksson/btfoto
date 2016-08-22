@@ -9,7 +9,7 @@
         <span class="ordinary-price"><%= t '.total', sum: to_curr(@cart.summary[:sum_without_delivery]) %></span>
 
 	    	<% if @cart.days_left >= 0 %>
-	    	  <div><strong><%= t '.your_price', sum: to_curr(@cart.summary[:sum_without_delivery]) %></div>
+	    	  <div><strong><%= t '.your_price', sum: to_curr(@cart.summary[:sum_after_discount]) %></div>
 	    	  <style>span.ordinary-price {text-decoration: line-through;}</style>
 	    	<% end %>
 
