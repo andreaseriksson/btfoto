@@ -2,7 +2,7 @@
   <h1>Beställ bilder</h1>
 <% end %>
 
-<%= render 'content_top' %>
+<%= store_page_markup(%w(payment_info)) do %>
 
   <h2>Byt bildnummer</h2>
   <p>Skriv in det nya bildnummret. Nuvarande bildnummer är <strong><%= cookies[:image_nr] %></strong></p>
@@ -16,4 +16,4 @@
     </div>
   <% end %>
 
-<%= render 'content_bottom', partials: %w(payment_info) %>
+<% end %>
