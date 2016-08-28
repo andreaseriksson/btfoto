@@ -5,7 +5,7 @@ module Admin
 
     def index
       @search = Order.search(params[:q])
-      @orders = @search.result.paginate(page: params[:page], per_page: 20)
+      @orders = @search.result.includes(:order_items).paginate(page: params[:page], per_page: 20)
     end
 
     def show
