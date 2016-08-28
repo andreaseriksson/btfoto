@@ -62,7 +62,6 @@ group :test do
 end
 
 group :production do
-  gem 'backup'
   gem 'foreman'
   gem 'newrelic_rpm'
   gem 'rails_12factor'

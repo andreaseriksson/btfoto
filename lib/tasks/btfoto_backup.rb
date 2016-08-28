@@ -10,7 +10,6 @@
 # http://backup.github.io/backup
 #
 Model.new(:btfoto_backup, 'Description for my_backup') do
-
   ##
   # PostgreSQL [Database]
   #
