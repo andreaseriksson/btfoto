@@ -19,7 +19,8 @@ module Admin
       tempfile.close
 
       @imports = []
-      CSV.foreach(tempfile, headers: true, col_sep: ",") do |row|
+      delimiter = find_delimiter(tempfile)
+      CSV.foreach(tempfile, headers: true, col_sep: delimiter) do |row|
         @imports << OpenStruct.new(email: row['email'], image: row['image'])
       end
 
@@ -39,6 +40,11 @@ module Admin
 
     def open(url)
       Net::HTTP.get(URI.parse(url))
+    end
+
+    def find_delimiter(tempfile)
+      result = CSV.read(tempfile)&.flatten || []
+      %w(; , |).find { |delimiter| result.first.include? delimiter } || ','
     end
   end
 end

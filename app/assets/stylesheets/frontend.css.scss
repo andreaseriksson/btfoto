@@ -33,7 +33,7 @@ a:focus, a:active, input:focus, input:active, input[type="submit"]:active, input
     border: none;
     margin: 0;
     padding: 0;
-    
+
     .brand {
       padding: 0px;
       margin-left: 0px;
@@ -41,20 +41,20 @@ a:focus, a:active, input:focus, input:active, input[type="submit"]:active, input
       bottom: 0px;
       border-bottom: 2px solid #5bb75b;
     }
-    
+
     .snav-collapse {
       height: auto;
       position: relative;
-      
+
       .nav {
         float: right;
         margin-top: 83px;
         margin-right: 0px;
-        
+
         li {
           margin-right: 15px;
         }
-        
+
         li > a {
           padding: 8px 10px;
           font-weight: normal;
@@ -63,7 +63,7 @@ a:focus, a:active, input:focus, input:active, input[type="submit"]:active, input
           text-shadow: none;
           border-bottom: 2px solid #f9f9f9;
         }
-        
+
         li > a:hover {
           background-color: transparent;
           color: #333333;
@@ -87,15 +87,15 @@ a:focus, a:active, input:focus, input:active, input[type="submit"]:active, input
           box-shadow: none;
         }
       }
-      
+
     }
-    
+
     .smedia {
       position: absolute;
       margin-left: 5px;
       top: 25px;
       right: 0px;
-      
+
       span {
         float: left;
         margin-top: 5px;
@@ -103,35 +103,35 @@ a:focus, a:active, input:focus, input:active, input[type="submit"]:active, input
         color: #aaaaaa;
         font-size: 12px;
       }
-      
+
       h5 {
         margin: 0;
       }
-      
+
     }
-    
+
   }
-  
+
 }
 
 .sliderWrap {
   padding-top: 40px;
-  
+
   .span12 {
     box-shadow: #888;
     border: 1px solid #aaa;
     margin-bottom: 20px;
-    
+
     .carousel-control {
       top: 50%;
     }
-       
+
     .carousel {
       margin: 0;
     }
-    
+
   }
-  
+
 }
 
 .taglineWrap {
@@ -219,15 +219,15 @@ footer .footerLower {
 
 aside.sidebar {
   display: block;
-  
+
   .widget {
     margin-bottom: 20px;
   }
-  
+
   a.display {
     display: block
   }
-  
+
 }
 
 h1 {
@@ -281,14 +281,14 @@ p.radio-buttons span {
 }
 
 .thumbnail.product  {
-  
+
   a.display {
     display: block;
     text-align: center;
     min-height: 180px;
     img {
-      max-height: 180px; 
-    }  
+      max-height: 180px;
+    }
   }
 }
 
@@ -361,22 +361,22 @@ div {
   }
 }
 
-@media (max-width: 767px) { 
+@media (max-width: 767px) {
   body {
     padding: 0;
   }
-  
+
   .container {
     padding: 0 10px;
   }
-  
+
   a.brand {
     height: 80px;
     img {
       height: 100%;
     }
   }
-  
+
   a#responsive-menu-button {
     margin-right: 10px;
     margin-top: 20px;

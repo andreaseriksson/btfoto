@@ -285,7 +285,7 @@ sv:
       notice: Ordern skapades.
     new:
       card: Betalkort (Visa/Mastercard)
-      cash: Förskottsbetalning (+19kr) Du får ett inbetalningskort hemskickat med posten.
+      cash: Förskottsbetalning (+19kr) Du får ett mail med betalningsinstruktioner.
       catalog_disclaimer: Om du väljer en leverans blir det endast en expeditionsavgift men du får vänta längre på att få hem dina foton.
       catalog_heading: Skolkatalog?
       catalog_text: En leverans med porträttbilderna + klassfoto och en separat leverans av skolkatalogen eller en gemensam leverans med allt då skolkatalogen är klar.

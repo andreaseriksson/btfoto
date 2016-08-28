@@ -40,7 +40,7 @@ module Admin
         order = Order.first
         [order]
       when %w(OrderMailer changed_status)
-        order = Order.first
+        order = Order.where(status: %w(progress sent)).first
         [order.id]
       end
     end

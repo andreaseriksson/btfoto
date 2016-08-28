@@ -7,6 +7,7 @@
     </header>
     <section>
       <%= search_form_for @search, url: admin_orders_path, class: 'form-inline pull-right', method: 'get' do |f| %>
+        <%= f.select :status_eq, options_for_select(Order.statuses, @search&.status_eq), class: 'input-small', include_blank: true %>
         <%= f.text_field :first_name_or_family_name_or_full_name_cont, class: 'input-medium', placeholder: 'Name' %>
         <%= f.text_field :id_eq, class: 'input-small', placeholder: 'Order nr' %>
         <%= f.submit "Search", class: 'btn' %>
