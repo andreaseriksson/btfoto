@@ -29,6 +29,7 @@ gem 'sass-rails', '~> 5.0'
 gem 'sidekiq'
 gem 'simple_form'
 gem 'uglifier', '>= 1.3.0'
+gem 'whenever', require: false
 gem 'wicked_pdf'
 gem 'will_paginate', '~> 3.0'
 gem 'wkhtmltopdf-binary'
@@ -62,7 +63,6 @@ group :test do
 end
 
 group :production do
-  gem 'backup', require: false
   gem 'foreman'
   gem 'newrelic_rpm'
   gem 'rails_12factor'

@@ -23,3 +23,4 @@ RUN apt-get update && apt-get install -y --force-yes postgresql-9.5 postgresql-c
 RUN gem install backup
 RUN backup generate:model --trigger btfoto_backup
 RUN cp /app/lib/tasks/btfoto_backup.rb ~/Backup/models/btfoto_backup.rb
+RUN whenever --update-crontab
