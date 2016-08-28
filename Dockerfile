@@ -19,7 +19,7 @@ ADD . /app
 ADD config/btfoto.conf /etc/nginx/sites-enabled/default
 
 # Backup Gem
-RUN apt-get postgresql
+RUN apt-get install postgresql
 RUN gem install backup
 RUN backup generate:model --trigger btfoto_backup
 RUN cp /app/lib/tasks/btfoto_backup.rb ~/Backup/models/btfoto_backup.rb
