@@ -1,7 +1,6 @@
-<strong>Order uppdaterad</strong><br>
-Din order med ordernummer <%= @order.order_nr %>
+<strong>Tack för din beställning!</strong><br>
 <% if @order.sent? %>
-  är nu redo att skickas.
+  Din order med ordernummer <%= @order.order_nr %> är nu packad och skickas inom kort till dig.
 <% else %>
-  är nu under behandling. Du kommer bli notifierad när den är redo att skickas.
+  Din betalning har nu kommit in till oss och din order med ordernummer <%= @order.order_nr %> är nu under bearbetning.
 <% end %>
