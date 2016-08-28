@@ -12,9 +12,13 @@ Orderdatum: <%= @order.created_at.strftime("%Y-%m-%d") %><br><br>
 <% if @order.payment_type == 'cash' %>
   Förfallodag: <strong><%= 30.days.from_now.strftime('%Y-%m-%d') %> (30 dagar)</strong><br />
   Betala in på bankgiro: <strong>5574-3751</strong><br />
-  Obs: Ange i meddelandefältet: <strong>Ordernr <%= @order.order_nr %></strong><br />
-  Summa: <strong><%= to_curr @order.summary[:sum] %>Kr</strong><br />
-  <strong>Betala endast om du vill beställa</strong><br /><br />
+  <span style="font-size: 16px">
+    VIKTIGT! Ange i meddelandefältet:
+    <strong>Ordernr <%= @order.order_nr %></strong><br />
+    Summa: <strong><%= to_curr @order.summary[:sum] %>Kr</strong><br />
+  </span><br />
+  Detta är ett erbjudan. Betala endast om du vill beställa.
+  Din leverans skickas när belopp är registrerat på vårt bankgiro: 5574-3751<br /><br />
 <% end %>
 
 <strong>Fakturaadress</strong>
