@@ -5,6 +5,7 @@
       <h5><%= product.name %></h5>
       <h3 class="product-price"><%= extra_price(product) %> Kr</h3>
       <%= button_to "Lägg till", add_to_cart_path(product_id: product.id), class: 'btn btn-success'   %>
+      <%= link_to 'Läs mer', product, class: 'btn pull-right' %>
     </div>
   </div>
 </div>
