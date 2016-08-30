@@ -38,5 +38,5 @@ Model.new(:btfoto_backup, 'Description for my_backup') do
   ##
   # Gzip [Compressor]
   #
-  compress_with Gzip
+  # compress_with Gzip
 end

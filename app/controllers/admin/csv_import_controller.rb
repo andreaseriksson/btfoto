@@ -32,7 +32,7 @@ module Admin
       imports = params[:imports] || []
       imports.each do |import|
         email, image = import.split('|')
-        ImportMailer.notification(email, image).deliver_now
+        ImportMailer.delay.notification(email, image)
       end
     end
 
