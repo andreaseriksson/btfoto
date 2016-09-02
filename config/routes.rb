@@ -21,6 +21,7 @@ Btfoto::Application.routes.draw do
   get 'store/checkout', to: 'store#checkout', as: 'store_checkout'
   get 'store/payment', to: 'orders#new'
   get 'store/payment_return', to: 'payments#create'
+  post 'store/payment_return', to: 'payments#create'
   get 'store/login', to: 'store#login'
   get 'store/logout', to: 'store#logout'
   post 'store/auth', to: 'store#auth'
