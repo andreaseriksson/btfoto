@@ -18,6 +18,6 @@
 # end
 
 # Learn more: http://github.com/javan/whenever
-every :hour do
+every 10.minutes do
   command "#{%w(BT_FOTO_DATABASE_PASSWORD AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY AWS_REGION).map { |env_variable| "#{env_variable}=$#{env_variable}" }.join(' ')} backup perform --trigger btfoto_backup"
 end
