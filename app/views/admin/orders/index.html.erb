@@ -7,9 +7,10 @@
     </header>
     <section>
       <%= search_form_for @search, url: admin_orders_path, class: 'form-inline pull-right', method: 'get' do |f| %>
-        <%= f.select :status_eq, options_for_select(Order.statuses, @search&.status_eq), class: 'input-small', include_blank: true %>
+        <%= f.select :payment_type_eq, options_for_select([['Kort', 'card'],['Förskott', 'cash']], @search&.payment_type_eq), { include_blank: true }, { class: 'input-small' } %>
+        <%= f.select :status_eq, options_for_select(Order.statuses, @search&.status_eq), { include_blank: true }, { class: 'input-small' } %>
         <%= f.text_field :first_name_or_family_name_or_full_name_cont, class: 'input-medium', placeholder: 'Name' %>
-        <%= f.text_field :id_eq, class: 'input-small', placeholder: 'Order nr' %>
+        <%= f.text_field :order_nr_eq, class: 'input-small', placeholder: 'Order nr' %>
         <%= f.submit "Search", class: 'btn' %>
       <% end %>
       <h3>Visa orders</h3>
@@ -31,7 +32,7 @@
         </thead>
         <% @orders.each do |order| %>
           <tr>
-            <td><%= order.id %></td>
+            <td><%= order.order_nr %></td>
             <td><%= order.first_name %> <%= order.family_name %></td>
             <td><%= to_curr(order.summary[:sum]) %></td>
             <td><%= order.confirmed == true ? 'Ja':'Nej' %></td>

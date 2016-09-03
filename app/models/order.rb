@@ -21,6 +21,10 @@ class Order < ActiveRecord::Base
   default_scope -> { order(created_at: :desc) }
   scope :unprinted, -> { where(printed_at: nil) }
 
+  ransacker :order_nr do |parent|
+    Arel::Nodes::Addition.new(3200, parent.table[:id])
+  end
+
   ransacker :full_name do |parent|
     Arel::Nodes::InfixOperation.new('||',
       Arel::Nodes::InfixOperation.new('||',
@@ -57,7 +61,6 @@ class Order < ActiveRecord::Base
 
     order_items.each do |order_item|
       sum_with_vat = sum_with_vat + order_item.total
-      puts sum_with_vat
       sum_vat = sum_vat + (order_item.vat * order_item.quantity)
     end
 

@@ -44,7 +44,7 @@
             <tr>
               <td valign="top" width="100%" style="padding-top: 90px">
                 <small>
-                  Ordernummer: <%= @order.id %><br>
+                  Ordernummer: <%= @order.order_nr %><br>
                   Beställd: <%= @order.created_at.strftime("%Y-%m-%d") %><br>
                   Betalningssätt: <%= @order.payment_type=='card' ? 'Kort':'Förskott' %><br>
                   Försändelser: <%= @order.extra_shipment == true ? raw('<strong>2 leveranser</strong>'):'1 leverans' %><br>
