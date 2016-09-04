@@ -31,7 +31,6 @@ gem 'sidekiq'
 gem 'sidekiq-cron', '~> 0.4.0'
 gem 'simple_form'
 gem 'uglifier', '>= 1.3.0'
-gem 'whenever', require: false
 gem 'wicked_pdf'
 gem 'will_paginate', '~> 3.0'
 gem 'wkhtmltopdf-binary'
