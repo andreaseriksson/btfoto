@@ -12,6 +12,18 @@ class BackupService
     obj = s3.bucket('codered-dbbackups').object("btfoto/#{folder}/#{file_name}")
     obj.upload_file(file_name)
 
+    delete_old_files
+
     File.delete(Rails.root.join(file_name))
+  end
+
+  def self.delete_old_files
+    s3 = Aws::S3::Resource.new
+    bucket = s3.bucket('codered-dbbackups')
+
+    list = bucket.objects.select { |obj| obj.key.first(6) == 'btfoto' }.map(&:key)
+    list.first(list.length > 10 ? list.length-10 : 0).each do |key|
+      bucket.object(key)&.delete
+    end
   end
 end
