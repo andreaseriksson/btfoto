@@ -1,7 +1,7 @@
-require 'aws-sdk'
+class BackupWorker
+  include Sidekiq::Worker
 
-class BackupService
-  def self.perform
+  def perform
     root_path = Rails.root.to_s
     folder = Time.now.strftime('%Y.%m.%d.%H.%M.%S')
     file_name = 'backup.sql'
@@ -17,7 +17,9 @@ class BackupService
     File.delete(Rails.root.join(file_name))
   end
 
-  def self.delete_old_files
+  private
+
+  def delete_old_files
     s3 = Aws::S3::Resource.new
     bucket = s3.bucket('codered-dbbackups')
 

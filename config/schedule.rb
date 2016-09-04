@@ -18,6 +18,6 @@
 # end
 
 # Learn more: http://github.com/javan/whenever
-every 10.minutes do
-  runner 'BackupService.perform'
-end
+#every 10.minutes do
+#  runner 'BackupService.perform'
+#end
