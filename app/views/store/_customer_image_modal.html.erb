@@ -21,8 +21,12 @@
         <%== @picture.syblings.map { |pic| "#{pic.name}#{pic.letter}" }.join('<br>') %>
       </p>
     <% end %>
-    <div class="thumbnail">
-      <%= thumbnail(@picture, @picture.image.url) %>
+    <div class="row-fluid">
+      <div class="span6 offset3">
+        <div class="thumbnail">
+          <%= image_tag @picture.image %>
+        </div>
+      </div>
     </div>
   </div>
   <div class="modal-footer">
