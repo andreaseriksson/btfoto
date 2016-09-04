@@ -10,6 +10,8 @@ module Btfoto
   class Application < Rails::Application
     config.active_record.raise_in_transactional_callbacks = true
 
+    config.autoload_paths += %W(#{config.root}/lib #{config.root}/services #{config.root}/workers)
+
     config.generators.stylesheets = false
     config.generators.javascripts = false
     config.generators.helper      = false

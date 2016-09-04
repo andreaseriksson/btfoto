@@ -1,8 +1,17 @@
+require 'aws-sdk'
+
 class BackupService
   def self.perform
-    env_variables = %w(BT_FOTO_DATABASE_PASSWORD AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY AWS_REGION).map do |env_variable|
-      "#{env_variable}=#{ENV[env_variable]}"
-    end
-    exec("#{env_variables.join(' ')} backup perform --trigger btfoto_backup")
+    root_path = Rails.root.to_s
+    folder = Time.now.strftime('%Y.%m.%d.%M.%S')
+    file_name = 'backup.sql'
+
+    system("pg_dump --format=tar --no-privileges btfoto_#{Rails.env} > #{root_path}/#{file_name}")
+
+    s3 = Aws::S3::Resource.new(region: ENV['AWS_REGION'])
+    obj = s3.bucket('codered-dbbackups').object("btfoto/#{folder}/#{file_name}")
+    obj.upload_file('backup.sql')
+
+    File.delete(Rails.root.join(file_name))
   end
 end
