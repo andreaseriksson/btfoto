@@ -72,7 +72,7 @@
             <td><%= order.created_at.strftime("%Y-%m-%d") %></td>
             <td><%= link_to raw('<i class="fa fa-file-o"></i>'), [:admin, order] %></td>
             <td><%= link_to raw('<i class="fa fa-envelope-o"></i>'), admin_order_path(order, mail: true) %></td>
-            <td><%= link_to raw('<i class="fa fa-print"></i>'), admin_order_path(order, format: :pdf), data: {path: admin_order_mark_as_printed_path(order)}, target: '_blank' %></td>
+            <td><%= link_to raw('<i class="fa fa-print"></i>'), admin_order_path(order, format: :pdf), data: {path: mark_as_printed_admin_order_path(order)}, target: '_blank' %></td>
             <td><%= link_to raw('<i class="fa fa-trash-o"></i>'), [:admin, order], method: :delete, data: { confirm: 'Are you sure?' } %></td>
           </tr>
           <% end %>
