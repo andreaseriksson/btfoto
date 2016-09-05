@@ -2,6 +2,7 @@ class PaymentsController < ApplicationController
 
   before_action :check_login, except: [:login, :auth]
   before_action :initiate_cart
+  skip_before_action :verify_authenticity_token, only: [:create]
 
   def create
     @order = Order.where(token: params[:token]).first
