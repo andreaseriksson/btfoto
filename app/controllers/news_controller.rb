@@ -11,6 +11,7 @@ class NewsController < ApplicationController
   def show
     @page = Page.first
     @news = News.find_by(slug: params[:id])
+    redirect_to root_path unless @news
   end
 
   private

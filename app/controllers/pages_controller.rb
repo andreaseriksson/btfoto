@@ -16,7 +16,7 @@ class PagesController < ApplicationController
       @page = Page.first
     end
 
-    redirect_to root_path if @page.first_page?
+    redirect_to root_path if @page.nil? || @page.first_page?
   end
 
   def redirect
