@@ -46,7 +46,10 @@ Btfoto::Application.routes.draw do
     resources :products
     resources :product_categories
     resources :orders do
-      get :mark_as_printed
+      member do
+        get :mark_as_printed
+        get :invoice
+      end
     end
     resources :pictures do
       collection do

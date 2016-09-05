@@ -1,0 +1,115 @@
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <%= wicked_pdf_stylesheet_link_tag "application" %>
+    <style>
+      #logo { margin-bottom: 20px; }
+      #logo img { border: none; }
+    </style>
+  </head>
+  <body>
+    <center><h2>Betald</h2></center>
+    <hr>
+    <table border="0" width="100%" style="margin-top: 5px">
+      <tr>
+        <td valign="top" width="60%">
+          <table width="100%">
+            <tr>
+              <td valign="top" width="100%">
+                <small>
+                  <div id="logo"><%= pdf_image_tag "/bt_logga.jpg", class: 'logo'  %></div>
+                  BTFOTO.SE<br>
+                  Haraldstorpsvägen 235<br>
+                  271 91 Ystad<br>
+                  Sweden<br><br>
+
+                  Tel: 0702 - 21 05 70<br>
+                  www.btfoto.se | e-mail: info@btfoto.se
+                </small>
+              </td>
+            </tr>
+          </table>
+        </td>
+        <td valign="top">
+          <h3>Ordernummer: <%= @order.order_nr %></h3>
+          <strong>Utskriftsdatum: <%= Date.today.strftime('%Y-%m-%d') %></strong><br><br>
+          <table width="100%">
+            <tr>
+              <td valign="top" width="100%">
+                Beställd: <%= @order.created_at.strftime("%Y-%m-%d") %><br>
+                Betalningssätt: <%= @order.payment_type=='card' ? 'Kort':'Förskott' %><br>
+                Försändelser: <%= @order.extra_shipment == true ? raw('<strong>2 leveranser</strong>'):'1 leverans' %><br>
+                <br>
+              </td>
+            </tr>
+            <tr>
+              <td valign="top" width="100%">
+                <%= @order.first_name %> <%= @order.family_name %><br>
+                <%= @order.address1 %> <%= @order.address2 %><br>
+                <%= @order.zip %> <%= @order.city %><br>
+                <%= @order.email %>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+    <br><br>
+    <table class="table table-condensed table-bordered table-striped">
+      <tr>
+        <td width="10%" align="right">Antal</td>
+        <td width="65%">Beskrivning</td>
+        <td width="10%">%</td>
+        <td width="15%">Summa</td>
+      </tr>
+      <% if @order.summary[:delivery] > 0 %>
+        <tr>
+          <td style="text-align: right">1</td>
+          <td>Frakt</td>
+          <td></td>
+          <td><%= to_curr @order.summary[:delivery]/(1+Order::VAT) %></td>
+        </tr>
+      <% end %>
+      <% if @order.summary[:extra_shipment] > 0 %>
+        <tr>
+          <td style="text-align: right">1</td>
+          <td>Två försändelser</td>
+          <td></td>
+          <td><%= to_curr @order.summary[:extra_shipment]/(1+Order::VAT) %></td>
+        </tr>
+      <% end %>
+      <% if @order.summary[:prepaid_fee] > 0 %>
+        <tr>
+          <td style="text-align: right">1</td>
+          <td>Förskottsavgift</td>
+          <td></td>
+          <td><%= to_curr @order.summary[:prepaid_fee]/(1+Order::VAT) %></td>
+        </tr>
+      <% end %>
+      <% @order.order_items.each do |order_item| %>
+      <tr>
+        <td style="text-align: right"><%= order_item.quantity %></td>
+        <td>
+          <%= order_item.product.name %>
+          <%= order_item.image_nr %>
+        </td>
+        <td><%= order_item.discount %></td>
+        <td><%= to_curr order_item.price-order_item.vat %></td>
+      </tr>
+      <% end %>
+      <tr>
+        <td colspan="3" style="text-align: right"><strong>Summa</strong></td>
+        <td><strong><%= to_curr @order.summary[:sum_without_vat] %></strong></td>
+      </tr>
+      <tr>
+        <td colspan="3" style="text-align: right"><strong>Moms</strong></td>
+        <td><strong><%= to_curr @order.summary[:sum]-@order.summary[:sum_without_vat] %></strong></td>
+      </tr>
+      <tr>
+        <td colspan="3" style="text-align: right"><strong>ATT BETALA</strong></td>
+        <td><strong><%= to_curr @order.summary[:sum] %></strong></td>
+      </tr>
+    </table>
+  </body>
+</html>
+

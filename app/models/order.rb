@@ -3,6 +3,7 @@ class Order < ActiveRecord::Base
   PREPAID_FEE = 19
   FREIGHT_FREE = 650
   DISCOUNT_DAYS = 20
+  VAT = 0.25
 
   enum status: { received: 0, unpayed: 1, progress: 2, sent: 3, payed: 4 }
 
@@ -53,20 +54,27 @@ class Order < ActiveRecord::Base
     prepaid_fee = 0
     delivery = order.shipping_cost
     extra_shipment = 0
+    sum_without_vat = delivery > 0 ? deduct_vat(delivery) : 0
 
     if extra_shipment == true
       delivery = delivery - SHIPPING_FEE
       extra_shipment = SHIPPING_FEE
+      sum_without_vat += deduct_vat(SHIPPING_FEE)
     end
 
     order_items.each do |order_item|
       sum_with_vat = sum_with_vat + order_item.total
       sum_vat = sum_vat + (order_item.vat * order_item.quantity)
+      sum_without_vat += deduct_vat(order_item.total)
     end
 
-    prepaid_fee = PREPAID_FEE if payment_type == 'cash'
+    if payment_type == 'cash'
+      prepaid_fee = PREPAID_FEE
+      sum_without_vat += deduct_vat(PREPAID_FEE)
+    end
 
     summary = {}
+    summary[:sum_without_vat] = sum_without_vat
     summary[:sum_without_delivery] = sum_with_vat + prepaid_fee
     summary[:sum] = sum_with_vat + delivery + prepaid_fee + extra_shipment
     summary[:vat] = sum_vat
@@ -91,4 +99,8 @@ class Order < ActiveRecord::Base
       self[:token] = SecureRandom.urlsafe_base64
     end while Order.exists?(token: self[:token])
 	end
+
+  def deduct_vat(sum)
+    sum.to_f/(1+VAT)
+  end
 end

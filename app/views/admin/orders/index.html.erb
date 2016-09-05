@@ -28,6 +28,7 @@
             <th></th>
             <th></th>
             <th></th>
+            <th></th>
           </tr>
         </thead>
         <% @orders.each do |order| %>
@@ -42,6 +43,7 @@
             <td><%= link_to raw('<i class="fa fa-file-o"></i>'), [:admin, order] %></td>
             <td><%= link_to raw('<i class="fa fa-envelope-o"></i>'), admin_order_path(order, mail: true) %></td>
             <td><%= link_to raw('<i class="fa fa-print"></i>'), admin_order_path(order, format: :pdf) %></td>
+            <td><%= link_to raw('<i class="fa fa-inbox"></i>'), invoice_admin_order_path(order, format: :pdf) %></td>
             <td><%= link_to raw('<i class="fa fa-trash-o"></i>'), [:admin, order], method: :delete, data: { confirm: 'Are you sure?' } %></td>
           </tr>
         <% end %>

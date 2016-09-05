@@ -15,7 +15,7 @@
             Postnummer & ort: <%= @order.zip %> <%= @order.city %><br>
             Email: <%= @order.email %><br>
             Telefon: <%= @order.phone %>
-          </p>    
+          </p>
         </div>
         <div class="span6">
           <p>
@@ -26,8 +26,7 @@
           </p>
         </div>
       </div>
-      
-      
+
       <h4>Artiklar</h4>
       <table class="table">
         <tr>
@@ -45,7 +44,7 @@
         </tr>
         <% end %>
       </table>
-      
+
       <div class="row">
         <% @pictures.each do |picture| %>
         <div class="span1">
@@ -53,7 +52,7 @@
         </div>
       <% end %>
       </div>
-      
+
     </section>
   </article>
   <!-- /Data block -->
