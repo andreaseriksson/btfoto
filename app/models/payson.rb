@@ -57,7 +57,7 @@ class Payson
   end
 
   def order_id
-    @order.id
+    @order.order_nr
   end
 
   private
