@@ -14,6 +14,7 @@ class Appointment < ActiveRecord::Base
 
   def book!
     update_attribute :booked, true
+    AppointmentMailer.delay.booked(id)
   end
 
   private

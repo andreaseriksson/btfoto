@@ -1,6 +1,6 @@
 module Admin
   class MailsController < ApplicationController
-    MAILERS = [ImportMailer, OrderMailer]
+    MAILERS = [ImportMailer, OrderMailer, AppointmentMailer]
 
     before_action :find_and_build_mail, only: [:show, :preview]
 
@@ -42,6 +42,9 @@ module Admin
       when %w(OrderMailer changed_status)
         order = Order.where(status: %w(progress sent)).first
         [order.id]
+      when %w(AppointmentMailer booked)
+        appointment = Appointment.where(booked: true).first
+        [appointment.id]
       end
     end
   end
