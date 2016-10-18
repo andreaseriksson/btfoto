@@ -16,7 +16,7 @@ RUN echo "deb http://apt.postgresql.org/pub/repos/apt/ trusty-pgdg main" > /etc/
 #RUN mv wkhtmltox/bin/wkhtmltopdf /usr/local/bin/wkhtmltopdf
 #RUN chmod +x /usr/local/bin/wkhtmltopdf
 
-RUN add-apt-repository ppa:ecometrica/servers
+RUN add-apt-repository ppa:pov/wkhtmltopdf
 RUN apt-get update
 RUN apt-get install wkhtmltopdf
 
