@@ -5,10 +5,21 @@ RUN echo "deb http://apt.postgresql.org/pub/repos/apt/ trusty-pgdg main" > /etc/
     DEBIAN_FRONTEND=noninteractive \
     apt-get install -y --force-yes libpq-dev
 
-RUN wget http://download.gna.org/wkhtmltopdf/0.12/0.12.3/wkhtmltox-0.12.3_linux-generic-amd64.tar.xz
-RUN tar xvjf wkhtmltox-0.12.3_linux-generic-amd64.tar.xz
-RUN mv wkhtmltox/bin/wkhtmltopdf /usr/local/bin/wkhtmltopdf
-RUN chmod +x /usr/local/bin/wkhtmltopdf
+# https://github.com/mileszs/wicked_pdf/issues/53
+# RUN wget http://wkhtmltopdf.googlecode.com/files/wkhtmltopdf-0.9.9-static-amd64.tar.bz2
+# RUN tar xvjf wkhtmltopdf-0.9.9-static-amd64.tar.bz2
+# RUN mv wkhtmltopdf-amd64 /usr/local/bin/wkhtmltopdf
+# RUN chmod +x /usr/local/bin/wkhtmltopdf
+
+#RUN wget http://download.gna.org/wkhtmltopdf/0.12/0.12.3/wkhtmltox-0.12.3_linux-generic-amd64.tar.xz
+#RUN tar xvjf wkhtmltox-0.12.3_linux-generic-amd64.tar.xz
+#RUN mv wkhtmltox/bin/wkhtmltopdf /usr/local/bin/wkhtmltopdf
+#RUN chmod +x /usr/local/bin/wkhtmltopdf
+
+sudo add-apt-repository ppa:ecometrica/servers
+sudo apt-get update
+sudo apt-get install wkhtmltopdf
+
 
 ADD Gemfile /app/Gemfile
 ADD Gemfile.lock /app/Gemfile.lock
