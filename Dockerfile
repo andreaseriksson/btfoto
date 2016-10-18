@@ -17,8 +17,8 @@ RUN echo "deb http://apt.postgresql.org/pub/repos/apt/ trusty-pgdg main" > /etc/
 #RUN chmod +x /usr/local/bin/wkhtmltopdf
 
 #sudo add-apt-repository ppa:ecometrica/servers
-sudo apt-get update
-sudo apt-get install -y --force-yes wkhtmltopdf
+RUN apt-get update
+RUN apt-get install -y --force-yes wkhtmltopdf
 
 
 ADD Gemfile /app/Gemfile
