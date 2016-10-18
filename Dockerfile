@@ -14,7 +14,7 @@ RUN echo "deb http://apt.postgresql.org/pub/repos/apt/ trusty-pgdg main" > /etc/
 RUN apt-get install -y --force-yes xvfb
 RUN wget http://download.gna.org/wkhtmltopdf/0.12/0.12.3/wkhtmltox-0.12.3_linux-generic-amd64.tar.xz
 RUN unxz wkhtmltox-0.12.3_linux-generic-amd64.tar.xz
-RUN tar xvjf wkhtmltox-0.12.3_linux-generic-amd64.tar
+RUN tar -xvf wkhtmltox-0.12.3_linux-generic-amd64.tar
 RUN mv wkhtmltox/bin/wkhtmltopdf /usr/local/bin/wkhtmltopdf
 RUN chmod +x /usr/local/bin/wkhtmltopdf
 
