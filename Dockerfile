@@ -11,13 +11,12 @@ RUN echo "deb http://apt.postgresql.org/pub/repos/apt/ trusty-pgdg main" > /etc/
 # RUN mv wkhtmltopdf-amd64 /usr/local/bin/wkhtmltopdf
 # RUN chmod +x /usr/local/bin/wkhtmltopdf
 
-#RUN wget http://download.gna.org/wkhtmltopdf/0.12/0.12.3/wkhtmltox-0.12.3_linux-generic-amd64.tar.xz
-#RUN tar xvjf wkhtmltox-0.12.3_linux-generic-amd64.tar.xz
-#RUN mv wkhtmltox/bin/wkhtmltopdf /usr/local/bin/wkhtmltopdf
-#RUN chmod +x /usr/local/bin/wkhtmltopdf
-
-RUN apt-get update
-RUN apt-get install wkhtmltopdf
+RUN apt-get install xvfb
+RUN wget http://download.gna.org/wkhtmltopdf/0.12/0.12.3/wkhtmltox-0.12.3_linux-generic-amd64.tar.xz
+RUN unxz wkhtmltox-0.12.3_linux-generic-amd64.tar.xz
+RUN tar xvjf wkhtmltox-0.12.3_linux-generic-amd64.tar
+RUN mv wkhtmltox/bin/wkhtmltopdf /usr/local/bin/wkhtmltopdf
+RUN chmod +x /usr/local/bin/wkhtmltopdf
 
 
 ADD Gemfile /app/Gemfile
