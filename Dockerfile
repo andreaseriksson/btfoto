@@ -6,7 +6,8 @@ RUN echo "deb http://apt.postgresql.org/pub/repos/apt/ trusty-pgdg main" > /etc/
     apt-get install -y --force-yes libpq-dev
 
 # https://github.com/mileszs/wicked_pdf/issues/53
-RUN wget http://wkhtmltopdf.googlecode.com/files/wkhtmltopdf-0.9.9-static-amd64.tar.bz2
+# RUN wget http://wkhtmltopdf.googlecode.com/files/wkhtmltopdf-0.9.9-static-amd64.tar.bz2
+RUN wget http://download.gna.org/wkhtmltopdf/obsolete/linux/wkhtmltopdf-0.9.9-static-amd64.tar.bz2
 RUN tar xvjf wkhtmltopdf-0.9.9-static-amd64.tar.bz2
 RUN mv wkhtmltopdf-amd64 /usr/local/bin/wkhtmltopdf
 RUN chmod +x /usr/local/bin/wkhtmltopdf
