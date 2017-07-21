@@ -11,16 +11,16 @@ class PagesController < ApplicationController
   def show
     if params[:id]
       @page = Page.find_by(slug: params[:id])
-      redirect_to root_path unless @page
+      return redirect_to(root_path) unless @page
     else
       @page = Page.first
     end
 
-    redirect_to root_path if @page.nil? || @page.first_page?
+    return redirect_to(root_path) if @page.nil? || @page.first_page?
   end
 
   def redirect
-    redirect_to root_path, :status => :moved_permanently
+    redirect_to root_path, status: :moved_permanently
   end
 
   private
