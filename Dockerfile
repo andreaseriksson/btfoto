@@ -1,4 +1,3 @@
-# FROM centurylink/alpine-rails
 FROM bluebu/rails-alpine:rails4
 
 RUN apk --update --upgrade add postgresql-dev \
@@ -33,7 +32,6 @@ COPY . ./
 
 # Precompile Rails assets
 RUN bundle exec rake assets:precompile
-RUN bundle exec rake db:create
 
 # Start puma
 CMD ["foreman", "start", "-f", "Procfile"]
