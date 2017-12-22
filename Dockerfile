@@ -31,5 +31,4 @@ RUN bundle exec rake assets:precompile
 RUN bundle exec rake db:create
 
 # Start puma
-CMD bundle exec puma # -C config/puma.rb
-
+CMD ["foreman", "start", "-f", "Procfile"]
