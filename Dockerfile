@@ -1,4 +1,9 @@
-FROM centurylink/alpine-rails
+# FROM centurylink/alpine-rails
+FROM bluebu/rails-alpine:rails4
+
+RUN apk --update --upgrade add postgresql-dev \
+  && apk add ca-certificates wget \
+  && update-ca-certificates
 
 # Configure the main working directory. This is the base
 # directory used in any further RUN, COPY, and ENTRYPOINT
