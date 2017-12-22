@@ -1,23 +1,34 @@
-FROM seapy/rails-nginx-unicorn-pro:v1.1-ruby2.3.0-nginx1.8.1
+FROM centurylink/alpine-rails
 
-RUN echo "deb http://apt.postgresql.org/pub/repos/apt/ trusty-pgdg main" > /etc/apt/sources.list.d/pgdg.list && \
-    apt-get update && \
-    DEBIAN_FRONTEND=noninteractive \
-    apt-get install -y --force-yes libpq-dev
+# Configure the main working directory. This is the base
+# directory used in any further RUN, COPY, and ENTRYPOINT
+# commands.
+RUN mkdir -p /app
 
-# https://github.com/mileszs/wicked_pdf/issues/53
-# RUN wget http://wkhtmltopdf.googlecode.com/files/wkhtmltopdf-0.9.9-static-amd64.tar.bz2
-RUN wget http://download.gna.org/wkhtmltopdf/obsolete/linux/wkhtmltopdf-0.9.9-static-amd64.tar.bz2
+RUN wget https://s3.eu-central-1.amazonaws.com/btfoto/wkhtmltopdf-0.9.9-static-amd64.tar.bz2
 RUN tar xvjf wkhtmltopdf-0.9.9-static-amd64.tar.bz2
-RUN mv wkhtmltopdf-amd64 /usr/local/bin/wkhtmltopdf
-RUN chmod +x /usr/local/bin/wkhtmltopdf
+RUN mv wkhtmltopdf-amd64 /app/wkhtmltopdf
+RUN chmod +x /app/wkhtmltopdf
 
-ADD Gemfile /app/Gemfile
-ADD Gemfile.lock /app/Gemfile.lock
-RUN bundle install --without development test
-ADD . /app
+WORKDIR /app
 
-ADD config/btfoto.conf /etc/nginx/sites-enabled/default
+# Copy the Gemfile as well as the Gemfile.lock and install
+# the RubyGems. This is a separate step so the dependencies
+# will be cached unless changes to one of those two files
+# are made.
+COPY Gemfile Gemfile.lock ./
+RUN gem install bundler && bundle install --jobs 20 --retry 5 --without development test
 
-# Backup Gem
-RUN apt-get update && apt-get install -y --force-yes postgresql-9.5 postgresql-client-9.5 postgresql-contrib-9.5
+# Set Rails to run in production
+ENV RAILS_ENV production
+ENV RACK_ENV production
+
+# Copy the main application.
+COPY . ./
+
+# Precompile Rails assets
+RUN bundle exec rake assets:precompile
+
+# Start puma
+CMD bundle exec puma -C config/puma.rb
+

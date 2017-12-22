@@ -13,7 +13,7 @@ gem 'bourbon'
 gem 'carrierwave'
 gem 'carrierwave_direct'
 gem 'coffee-rails', '~> 4.1.0'
-gem 'dalli'
+# gem 'dalli'
 gem 'elusive-icons-sass-rails'
 gem 'font-awesome-rails'
 gem 'friendly_id', '~> 5.1.0'
@@ -23,13 +23,14 @@ gem 'jquery-fileupload-rails'
 gem 'jquery-rails'
 gem 'monban'
 gem 'pg'
+gem 'puma'
 gem 'ranked-model'
 gem 'ransack'
 gem 'responders', '~> 2.0'
 gem 'rollbar'
 gem 'sass-rails', '~> 5.0'
-gem 'sidekiq'
-gem 'sidekiq-cron', '~> 0.4.0'
+# gem 'sidekiq'
+# gem 'sidekiq-cron', '~> 0.4.0'
 gem 'simple_form'
 gem 'uglifier', '>= 1.3.0'
 gem 'wicked_pdf'
@@ -42,7 +43,6 @@ group :development do
   gem 'localeapp', require: false
   gem 'quiet_assets'
   gem 'bullet'
-  gem 'puma'
   gem 'web-console', '~> 2.0'
 end
 
@@ -68,7 +68,6 @@ group :production do
   gem 'foreman'
   gem 'newrelic_rpm'
   gem 'rails_12factor'
-  gem 'unicorn'
 end
 
 gem 'sdoc', '~> 0.4.0', group: :doc
